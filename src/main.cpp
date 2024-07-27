@@ -1,6 +1,7 @@
 #include <iostream>
 #include <raylib.h>
 #include "../src/State/HistoryState.h"
+#include "../src/State/FavoriteState.h"
 
 
 using namespace std;
@@ -13,7 +14,7 @@ int main () {
 
     InitWindow(screenWidth, screenHeight, "My first RAYLIB program!");
     SetTargetFPS(60);
-    drawHistoryPage(screenWidth, screenHeight);
+    drawFavoritePage(screenWidth, screenHeight);
 
     CloseWindow();
     return 0;

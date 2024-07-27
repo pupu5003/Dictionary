@@ -2,9 +2,9 @@
 #include <raylib.h>
 #include <vector>
 
-struct HistoryItem {
+struct FavoriteItem {
     std::string word;
     std::string description;
 };
 
-void drawHistoryPage(int screenWidth, int screenHeight);
+void drawFavoritePage(int screenWidth, int screenHeight);

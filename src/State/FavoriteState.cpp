@@ -1,11 +1,11 @@
-#include "HistoryState.h"
+#include "FavoriteState.h"
 #include <raylib.h>
 #include <iostream>
 #include <../src/Color/color.h>
 
 const int VISIBLE_HISTORY_ITEMS = 4;
 
-void drawHistoryPage(int screenWidth, int screenHeight) {
+void drawFavoritePage(int screenWidth, int screenHeight) {
     // Load icons
     Texture2D backIcon = LoadTexture("asset/Image/back_ic.png");
     Texture2D settingsIcon = LoadTexture("asset/Image/settings_ic.png");
@@ -15,15 +15,15 @@ void drawHistoryPage(int screenWidth, int screenHeight) {
     Font fontRussoOne = LoadFontEx("asset/Font/Russo_One.ttf", 200, 0, 250);
 
     // Declare and initialize history items
-    std::vector<HistoryItem> history;
-    history.push_back({"societal1", "connected with society and the way it is..."});
-    history.push_back({"societal2", "connected with society and the way it is..."});
-    history.push_back({"societa3", "connected with society and the way it is..."});
-    history.push_back({"societal4", "connected with society and the way it is..."});
-    history.push_back({"societal5", "connected with society and the way it is..."});
-    history.push_back({"societal6", "connected with society and the way it is..."});
-    history.push_back({"societal7", "connected with society and the way it is..."});
-    history.push_back({"societal8", "connected with society and the way it is..."});  
+    std::vector<FavoriteItem> favorite;
+    favorite.push_back({"societal1", "connected with society and the way it is..."});
+    favorite.push_back({"societal2", "connected with society and the way it is..."});
+    favorite.push_back({"societa3", "connected with society and the way it is..."});
+    favorite.push_back({"societal4", "connected with society and the way it is..."});
+    favorite.push_back({"societal5", "connected with society and the way it is..."});
+    favorite.push_back({"societal6", "connected with society and the way it is..."});
+    favorite.push_back({"societal7", "connected with society and the way it is..."});
+    favorite.push_back({"societal8", "connected with society and the way it is..."});  
           
 
     // Define rectangles for UI elements
@@ -43,15 +43,15 @@ void drawHistoryPage(int screenWidth, int screenHeight) {
                 
             }
             if (CheckCollisionPointRec(mousePosition, clearAllButton)) {
-                history.clear();
+                favorite.clear();
             }
 
-            for (int i = 0; i < history.size(); i++) {
-                Rectangle historyBox = {50, (float)236 + 150 * i, 1289, 108};
-                Rectangle xButton = {1369, historyBox.y + 28, (float)XIamge.width, (float)XIamge.height};
+            for (int i = 0; i < favorite.size(); i++) {
+                Rectangle favoriteBox = {50, (float)236 + 150 * i, 1289, 108};
+                Rectangle xButton = {1369, favoriteBox.y + 28, (float)XIamge.width, (float)XIamge.height};
                 
                 if (CheckCollisionPointRec(mousePosition, xButton)) {
-                    history.erase(history.begin() + i);
+                    favorite.erase(favorite.begin() + i);
                     break;
                 }
             }
@@ -63,7 +63,7 @@ void drawHistoryPage(int screenWidth, int screenHeight) {
         DrawRectangle(0, 0, screenWidth, 110, LIGHTRED);
 
         // Draw header
-        const char* text = "HISTORY";
+        const char* text = "FAVORITE";
         int fontSize = 65;
         float spacing = 1.0f; // Spacing between letters
         Vector2 textSize = MeasureTextEx(fontRussoOne, text, fontSize, spacing);
@@ -84,7 +84,7 @@ void drawHistoryPage(int screenWidth, int screenHeight) {
         }
 
         // Draw history items
-        for (int i = 0; i < history.size() && i < VISIBLE_HISTORY_ITEMS; i++) {
+        for (int i = 0; i < favorite.size() && i < VISIBLE_HISTORY_ITEMS; i++) {
             Rectangle historyBox = {50, (float)236 + 150 * i, 1289, 108};
             Rectangle xButton = {1369, historyBox.y + 28, (float)XIamge.width, (float)XIamge.height};
             
@@ -92,7 +92,7 @@ void drawHistoryPage(int screenWidth, int screenHeight) {
             DrawTexture(XIamge, xButton.x, xButton.y, WHITE);
 
             // Draw word and description
-            const char* text2 = history[i].word.c_str();
+            const char* text2 = favorite[i].word.c_str();
             int fontSize2 = 40;
             float spacing2 = 1.0f; // Spacing between letters
             Vector2 textSize2 = MeasureTextEx(fontRussoOne, text2, fontSize2, spacing2);
