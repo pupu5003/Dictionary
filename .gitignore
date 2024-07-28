@@ -1,0 +1,54 @@
+# Ignore build directories
+/build/
+/Debug/
+/Release/
+
+# Ignore generated files
+*.o
+*.obj
+*.exe
+*.out
+*.log
+*.a
+*.lib
+*.dll
+*.so
+*.dylib
+*.dSYM/
+*.pch
+*.class
+*.pyc
+*.pyo
+*.suo
+*.user
+*.layout
+*.gch
+*.cmake
+*.cache
+
+# Ignore CMake generated files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+makefile
+
+# Ignore Visual Studio files
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.sln
+*.opensdf
+*.sdf
+*.ipch
+*.tlog
+*.lastbuildstate
+*.pdb
+*.idb
+*.ipdb
+
+# Ignore Mac specific files
+.DS_Store
+
+# Ignore Linux specific files
+*.swp
