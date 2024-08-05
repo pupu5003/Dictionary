@@ -1,11 +1,11 @@
 #pragma once
 #include <iostream>
 #include <raylib.h>
-#include "../src/System/State/Component/page.hpp"
-#include <../src/System/State/Component/button.hpp>
+#include "../src/System/Component/page.hpp"
+#include <../src/System/Component/button.hpp>
 #include <../asset/Color/color.hpp>
 
-class Home : public Page
+class HomePage : public Page
 {
 private:
     Texture2D homeTag;
@@ -14,8 +14,8 @@ private:
     Button practiceButton;
     Button settingButton; 
 public:
-    Home();
-    ~Home();
+    HomePage();
+    ~HomePage();
     void display() const override;
-    void handleEvent() override;
+    void handleEvent(int &currentScreen) override;
 };

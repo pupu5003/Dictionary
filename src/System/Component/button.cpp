@@ -11,6 +11,12 @@ Button::Button()
     mColor = LIGHTGRAY;
 }
 
+void Button::setButton(const char *path, float x, float y)
+{
+    loadTexture(path);
+    setRect(x, y, texture.width, texture.height);
+}
+
 Button::~Button()
 {
     UnloadTexture(texture);
