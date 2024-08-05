@@ -3,24 +3,38 @@ TARGET := Dictionary
 SRC := src
 BUILD := build
 
-SRCS := $(shell find $(SRC) -type f -name '*.cpp')
+# Use 'find' command if available, else provide a Windows alternative
+ifeq ($(OS),Windows_NT)
+    SRCS := $(shell dir /S /B $(SRC)\*.cpp)
+else
+    SRCS := $(shell find $(SRC) -type f -name '*.cpp')
+endif
+
 OBJS := $(subst $(SRC)/,$(BUILD)/,$(addsuffix .o,$(basename $(SRCS))))
 
 all: clean $(TARGET)
 
 $(TARGET): $(OBJS)
 ifeq ($(OS),Windows_NT)
-	mkdir -p $(dir $@)
+	-mkdir $(BUILD) 2>NUL || true
 	g++ $(OBJS) -o $@ -Llib -lraylib -lopengl32 -lgdi32 -lwinmm -lcomdlg32 -lole32
 else
-	mkdir -p $(dir $@)
+	mkdir -p $(BUILD)
 	g++ $(OBJS) -o $@ -framework CoreVideo -framework IOKit -framework Cocoa -framework GLUT -framework OpenGL -Llib -lraylib
 endif
 
 $(BUILD)/%.o: $(SRC)/%.cpp
+ifeq ($(OS),Windows_NT)
+	-mkdir $(dir $@) 2>NUL || true
+else
 	mkdir -p $(dir $@)
+endif
 	g++ -std=c++14 -Iinclude -c -o $@ $<
 
 .PHONY: clean
 clean:
+ifeq ($(OS),Windows_NT)
+	-rmdir /S /Q $(BUILD) 2>NUL || true
+else
 	rm -rf $(BUILD)
+endif

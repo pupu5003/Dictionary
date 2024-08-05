@@ -1,7 +1,7 @@
 #include "FavoriteState.h"
 #include <raylib.h>
 #include <iostream>
-#include <../src/Color/color.h>
+#include <../asset/Color/color.hpp>
 
 const int VISIBLE_HISTORY_ITEMS = 4;
 
