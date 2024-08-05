@@ -7,8 +7,9 @@ System::System(/* args */)
     SetTargetFPS(60);
 
     // load components
-    pages.push_back(new Home());
-    // pages.push_back(new FavoriteState());
+    pages.push_back(new HomePage());
+    pages.push_back(new HistoryPage());
+    pages.push_back(new FavoritePage());
     currentScreen = 0;
     cout << "System is created" << endl;
 }
@@ -28,7 +29,7 @@ void System::run()
     {
 
         //event handling
-        pages[currentScreen]->handleEvent();
+        pages[currentScreen] -> handleEvent(currentScreen);
         if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
         {
             cout << "Mouse is pressed" << endl;

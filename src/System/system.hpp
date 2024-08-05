@@ -1,8 +1,10 @@
 #include <iostream>
 #include <raylib.h>
 #include <vector>
-#include "../src/System/State/Component/page.hpp"
-#include "../src/System/State/Home.hpp"
+#include "../src/System/Component/page.hpp"
+#include "../src/System/State/HomePage.hpp"
+#include "../src/System/State/FavoritePage.hpp"
+#include "../src/System/State/HistoryPage.hpp"
 #include "../asset/Color/color.hpp"
 using namespace std;
 
