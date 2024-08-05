@@ -1,5 +1,8 @@
 # Ignore build directories
-/build/
+build/
+lib/
+include/
+.vscode/
 /Debug/
 /Release/
 
@@ -25,6 +28,7 @@
 *.gch
 *.cmake
 *.cache
+Dictionary
 
 # Ignore CMake generated files
 CMakeFiles/
@@ -52,3 +56,4 @@ makefile
 
 # Ignore Linux specific files
 *.swp
+

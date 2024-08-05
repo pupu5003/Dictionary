@@ -1,21 +1,15 @@
 #include <iostream>
 #include <raylib.h>
-#include "../src/State/HistoryState.h"
-#include "../src/State/FavoriteState.h"
-
+#include "../src/System/State/HistoryState.h"
+#include "../src/System/State/FavoriteState.h"
+#include "../src/System/system.hpp"
 
 using namespace std;
 
 int main () {
 
     cout << "Hello World" << endl;
-    const int screenWidth = 1460;
-    const int screenHeight = 850;
-
-    InitWindow(screenWidth, screenHeight, "My first RAYLIB program!");
-    SetTargetFPS(60);
-    drawFavoritePage(screenWidth, screenHeight);
-
-    CloseWindow();
+    System *app = new System();
+    app -> run();
     return 0;
 }
