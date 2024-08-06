@@ -15,8 +15,6 @@ AddWordPage::AddWordPage(int &currentScreen) : currentScreen(currentScreen)
     
     backButton.setButton("asset/Image/back_ic.png", 45, 31);
 
-    settingButton.setButton("asset/Image/settings_ic.png", 1159, 23);
-
     addNewButton.setButton("asset/Image/AddNewButton.png", 924, 586);
 
 }
@@ -33,8 +31,6 @@ void AddWordPage::display() const
 
     DrawTexture(definitionBox, 377, 355, WHITE);
 
-    settingButton.display();
-
     backButton.display();
 
     addNewButton.display();
@@ -43,10 +39,6 @@ void AddWordPage::display() const
 void AddWordPage::handleEvent()
 {
     if (backButton.isPressed())
-    {
-        currentScreen = 4;
-    }
-    else if (settingButton.isPressed())
     {
         currentScreen = 4;
     }

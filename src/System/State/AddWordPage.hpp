@@ -14,7 +14,6 @@ private:
     Texture2D keywordBox;
     Texture2D definitionBox;
     Button backButton;
-    Button settingButton; 
     Button addNewButton;
 
     int& currentScreen;
