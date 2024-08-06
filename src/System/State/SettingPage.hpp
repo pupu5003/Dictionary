@@ -6,19 +6,18 @@
 #include <../asset/Color/color.hpp>
 using namespace std;
 
-class HomePage : public Page
+class SettingPage : public Page
 {
 private:
-    Texture2D homeTag;
-    Button historyButton;
-    Button favoriteButton;
-    Button practiceButton;
-    Button settingButton; 
+    Texture2D settingTag;
+    Button backButton;  
+    Button resetButton;
+    Button addWordButton;
 
     int& currentScreen;
 public:
-    HomePage(int &currentScreen);
-    ~HomePage();
+    SettingPage(int &currentScreen);
+    ~SettingPage();
     void display() const override;
     void handleEvent() override;
 };

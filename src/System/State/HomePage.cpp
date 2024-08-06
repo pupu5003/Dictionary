@@ -1,7 +1,7 @@
 #include "HomePage.hpp"
 using namespace std;
 
-HomePage::HomePage()
+HomePage::HomePage(int &currentScreen) : currentScreen(currentScreen)
 {
     
     homeTag = LoadTexture("asset/Image/HomeTag.png");
@@ -13,6 +13,7 @@ HomePage::HomePage()
     practiceButton.setButton("asset/Image/PracticeButton.png", 813.51, 204.81);
     
     settingButton.setButton("asset/Image/settings_ic.png", 1159, 23);
+
 }
 
 void HomePage::display() const
@@ -32,7 +33,7 @@ void HomePage::display() const
     DrawLine(107, 281, 1134, 281, BLACK);
 }
 
-void HomePage::handleEvent(int &currentScreen)
+void HomePage::handleEvent()
 {
     if (historyButton.isPressed())
     {

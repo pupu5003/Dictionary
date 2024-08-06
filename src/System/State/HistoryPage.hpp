@@ -1,9 +1,12 @@
 #pragma once
 #include <iostream>
 #include <raylib.h>
+#include <vector>
 #include "../src/System/Component/page.hpp"
 #include <../src/System/Component/button.hpp>
+#include <../src/System/Component/HistoryManager.hpp>
 #include <../asset/Color/color.hpp>
+using namespace std;
 
 class HistoryPage : public Page
 {
@@ -13,9 +16,11 @@ private:
     Button settingButton; 
     Button clearButton;
 
+    int& currentScreen;
+    HistoryManager& hisManeger;
 public:
-    HistoryPage();
+    HistoryPage(int &currentScreen, HistoryManager& hisManeger);
     ~HistoryPage();
     void display() const override;
-    void handleEvent(int &currentScreen) override;
+    void handleEvent() override;
 };

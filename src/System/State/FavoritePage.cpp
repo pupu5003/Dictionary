@@ -1,7 +1,7 @@
 #include "FavoritePage.hpp"
 using namespace std;
 
-FavoritePage::FavoritePage()
+FavoritePage::FavoritePage(int &currentScreen) : currentScreen(currentScreen)
 {
     favoriteTag = LoadTexture("asset/Image/FavouriteTag.png");
     
@@ -10,6 +10,7 @@ FavoritePage::FavoritePage()
     settingButton.setButton("asset/Image/settings_ic.png", 1159, 23);
 
     clearButton.setButton("asset/Image/ClearAllButton.png", 490, 150);
+
 }
 
 void FavoritePage::display() const
@@ -23,7 +24,7 @@ void FavoritePage::display() const
     clearButton.display();
 }
 
-void FavoritePage::handleEvent(int &currentScreen)
+void FavoritePage::handleEvent()
 {
     if (backButton.isPressed())
     {

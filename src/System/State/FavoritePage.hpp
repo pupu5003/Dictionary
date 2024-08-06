@@ -13,9 +13,11 @@ private:
     Button settingButton; 
     Button clearButton;
 
+    int& currentScreen;
+
 public:
-    FavoritePage();
+    FavoritePage(int &currentScreen);
     ~FavoritePage();
     void display() const override;
-    void handleEvent(int &currentScreen) override;
+    void handleEvent() override;
 };
