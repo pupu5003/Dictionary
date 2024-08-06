@@ -7,9 +7,9 @@ System::System(/* args */)
     SetTargetFPS(60);
 
     // load components
-    pages.push_back(new HomePage());
-    pages.push_back(new HistoryPage());
-    pages.push_back(new FavoritePage());
+    pages.push_back(new HomePage(currentScreen));
+    pages.push_back(new HistoryPage(currentScreen, hisManager));
+    pages.push_back(new FavoritePage(currentScreen));
     currentScreen = 0;
     cout << "System is created" << endl;
 }
@@ -24,12 +24,14 @@ System::~System()
 
 void System::run()
 {
+    Image AppIcon = LoadImage("asset/Image/AppIcon.png");
+    SetWindowIcon(AppIcon);
    
     while (!WindowShouldClose()) 
     {
 
         //event handling
-        pages[currentScreen] -> handleEvent(currentScreen);
+        pages[currentScreen] -> handleEvent();
         if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
         {
             cout << "Mouse is pressed" << endl;

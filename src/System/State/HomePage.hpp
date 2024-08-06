@@ -4,6 +4,7 @@
 #include "../src/System/Component/page.hpp"
 #include <../src/System/Component/button.hpp>
 #include <../asset/Color/color.hpp>
+using namespace std;
 
 class HomePage : public Page
 {
@@ -13,9 +14,11 @@ private:
     Button favoriteButton;
     Button practiceButton;
     Button settingButton; 
+
+    int& currentScreen;
 public:
-    HomePage();
+    HomePage(int &currentScreen);
     ~HomePage();
     void display() const override;
-    void handleEvent(int &currentScreen) override;
+    void handleEvent() override;
 };

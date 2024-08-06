@@ -1,7 +1,7 @@
 #include "HistoryPage.hpp"
 using namespace std;
 
-HistoryPage::HistoryPage()
+HistoryPage::HistoryPage(int &currentScreen, HistoryManager& hisManeger) : currentScreen(currentScreen) , hisManeger(hisManeger)
 {
     historyTag = LoadTexture("asset/Image/HistoryTag.png");
     
@@ -10,6 +10,7 @@ HistoryPage::HistoryPage()
     settingButton.setButton("asset/Image/settings_ic.png", 1159, 23);
 
     clearButton.setButton("asset/Image/ClearAllButton.png", 490, 150);
+
 }
 
 void HistoryPage::display() const
@@ -21,9 +22,16 @@ void HistoryPage::display() const
     backButton.display();
 
     clearButton.display();
+
+    // display history list
+    Texture2D hisRec = LoadTexture("asset/Image/HistoryRec.png");
+    // for (int i = 0; i < historyList.size(); i++)
+    // {
+        
+    // }
 }
 
-void HistoryPage::handleEvent(int &currentScreen)
+void HistoryPage::handleEvent()
 {
     if (backButton.isPressed())
     {

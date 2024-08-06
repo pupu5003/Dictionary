@@ -5,6 +5,7 @@
 #include "../src/System/State/HomePage.hpp"
 #include "../src/System/State/FavoritePage.hpp"
 #include "../src/System/State/HistoryPage.hpp"
+#include "../src/System/Component/HistoryManager.hpp"
 #include "../asset/Color/color.hpp"
 using namespace std;
 
@@ -16,6 +17,7 @@ private:
     const int screenHeight = 725;
     int currentScreen;
     vector<Page*> pages;
+    HistoryManager hisManager;
 public:
     System(/* args */);
     ~System();
