@@ -57,3 +57,5 @@ makefile
 # Ignore Linux specific files
 *.swp
 
+MakeFile
+MakeFile

@@ -12,7 +12,8 @@ System::System(/* args */)
     pages.push_back(new FavoritePage(currentScreen));
     pages.push_back(NULL);
     pages.push_back(new SettingPage(currentScreen));
-    currentScreen = 0;
+    pages.push_back(new AddWordPage(currentScreen));
+    currentScreen = 5;
     cout << "System is created" << endl;
 }
 
