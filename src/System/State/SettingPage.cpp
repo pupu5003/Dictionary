@@ -37,7 +37,7 @@ void SettingPage::handleEvent()
     }
     else if (addWordButton.isPressed())
     {
-        cout << "Add word button is pressed" << endl;
+        currentScreen = 5;
     }
 
 }

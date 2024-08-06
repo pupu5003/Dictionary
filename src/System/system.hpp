@@ -7,6 +7,7 @@
 #include "../src/System/State/HistoryPage.hpp"
 #include "../src/System/Component/HistoryManager.hpp"
 #include "../src/System/State/SettingPage.hpp"
+#include "../src/System/State/PracticePage.hpp"
 #include "../src/System/State/AddWordPage.hpp"
 #include "../asset/Color/color.hpp"
 using namespace std;
