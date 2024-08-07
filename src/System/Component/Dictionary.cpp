@@ -1,5 +1,12 @@
 #include "Dictionary.hpp"
+#include <chrono>
 using namespace std;
+
+int random(int min, int max)
+{
+    srand(chrono::system_clock::now().time_since_epoch().count());
+    return rand() % (max - min + 1) + min;
+}
 
 Word::Word()
 {
@@ -7,7 +14,7 @@ Word::Word()
     word = "";
     type.clear();
     definition.clear();
-    bool isFavorite = false;
+    isFavorite = false;
 }
 
 Word::~Word()
@@ -57,4 +64,9 @@ void Dictionary::lodadData()
             words[i].push_back(word);
         }
     }
+}
+
+Word& Dictionary::getRandomWord(dataSet data)
+{
+    return words[data][random(0, words[data].size() - 1)];
 }

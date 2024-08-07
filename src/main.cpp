@@ -1,6 +1,7 @@
 #include <iostream>
 #include <raylib.h>
 #include "../src/System/system.hpp"
+#include "../src/System/Component/Dictionary.hpp"
 
 using namespace std;
 
@@ -10,4 +11,8 @@ int main () {
     System *app = new System();
     app -> run();
     return 0;
+    // Dictionary dict;
+    // // dict.lodadData();
+    // return 0;
+
 }

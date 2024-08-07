@@ -2,15 +2,10 @@
 #include <chrono>
 using namespace std;
 
-int random(int min, int max)
-{
-    srand(chrono::system_clock::now().time_since_epoch().count());
-    return rand() % (max - min + 1) + min;
-}
 
-HomePage::HomePage(int &currentScreen, Dictionary &dictionary) : currentScreen(currentScreen), dictionary(dictionary)
+
+HomePage::HomePage(int &currentScreen, Dictionary &dictionary) : currentScreen(currentScreen), dictionary(dictionary), randomWord(dictionary.getRandomWord())
 {
-    
     homeTag = LoadTexture("asset/Image/HomeTag.png");
 
     historyButton.setButton("asset/Image/HistoryButton.png", 196.25, 204.81);
@@ -23,7 +18,7 @@ HomePage::HomePage(int &currentScreen, Dictionary &dictionary) : currentScreen(c
 
     like.setButton("asset/Image/Heart_ic.png", 870, 326, 1.1);
 
-    liked.setButton("asset/Image/Heart1_ic.png", 861, 328, 1.1);
+    liked.setButton("asset/Image/Hear1_ic.png", 870, 328, 1.1);
 
     edit.setButton("asset/Image/Edit_ic.png", 935, 324, 1.1);
     
@@ -36,10 +31,6 @@ void HomePage::display() const
 {
     DrawTexture(homeTag, 0, 0, WHITE);
 
-    // Texture2D temp = LoadTexture("asset/Image/HistoryButton.png");
-
-    // DrawTexture(temp, 90.25, 90.81, WHITE);
-
     settingButton.display();
    
     historyButton.display();
@@ -47,7 +38,14 @@ void HomePage::display() const
     practiceButton.display();
 
     wordCard.display();
-    like.display();
+    if (randomWord.isFavorite)
+    {
+        liked.display();
+    }
+    else
+    {
+        like.display();
+    }
     edit.display();
     changeWord.display();
 
@@ -71,6 +69,18 @@ void HomePage::handleEvent()
     else if (settingButton.isPressed())
     {
         currentScreen = 4;
+    }
+    else if (like.isPressed())
+    {
+        randomWord.isFavorite = !randomWord.isFavorite;
+    }
+    else if (edit.isPressed())
+    {
+        cout << "Edit button is pressed" << endl;
+    }
+    else if (changeWord.isPressed())
+    {
+        randomWord = dictionary.getRandomWord();
     }
 
 }

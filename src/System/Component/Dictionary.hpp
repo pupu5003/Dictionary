@@ -35,4 +35,5 @@ public:
     Dictionary();
     ~Dictionary();
    void lodadData();
+   Word& getRandomWord(dataSet data = engEng);
 };

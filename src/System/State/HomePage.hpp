@@ -21,8 +21,10 @@ private:
     Button edit;
     nButton wordCard;
 
+    Word& randomWord;
     int& currentScreen;
     Dictionary& dictionary;
+
 public:
     HomePage(int &currentScreen, Dictionary& dictionary);
     ~HomePage();
