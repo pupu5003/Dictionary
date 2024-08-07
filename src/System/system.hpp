@@ -10,6 +10,7 @@
 #include "../src/System/State/PracticePage.hpp"
 #include "../src/System/State/AddWordPage.hpp"
 #include "../asset/Color/color.hpp"
+#include "../src/System/Component/Dictionary.hpp"
 using namespace std;
 
 class System
@@ -20,6 +21,7 @@ private:
     const int screenHeight = 725;
     int currentScreen;
     vector<Page*> pages;
+    Dictionary dictionary;
     HistoryManager hisManager;
 public:
     System(/* args */);

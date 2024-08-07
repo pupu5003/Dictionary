@@ -7,7 +7,7 @@ System::System(/* args */)
     SetTargetFPS(60);
 
     // load components
-    pages.push_back(new HomePage(currentScreen));
+    pages.push_back(new HomePage(currentScreen, dictionary));
     pages.push_back(new HistoryPage(currentScreen, hisManager));
     pages.push_back(new FavoritePage(currentScreen));
     pages.push_back(new PracticePage(currentScreen));

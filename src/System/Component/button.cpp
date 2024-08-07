@@ -1,20 +1,21 @@
 #include "button.hpp"
 using namespace std;
 
-const float scale = 1.2;
-
 Button::Button()
 {
     rect = {0, 0, 0, 0};
     mRect = {0, 0, 0, 0};
     color = WHITE;
     mColor = LIGHTGRAY;
+    scale = 1.2;
 }
 
-void Button::setButton(const char *path, float x, float y)
+void Button::setButton(const char *path, float x, float y, float scale)
+
 {
     loadTexture(path);
     setRect(x, y, texture.width, texture.height);
+    this->scale = scale;
 }
 
 Button::~Button()
@@ -51,4 +52,43 @@ void Button::setRect(float x, float y, float width, float height)
 {
     rect = {x, y, width, height};
     mRect = {x - (width * scale - width) / 2, y - (height * scale - height) / 2, width * scale, height * scale};
+}
+
+nButton::nButton()
+{
+    rect = {0, 0, 0, 0};
+    color = WHITE;
+}
+
+void nButton::setButton(const char *path, float x, float y)
+
+{
+    loadTexture(path);
+    setRect(x, y, texture.width, texture.height);
+}
+
+nButton::~nButton()
+{
+    UnloadTexture(texture);
+}
+
+void nButton::display() const
+{
+
+    DrawTexture(texture, rect.x, rect.y, color);
+}
+
+bool nButton::isPressed() const
+{
+    return IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec(GetMousePosition(), rect);
+}
+
+void nButton::loadTexture(const char *path)
+{
+    texture = LoadTexture(path);
+}
+
+void nButton::setRect(float x, float y, float width, float height)
+{
+    rect = {x, y, width, height};
 }

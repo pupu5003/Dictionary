@@ -1,6 +1,6 @@
 # Ignore build directories
 build/
-lib/
+lib/libraylib.a
 include/
 .vscode/
 /Debug/

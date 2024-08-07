@@ -1,7 +1,14 @@
 #include "HomePage.hpp"
+#include <chrono>
 using namespace std;
 
-HomePage::HomePage(int &currentScreen) : currentScreen(currentScreen)
+int random(int min, int max)
+{
+    srand(chrono::system_clock::now().time_since_epoch().count());
+    return rand() % (max - min + 1) + min;
+}
+
+HomePage::HomePage(int &currentScreen, Dictionary &dictionary) : currentScreen(currentScreen), dictionary(dictionary)
 {
     
     homeTag = LoadTexture("asset/Image/HomeTag.png");
@@ -14,6 +21,15 @@ HomePage::HomePage(int &currentScreen) : currentScreen(currentScreen)
     
     settingButton.setButton("asset/Image/settings_ic.png", 1159, 23);
 
+    like.setButton("asset/Image/Heart_ic.png", 870, 326, 1.1);
+
+    liked.setButton("asset/Image/Heart1_ic.png", 861, 328, 1.1);
+
+    edit.setButton("asset/Image/Edit_ic.png", 935, 324, 1.1);
+    
+    changeWord.setButton("asset/Image/Reload_ic.png", 990, 324, 1.1);
+
+    wordCard.setButton("asset/Image/WordCard.png", 181, 296);
 }
 
 void HomePage::display() const
@@ -29,6 +45,11 @@ void HomePage::display() const
     historyButton.display();
     favoriteButton.display();
     practiceButton.display();
+
+    wordCard.display();
+    like.display();
+    edit.display();
+    changeWord.display();
 
     DrawLine(107, 281, 1134, 281, BLACK);
 }
