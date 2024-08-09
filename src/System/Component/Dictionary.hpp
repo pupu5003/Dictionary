@@ -4,24 +4,11 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include "KeywordTrie.hpp"
 using namespace std;
 
-struct Word
-{
-    int id;
-    bool isFavorite;
-    string word;
-    vector<string> type;
-    vector<string> definition;
-    Word();
-    // Word(int id) : id(id);
-    ~Word();
-};
 
-class Dictionary
-{
-private:
-    enum dataSet
+enum dataSet
     {
         engEng = 0,
         engVie = 1,
@@ -30,10 +17,31 @@ private:
         slang = 4
     };
 
+struct Word
+{
+    int id;
+    bool isFavorite;
+    string word;
+    vector<string> type;
+    vector<string> definition;  
+    Word();
+    // Word(int id) : id(id);
+    ~Word();
+};
+
+class Dictionary
+{
+private:
+
     vector<Word> words[5];
+    KeywordTrie wordTrie[5];
+    vector<int> vaildId[5];
 public:
     Dictionary();
     ~Dictionary();
    void lodadData();
    Word& getRandomWord(dataSet data = engEng);
+   void addWord(Word word, dataSet data);
+   void removeWord(int id, dataSet data);
+   void editWord(int id, dataSet data, int curDef, string& def);
 };

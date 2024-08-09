@@ -62,6 +62,7 @@ void Dictionary::lodadData()
             word.type.push_back(type);
             word.definition.push_back(definition);
             words[i].push_back(word);
+            wordTrie[i].insert(keyWord, word.id);
         }
     }
 }
@@ -69,4 +70,34 @@ void Dictionary::lodadData()
 Word& Dictionary::getRandomWord(dataSet data)
 {
     return words[data][random(0, words[data].size() - 1)];
+}
+
+void Dictionary::addWord(Word word, dataSet data)
+{
+    if ((int)vaildId[data].size() > 0)
+    {
+        word.id= vaildId[data].back();
+        vaildId[data].pop_back();
+        words[data][word.id] = word;
+        wordTrie[data].insert(word.word, word.id);
+    }
+    else
+    {
+        word.id = words[data].size();
+        words[data].push_back(word);
+        wordTrie[data].insert(word.word, word.id);
+    }
+
+}
+
+void Dictionary::removeWord(int id, dataSet data)
+{
+    vaildId[data].push_back(id);
+    wordTrie[data].remove(words[data][id].word);
+    words[data][id] = Word();
+}
+
+void Dictionary::editWord(int id, dataSet data, int curDef, string& def)
+{
+    words[data][id].definition[curDef] = def;
 }
