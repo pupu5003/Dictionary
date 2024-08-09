@@ -101,3 +101,21 @@ void Dictionary::editWord(int id, dataSet data, int curDef, string& def)
 {
     words[data][id].definition[curDef] = def;
 }
+
+void Dictionary::addFavorite(int id, dataSet data){
+    words[data][id].isFavorite = true;
+    favorite[data].push_back(words[data][id]);
+}
+
+void Dictionary::removeFavorite(int id, dataSet data){
+    words[data][id].isFavorite = false;
+    for (int i = 0; i < favorite[data].size(); i++)
+    {
+        if (favorite[data][i].id == id)
+        {
+            favorite[data].erase(favorite[data].begin() + i);
+            break;
+        }
+    }
+}
+

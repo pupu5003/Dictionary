@@ -39,9 +39,12 @@ private:
 public:
     Dictionary();
     ~Dictionary();
+    vector<Word> favorite[5];
    void lodadData();
    Word& getRandomWord(dataSet data = engEng);
    void addWord(Word word, dataSet data);
    void removeWord(int id, dataSet data);
    void editWord(int id, dataSet data, int curDef, string& def);
+   void addFavorite(int id, dataSet data);
+   void removeFavorite(int id, dataSet data);
 };
