@@ -1,11 +1,8 @@
 #pragma once
 #include <iostream>
-#include <raylib.h>
-#include <vector>
-#include "../src/System/Component/page.hpp"
-#include <../src/System/Component/button.hpp>
-#include <../src/System/Component/HistoryManager.hpp>
-#include <../asset/Color/color.hpp>
+#include "UIComponent.hpp"
+#include "../Component/HistoryManager.hpp"
+
 using namespace std;
 
 class HistoryPage : public Page

@@ -10,6 +10,10 @@ Button::Button()
     scale = 1.2;
 }
 
+Button::Button(const char* path, float x, float y, float scale) {
+    setButton(path, x, y, scale);
+}
+
 void Button::setButton(const char *path, float x, float y, float scale)
 
 {
@@ -52,6 +56,24 @@ void Button::setRect(float x, float y, float width, float height)
 {
     rect = {x, y, width, height};
     mRect = {x - (width * scale - width) / 2, y - (height * scale - height) / 2, width * scale, height * scale};
+}
+
+void Button::setScale(float scale)
+{
+    this->scale = scale;
+    setRect(rect.x, rect.y, rect.width, rect.height);
+}
+
+void Button::disable()
+{
+    this->setScale(1.0f);
+    this->mColor = WHITE;
+}
+
+void Button::enable()
+{
+    this->setScale(1.2f);
+    this->mColor = LIGHTGRAY;
 }
 
 nButton::nButton()
