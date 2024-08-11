@@ -1,78 +1,131 @@
-// #include "KeyWordTrie.hpp"
-// using namespace std;
+#include "KeywordTrie.hpp"
+using namespace std;
 
-// KeywordNode::KeywordNode() : IdofWord(-1);
-// {
-//     for (int i = 0; i < 26; i++)
-//     {
-//         children[i] = nullptr;
-//     }
-// }
 
-//  KeywordNode::~KeywordNode() 
-//  {
-//     for (int i = 0; i < 26; i++)
-//     {
-//         if (children[i] != nullptr)
-//         {
-//             delete children[i];
-//         }
-//     }
-// }
+KeywordNode::KeywordNode()
+{
+    IdofWord = -1;
+    for (int i = 0; i < limitLetter; i++)
+    {
+        children[i] = nullptr;
+    }
+}
 
-// KeywordTrie::KeywordTrie() 
-// {
-//     root = new KeywordNode();
-// }
+ KeywordNode::~KeywordNode() 
+ {
+    for (int i = 0; i < limitLetter; i++)
+    {
+        if (children[i] != nullptr)
+        {
+            delete children[i];
+        }
+    }
+}
 
-// KeywordTrie::~KeywordTrie() 
-// {
-//     delete root;
-// }
+KeywordTrie::KeywordTrie() 
+{
+    root = new KeywordNode();
+}
 
-// void KeywordTrie::insert(string keyword, int Id) 
-// {
-//     KeywordNode *temp = root;
-//     for (int i = 0; i < keyword.size(); i++)
-//     {
-//         int index = keyword[i] - 'a';
-//         if (temp->children[index] == nullptr)
-//         {
-//             temp->children[index] = new KeywordNode();
-//         }
-//         temp = temp->children[index];
-//     }
-//     temp->isEndOfWord = true;
-//     temp->IdofWord = Id;
-// }
+KeywordTrie::~KeywordTrie() 
+{
+    delete root;
+}
 
-// int KeywordTrie::search(string keyword) 
-// {
-//     KeywordNode *temp = root;
-//     for (int i = 0; i < keyword.size(); i++)
-//     {
-//         int index = keyword[i] - 'a';
-//         if (temp->children[index] == nullptr)
-//         {
-//             return -1;
-//         }
-//         temp = temp->children[index];
-//     }
-//     return temp->IdofWord;
-// }
+void KeywordTrie::insert(string& keyword, int Id) 
+{
+    KeywordNode *temp = root;
+    for (int i = 0; i < keyword.size(); i++)
+    {
+        int index = keyword[i];
+        if (temp->children[index] == nullptr)
+        {
+            temp->children[index] = new KeywordNode();
+        }
+        temp = temp->children[index];
+    }
+    temp->IdofWord = Id;
+}
 
-// void KeywordTrie::remove(string keyword) 
-// {
-//     KeywordNode *temp = root;
-//     for (int i = 0; i < keyword.size(); i++)
-//     {
-//         int index = keyword[i] - 'a';
-//         if (temp->children[index] == nullptr)
-//         {
-//             return;
-//         }
-//         temp = temp->children[index];
-//     }
-//     temp->isEndOfWord = false;
-//     temp->IdofWord = -1;
-// }
+int KeywordTrie::search(string& keyword) 
+{
+    KeywordNode *temp = root;
+    for (int i = 0; i < keyword.size(); i++)
+    {
+        int index = keyword[i];
+        if (temp->children[index] == nullptr)
+        {
+            return -1;
+        }
+        temp = temp->children[index];
+    }
+    return temp->IdofWord;
+}
+
+void KeywordTrie::remove(string& keyword) 
+{
+    internalRemove(root, keyword, 0); 
+}
+
+void KeywordTrie::internalRemove(KeywordNode* &node, string& keyword, int index) 
+{
+    if (index == keyword.size())
+    {
+        delete node;
+        node = nullptr;
+        return;
+    }
+    int i = keyword[index];
+    if (node->children[i] == nullptr)
+    {
+        return;
+    }
+    internalRemove(node->children[i], keyword, index + 1);
+    if (index == 0) return;
+    for (int i = 0; i < limitLetter; i++)
+    if (node->children[i] != nullptr)
+    {
+        return;
+    }
+    delete node;
+    node = nullptr;
+    return;
+}
+
+vector<int> KeywordTrie::predict(string& keyword) 
+{
+    KeywordNode *temp = root;
+    vector<int> result;
+    for (int i = 0; i < keyword.size(); i++)
+    {
+        int index = keyword[i];
+        if (temp->children[index] == nullptr)
+        {
+            return result;
+        }
+        temp = temp->children[index];
+    }
+    stack<KeywordNode*> st;
+    st.push(temp);
+    while (!st.empty())
+    {
+        KeywordNode *current = st.top();
+        st.pop();
+        if (current->IdofWord != -1)
+        {
+            result.push_back(current->IdofWord);
+        }
+        if (result.size() == limitPredict)
+        {
+            break;
+        }
+        for (int i = 0; i < limitLetter; i++)
+        {
+            if (current->children[i] != nullptr)
+            {
+                st.push(current->children[i]);
+            }
+        }
+    }
+    return result;
+}

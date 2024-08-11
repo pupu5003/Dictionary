@@ -27,3 +27,5 @@ public:
     void display() const override;
     void handleEvent() override;
 };
+
+void DrawTextBoxed(const char *text, Rectangle rec, int fontSize, float spacing, bool wordWrap);

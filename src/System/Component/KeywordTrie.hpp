@@ -1,25 +1,31 @@
-// #pragma once
-// #include <iostream>
-// #include <vector>
-// #include "../src/DataStructure/Trie.hpp"
-// using namespace std;
+#pragma once
+#include <iostream>
+#include <vector>
+#include "../src/DataStructure/Trie.hpp"
+#include <stack>
+using namespace std;
 
-// struct KeywordNode
-// {
-//     int IdofWord;
-//     KeywordNode *children[26];
-//     KeywordNode() : IdofWord(-1);
-//     ~KeywordNode();
-// };
+const int limitPredict = 10;
+const int limitLetter = 126;
 
-// class KeywordTrie 
-// {
-// private:
-//     KeywordNode *root;
-// public:
-//     KeywordTrie();
-//     ~KeywordTrie();
-//     void insert(string keyword, int Id);
-//     bool search(string keyword);
-//     void remove(string keyword);
-// };
+struct KeywordNode
+{
+    int IdofWord;
+    KeywordNode *children[limitLetter];
+    KeywordNode();
+    ~KeywordNode();
+};
+
+class KeywordTrie 
+{
+private:
+    KeywordNode *root;
+    void internalRemove(KeywordNode* &node, string& keyword, int index);
+public:
+    KeywordTrie();
+    ~KeywordTrie();
+    void insert(string& keyword, int Id);
+    int search(string& keyword);
+    void remove(string& keyword);
+    vector<int> predict(string& keyword);
+};
