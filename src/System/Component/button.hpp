@@ -10,11 +10,15 @@ struct Button
     Color color, mColor;
     float scale;
     Button();
+    Button(const char* path, float x, float y, float scale = 1.2);
     ~Button();
     void setButton(const char *path, float x, float y, float scale = 1.2);
     bool isPressed() const;
     void loadTexture(const char *path);
     void setRect(float x, float y, float width, float height);
+    void setScale(float scale);
+    void disable();
+    void enable();
     void display() const;
 };
 
