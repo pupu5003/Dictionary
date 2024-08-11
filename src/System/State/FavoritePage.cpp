@@ -30,7 +30,7 @@ void FavoritePage::display() const
 
     for (int i = 0; i < dictionary.favorite[engEng].size() && i < VISIBLE_HISTORY_ITEMS; i++) {
         Rectangle historyBox = {80, (float)257 + 114*i, 1043, 75};
-        Rectangle xButtonBox = {1163, historyBox.y + 20, XButton.height, XButton.width};
+        Rectangle xButtonBox = {1163, historyBox.y + 20, (float)XButton.height,(float) XButton.width};
         DrawTexture(Box, historyBox.x, historyBox.y, WHITE);
         DrawTexture(XButton, xButtonBox.x, xButtonBox.y, WHITE);
 
@@ -65,7 +65,7 @@ void FavoritePage::handleEvent()
 
     for (int i = 0; i < dictionary.favorite[engEng].size(); i++) {
         Rectangle historyBox = {80, (float)257 + 114*i, 1043, 75};
-        Rectangle xButtonBox = {1163, historyBox.y + 20, XButton.height, XButton.width};
+        Rectangle xButtonBox = {1163, historyBox.y + 20, (float)XButton.height, (float)XButton.width};
         DrawTexture(Box, historyBox.x, historyBox.y, WHITE);
         DrawTexture(XButton, xButtonBox.x, xButtonBox.y, WHITE);
 

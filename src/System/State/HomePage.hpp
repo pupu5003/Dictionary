@@ -21,7 +21,7 @@ private:
     Button edit;
     nButton wordCard;
 
-    Word& randomWord;
+    Word* randomWord;
     int& currentScreen;
     Dictionary& dictionary;
 
@@ -32,4 +32,5 @@ public:
     void handleEvent() override;
 };
 
-void DrawTextBoxed(const char *text, Rectangle rec, int fontSize, float spacing, bool wordWrap);
+ void DrawTextBoxed(const char *text, Rectangle rec, float fontSize, float spacing, bool wordWrap, Color tint = GRAY);
+void DrawTextBoxedSelectable(Font font, const char *text, Rectangle rec, float fontSize, float spacing, bool wordWrap, Color tint, int selectStart, int selectLength, Color selectTint, Color selectBackTint);

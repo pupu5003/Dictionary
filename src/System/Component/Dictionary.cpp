@@ -56,6 +56,12 @@ void Dictionary::lodadData()
             getline(ss, keyWord, ',');
             getline(ss, type, ',');
             getline(ss, definition);
+            if (words[i].size() > 0 && words[i].back().word == keyWord)
+            {
+                words[i].back().type.push_back(type);
+                words[i].back().definition.push_back(definition);
+                continue;
+            }
             Word word;
             word.id = words[i].size();
             word.word = keyWord;
@@ -113,7 +119,8 @@ void Dictionary::removeFavorite(int id, dataSet data){
     {
         if (favorite[data][i].id == id)
         {
-            favorite[data].erase(favorite[data].begin() + i);
+            swap(favorite[data][i], favorite[data].back());
+            favorite[data].pop_back();
             break;
         }
     }
