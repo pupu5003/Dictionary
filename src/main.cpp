@@ -10,10 +10,10 @@ int main () {
     cout << "Hello World" << endl;
     System *app = new System();
     app -> run();
-    return 0;
+    // return 0;
     // Dictionary dict;
     // // dict.lodadData();
-    // return 0;
+    return 0;
 
 }
 

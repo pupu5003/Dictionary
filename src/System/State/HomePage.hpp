@@ -1,5 +1,5 @@
 #pragma once
-#include "UIComponent.hpp"
+#include "UILibFunc.hpp"
 #include <../src/System/Component/Dictionary.hpp>
 using namespace std;
 
@@ -28,5 +28,3 @@ public:
     void handleEvent() override;
 };
 
- void DrawTextBoxed(const char *text, Rectangle rec, float fontSize, float spacing, bool wordWrap, Color tint = GRAY);
-void DrawTextBoxedSelectable(Font font, const char *text, Rectangle rec, float fontSize, float spacing, bool wordWrap, Color tint, int selectStart, int selectLength, Color selectTint, Color selectBackTint);

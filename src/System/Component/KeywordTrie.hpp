@@ -3,6 +3,7 @@
 #include <vector>
 #include "../src/DataStructure/Trie.hpp"
 #include <stack>
+#include <wchar.h>
 using namespace std;
 
 const int limitPredict = 10;

@@ -28,19 +28,19 @@ void FavoritePage::display() const
 
     clearButton.display();
 
-    for (int i = 0; i < dictionary.favorite[engEng].size() && i < VISIBLE_HISTORY_ITEMS; i++) {
+    for (int i = 0; i < dictionary.favorite.size() && i < VISIBLE_HISTORY_ITEMS; i++) {
         Rectangle historyBox = {80, (float)257 + 114*i, 1043, 75};
         Rectangle xButtonBox = {1163, historyBox.y + 20, (float)XButton.height,(float) XButton.width};
         DrawTexture(Box, historyBox.x, historyBox.y, WHITE);
         DrawTexture(XButton, xButtonBox.x, xButtonBox.y, WHITE);
 
-        // Draw word and description
-        const char* text2 = dictionary.favorite[engEng][i].word.c_str();
-        int fontSize2 = 40;
-        float spacing2 = 1.0f; // Spacing between letters
-        Vector2 textSize2 = MeasureTextEx(fontRussoOne, text2, fontSize2, spacing2);
-        float posY = historyBox.y + (historyBox.height - textSize2.y) / 2;
-        DrawTextEx(fontRussoOne, text2, {historyBox.x + 40, posY}, fontSize2, spacing2, BLACK);
+        // // Draw word and description
+        // const char* text2 = dictionary.favorite[engEng][i].word.c_str();
+        // int fontSize2 = 40;
+        // float spacing2 = 1.0f; // Spacing between letters
+        // Vector2 textSize2 = MeasureTextEx(fontRussoOne, text2, fontSize2, spacing2);
+        // float posY = historyBox.y + (historyBox.height - textSize2.y) / 2;
+        // DrawTextEx(fontRussoOne, text2, {historyBox.x + 40, posY}, fontSize2, spacing2, BLACK);
     }
 
 }
@@ -57,20 +57,19 @@ void FavoritePage::handleEvent()
     }
     else if (clearButton.isPressed())
     {
-        for (auto& word : dictionary.favorite[engEng]) {
-            word.isFavorite = false;
+        for (auto& temp : dictionary.favorite) {
+            dictionary.removeFavorite(temp.first, temp.second);
         }
-        dictionary.favorite[engEng].clear(); 
     }
 
-    for (int i = 0; i < dictionary.favorite[engEng].size(); i++) {
+    for (int i = 0; i < dictionary.favorite.size(); i++) {
         Rectangle historyBox = {80, (float)257 + 114*i, 1043, 75};
         Rectangle xButtonBox = {1163, historyBox.y + 20, (float)XButton.height, (float)XButton.width};
         DrawTexture(Box, historyBox.x, historyBox.y, WHITE);
         DrawTexture(XButton, xButtonBox.x, xButtonBox.y, WHITE);
 
         if (CheckCollisionPointRec(GetMousePosition(), xButtonBox) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
-            dictionary.removeFavorite(dictionary.favorite[engEng][i].id, engEng);
+            dictionary.removeFavorite(dictionary.favorite[i].first, dictionary.favorite[i].second);
             break;
         }
     }    

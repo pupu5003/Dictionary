@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#include "UIComponent.hpp"
+#include "UILibFunc.hpp"
 #include "../Component/HistoryManager.hpp"
 
 using namespace std;

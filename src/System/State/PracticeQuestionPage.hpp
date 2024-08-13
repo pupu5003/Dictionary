@@ -1,5 +1,5 @@
 #pragma once
-#include "UIComponent.hpp"
+#include "UILibFunc.hpp"
 #include "../Component/Question.hpp"
 
 using namespace std;
