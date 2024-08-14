@@ -1,6 +1,7 @@
 #pragma once
-#include "UIComponent.hpp"
+#include "UILibFunc.hpp"
 #include <../src/System/Component/Dictionary.hpp>
+#include "SearchResPage.hpp"
 using namespace std;
 
 class HomePage : public Page
@@ -17,7 +18,7 @@ private:
     Button edit;
     nButton wordCard;
 
-    Word& randomWord;
+    Word* randomWord;
     int& currentScreen;
     Dictionary& dictionary;
 
@@ -28,4 +29,3 @@ public:
     void handleEvent() override;
 };
 
-void DrawTextBoxed(const char *text, Rectangle rec, int fontSize, float spacing, bool wordWrap);

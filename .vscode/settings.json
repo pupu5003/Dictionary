@@ -68,7 +68,9 @@
 		"algorithm": "cpp",
 		"format": "cpp",
 		"span": "cpp",
-		"regex": "cpp"
+		"regex": "cpp",
+		"__tree": "cpp",
+		"map": "cpp"
 	},
 	"C_Cpp.errorSquiggles": "disabled"
 }

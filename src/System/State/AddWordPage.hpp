@@ -1,5 +1,5 @@
 #pragma once
-#include "UIComponent.hpp"
+#include "UILibFunc.hpp"
 
 class AddWordPage : public Page
 {

@@ -1,0 +1,1520 @@
+%-)\user has been staring at a green screen for 15 hours straight
+(-:\user is left handed
+(8-o\it's mr. bill!
+(:i\user is an egghead
+*:o)\and bozo the clown!
+*<:-)\user is wearing a santa claus hat
++-:-)\user is the pope or holds some other religious office
+,-)\ditto...but he's winking
+,:-)\same thing...other side
+-6%\user is braindead
+-:-(\real punk rockers don't smile
+-:-)\user is a punk rocker
+-=*:-)\user is a tex wizard
+.-)\user only has one eye
+3:[\mean pet smiley
+3:]\pet smiley
+8-)\user is wearing sunglasses
+8:-)\user is a little girl
+:'-(\user is crying
+:'-)\user is so happy, s/he is crying
+:(\sad
+:)\happy
+:*\kisses
+:*)\user is drunk
+:+1:\thumbs up sign
+:,(\crying
+:-\`user spitting out its chewing tobacco.dwew  wew ewewewewe wewewe we weweweweweweweweweewweweewewwe
+:-#\user wears braces
+:-&\user is tongue tied
+:-(\boo hoo
+:-)\user shaved one of his eyebrows off this morning|ha ha
+:-)-8\user is a big girl
+:-)~\user drools
+:-*\user just ate something sour
+:-/\user is skeptical
+:-0\no yelling!(quiet lab)
+:-1:\thumbs down sign
+:-7\user juust made a wry statement
+:-9\user is licking his/her lips
+:-:\mutant smiley; the invisible smiley
+:->\hey hey
+:-?\user smokes a pipe
+:-@\user is screaming
+:-[\user is a vampire
+:-c\user is really bummed
+:-d\user is laughing (at you!)
+:-e\bucktoothed vampire
+:-f\bucktoothed vampire with one tooth missing
+:-i\hmmm
+:-o\oops|uh oh!
+:-p\nyahhhh!
+:-q\user is a smoker
+:-s\user just made an incoherent statement
+:-x\user's lips are sealed
+:-{)\user has a mustache
+:-{}\user wears lipstick
+:-~)\user has a cold
+:100:\hundred points symbol
+:1234:\input symbol for numbers
+:1st_place_medal:\first place medal
+:2nd_place_medal:\second place medal
+:3rd_place_medal:\third place medal
+:8ball:\billiards
+::-)\user wears normal glasses
+:<\what?
+:<)\user is from an ivy league school
+:=)\user has two noses
+:>\what?
+:@\what?
+:[\real downer
+:]\gleep...a friendly midget smiley who will gladly be your friend
+:^)\user has a broken nose
+:_)\user's nose is sliding off of his face
+:a:\negative squared latin capital letter a, variation selector-16
+:ab:\negative squared ab
+:abc:\input symbol for latin letters
+:abcd:\input symbol for latin small letters
+:accept:\circled ideograph accept
+:aerial_tramway:\aerial tramway
+:afghanistan:\regional indicator symbol letter a, regional indicator symbol letter f
+:airplane:\airplane, variation selector-16
+:aland_islands:\regional indicator symbol letter a, regional indicator symbol letter x
+:alarm_clock:\alarm clock
+:albania:\regional indicator symbol letter a, regional indicator symbol letter l
+:alembic:\alembic, variation selector-16
+:algeria:\regional indicator symbol letter d, regional indicator symbol letter z
+:alien:\extraterrestrial alien
+:ambulance:\ambulance
+:american_samoa:\regional indicator symbol letter a, regional indicator symbol letter s
+:amphora:\amphora
+:anchor:\anchor, variation selector-16
+:andorra:\regional indicator symbol letter a, regional indicator symbol letter d
+:angel:\baby angel
+:anger:\anger symbol
+:angola:\regional indicator symbol letter a, regional indicator symbol letter o
+:angry:\angry face
+:anguilla:\regional indicator symbol letter a, regional indicator symbol letter i
+:anguished:\anguished face
+:ant:\ant
+:antarctica:\regional indicator symbol letter a, regional indicator symbol letter q
+:antigua_barbuda:\regional indicator symbol letter a, regional indicator symbol letter g
+:apple:\red apple
+:aquarius:\aquarius, variation selector-16
+:argentina:\regional indicator symbol letter a, regional indicator symbol letter r
+:aries:\aries, variation selector-16
+:armenia:\regional indicator symbol letter a, regional indicator symbol letter m
+:arrow_backward:\black left-pointing triangle, variation selector-16
+:arrow_double_down:\black down-pointing double triangle
+:arrow_double_up:\black up-pointing double triangle
+:arrow_down:\downwards black arrow, variation selector-16
+:arrow_down_small:\down-pointing small red triangle
+:arrow_forward:\black right-pointing triangle, variation selector-16
+:arrow_heading_down:\arrow pointing rightwards then curving downwards, variation selector-16
+:arrow_heading_up:\arrow pointing rightwards then curving upwards, variation selector-16
+:arrow_left:\leftwards black arrow, variation selector-16
+:arrow_lower_left:\south west arrow, variation selector-16
+:arrow_lower_right:\south east arrow, variation selector-16
+:arrow_right:\black rightwards arrow, variation selector-16
+:arrow_right_hook:\rightwards arrow with hook, variation selector-16
+:arrow_up:\upwards black arrow, variation selector-16
+:arrow_up_down:\up down arrow, variation selector-16
+:arrow_up_small:\up-pointing small red triangle
+:arrow_upper_left:\north west arrow, variation selector-16
+:arrow_upper_right:\north east arrow, variation selector-16
+:arrows_clockwise:\clockwise downwards and upwards open circle arrows
+:arrows_counterclockwise:\anticlockwise downwards and upwards open circle arrows
+:art:\artist palette
+:articulated_lorry:\articulated lorry
+:artificial_satellite:\satellite
+:aruba:\regional indicator symbol letter a, regional indicator symbol letter w
+:asterisk:\*, variation selector-16, combining enclosing keycap
+:astonished:\astonished face
+:athletic_shoe:\athletic shoe
+:atm:\automated teller machine
+:atom_symbol:\atom symbol, variation selector-16
+:australia:\regional indicator symbol letter a, regional indicator symbol letter u
+:austria:\regional indicator symbol letter a, regional indicator symbol letter t
+:avocado:\avocado
+:azerbaijan:\regional indicator symbol letter a, regional indicator symbol letter z
+:b:\negative squared latin capital letter b, variation selector-16
+:baby:\baby
+:baby_bottle:\baby bottle
+:baby_chick:\baby chick
+:baby_symbol:\baby symbol
+:back:\back with leftwards arrow above
+:bacon:\bacon
+:badminton:\badminton racquet and shuttlecock
+:baggage_claim:\baggage claim
+:baguette_bread:\baguette bread
+:bahamas:\regional indicator symbol letter b, regional indicator symbol letter s
+:bahrain:\regional indicator symbol letter b, regional indicator symbol letter h
+:balance_scale:\scales, variation selector-16
+:balloon:\balloon
+:ballot_box:\ballot box with ballot
+:ballot_box_with_check:\ballot box with check, variation selector-16
+:bamboo:\pine decoration
+:banana:\banana
+:bangbang:\double exclamation mark, variation selector-16
+:bangladesh:\regional indicator symbol letter b, regional indicator symbol letter d
+:bank:\bank
+:bar_chart:\bar chart
+:barbados:\regional indicator symbol letter b, regional indicator symbol letter b
+:barber:\barber pole
+:baseball:\baseball, variation selector-16
+:basketball:\basketball and hoop
+:basketball_man:\person with ball, variation selector-16
+:basketball_woman:\person with ball, variation selector-16, zero width joiner, female sign, variation selector-16
+:bat:\bat
+:bath:\bath
+:bathtub:\bathtub
+:battery:\battery
+:beach_umbrella:\beach with umbrella
+:bear:\bear face
+:bed:\bed
+:bee:\honeybee
+:beer:\beer mug
+:beers:\clinking beer mugs
+:beetle:\lady beetle
+:beginner:\japanese symbol for beginner
+:belarus:\regional indicator symbol letter b, regional indicator symbol letter y
+:belgium:\regional indicator symbol letter b, regional indicator symbol letter e
+:belize:\regional indicator symbol letter b, regional indicator symbol letter z
+:bell:\bell
+:bellhop_bell:\bellhop bell
+:benin:\regional indicator symbol letter b, regional indicator symbol letter j
+:bento:\bento box
+:bermuda:\regional indicator symbol letter b, regional indicator symbol letter m
+:bhutan:\regional indicator symbol letter b, regional indicator symbol letter t
+:bike:\bicycle
+:biking_man:\bicyclist
+:biking_woman:\bicyclist, zero width joiner, female sign, variation selector-16
+:bikini:\bikini
+:biohazard:\biohazard sign, variation selector-16
+:bird:\bird
+:birthday:\birthday cake
+:black_circle:\medium black circle, variation selector-16
+:black_flag:\waving black flag
+:black_heart:\black heart
+:black_joker:\playing card black joker
+:black_large_square:\black large square, variation selector-16
+:black_medium_small_square:\black medium small square, variation selector-16
+:black_medium_square:\black medium square, variation selector-16
+:black_nib:\black nib, variation selector-16
+:black_small_square:\black small square, variation selector-16
+:black_square_button:\black square button
+:blonde_man:\person with blond hair
+:blonde_woman:\person with blond hair, zero width joiner, female sign, variation selector-16
+:blossom:\blossom
+:blowfish:\blowfish
+:blue_book:\blue book
+:blue_car:\recreational vehicle
+:blue_heart:\blue heart
+:blush:\smiling face with smiling eyes
+:boar:\boar
+:boat:\sailboat, variation selector-16
+:bolivia:\regional indicator symbol letter b, regional indicator symbol letter o
+:bomb:\bomb
+:book:\open book
+:bookmark:\bookmark
+:bookmark_tabs:\bookmark tabs
+:books:\books
+:boom:\collision symbol
+:boot:\womans boots
+:bosnia_herzegovina:\regional indicator symbol letter b, regional indicator symbol letter a
+:botswana:\regional indicator symbol letter b, regional indicator symbol letter w
+:bouquet:\bouquet
+:bow_and_arrow:\bow and arrow
+:bowing_man:\person bowing deeply
+:bowing_woman:\person bowing deeply, zero width joiner, female sign, variation selector-16
+:bowling:\bowling
+:boxing_glove:\boxing glove
+:boy:\boy
+:brazil:\regional indicator symbol letter b, regional indicator symbol letter r
+:bread:\bread
+:bride_with_veil:\bride with veil
+:bridge_at_night:\bridge at night
+:briefcase:\briefcase
+:british_indian_ocean_territory:\regional indicator symbol letter i, regional indicator symbol letter o
+:british_virgin_islands:\regional indicator symbol letter v, regional indicator symbol letter g
+:broken_heart:\broken heart
+:brunei:\regional indicator symbol letter b, regional indicator symbol letter n
+:bug:\bug
+:building_construction:\building construction
+:bulb:\electric light bulb
+:bulgaria:\regional indicator symbol letter b, regional indicator symbol letter g
+:bullettrain_front:\high-speed train with bullet nose
+:bullettrain_side:\high-speed train
+:burkina_faso:\regional indicator symbol letter b, regional indicator symbol letter f
+:burrito:\burrito
+:burundi:\regional indicator symbol letter b, regional indicator symbol letter i
+:bus:\bus
+:business_suit_levitating:\man in business suit levitating
+:busstop:\bus stop
+:bust_in_silhouette:\bust in silhouette
+:busts_in_silhouette:\busts in silhouette
+:butterfly:\butterfly
+:c\what?
+:cactus:\cactus
+:cake:\shortcake
+:calendar:\tear-off calendar
+:call_me_hand:\call me hand
+:calling:\mobile phone with rightwards arrow at left
+:cambodia:\regional indicator symbol letter k, regional indicator symbol letter h
+:camel:\bactrian camel
+:camera:\camera
+:camera_flash:\camera with flash
+:cameroon:\regional indicator symbol letter c, regional indicator symbol letter m
+:camping:\camping
+:canada:\regional indicator symbol letter c, regional indicator symbol letter a
+:canary_islands:\regional indicator symbol letter i, regional indicator symbol letter c
+:cancer:\cancer, variation selector-16
+:candle:\candle
+:candy:\candy
+:canoe:\canoe
+:cape_verde:\regional indicator symbol letter c, regional indicator symbol letter v
+:capital_abcd:\input symbol for latin capital letters
+:capricorn:\capricorn, variation selector-16
+:car:\automobile
+:card_file_box:\card file box
+:card_index:\card index
+:card_index_dividers:\card index dividers
+:caribbean_netherlands:\regional indicator symbol letter b, regional indicator symbol letter q
+:carousel_horse:\carousel horse
+:carrot:\carrot
+:cat2:\cat
+:cat:\cat face
+:cayman_islands:\regional indicator symbol letter k, regional indicator symbol letter y
+:cd:\optical disc
+:central_african_republic:\regional indicator symbol letter c, regional indicator symbol letter f
+:chad:\regional indicator symbol letter t, regional indicator symbol letter d
+:chains:\chains
+:champagne:\bottle with popping cork
+:chart:\chart with upwards trend and yen sign
+:chart_with_downwards_trend:\chart with downwards trend
+:chart_with_upwards_trend:\chart with upwards trend
+:checkered_flag:\chequered flag
+:cheese:\cheese wedge
+:cherries:\cherries
+:cherry_blossom:\cherry blossom
+:chestnut:\chestnut
+:chicken:\chicken
+:children_crossing:\children crossing
+:chile:\regional indicator symbol letter c, regional indicator symbol letter l
+:chipmunk:\chipmunk
+:chocolate_bar:\chocolate bar
+:christmas_island:\regional indicator symbol letter c, regional indicator symbol letter x
+:christmas_tree:\christmas tree
+:church:\church, variation selector-16
+:cinema:\cinema
+:circus_tent:\circus tent
+:city_sunrise:\sunset over buildings
+:city_sunset:\cityscape at dusk
+:cityscape:\cityscape
+:cl:\squared cl
+:clamp:\compression
+:clap:\clapping hands sign
+:clapper:\clapper board
+:classical_building:\classical building
+:clinking_glasses:\clinking glasses
+:clipboard:\clipboard
+:clock1030:\clock face ten-thirty
+:clock10:\clock face ten oclock
+:clock1130:\clock face eleven-thirty
+:clock11:\clock face eleven oclock
+:clock1230:\clock face twelve-thirty
+:clock12:\clock face twelve oclock
+:clock130:\clock face one-thirty
+:clock1:\clock face one oclock
+:clock230:\clock face two-thirty
+:clock2:\clock face two oclock
+:clock330:\clock face three-thirty
+:clock3:\clock face three oclock
+:clock430:\clock face four-thirty
+:clock4:\clock face four oclock
+:clock530:\clock face five-thirty
+:clock5:\clock face five oclock
+:clock630:\clock face six-thirty
+:clock6:\clock face six oclock
+:clock730:\clock face seven-thirty
+:clock7:\clock face seven oclock
+:clock830:\clock face eight-thirty
+:clock8:\clock face eight oclock
+:clock930:\clock face nine-thirty
+:clock9:\clock face nine oclock
+:closed_book:\closed book
+:closed_lock_with_key:\closed lock with key
+:closed_umbrella:\closed umbrella
+:cloud:\cloud, variation selector-16
+:cloud_with_lightning:\cloud with lightning
+:cloud_with_lightning_and_rain:\thunder cloud and rain
+:cloud_with_rain:\cloud with rain
+:cloud_with_snow:\cloud with snow
+:clown_face:\clown face
+:clubs:\black club suit, variation selector-16
+:cn:\regional indicator symbol letter c, regional indicator symbol letter n
+:cocktail:\cocktail glass
+:cocos_islands:\regional indicator symbol letter c, regional indicator symbol letter c
+:coffee:\hot beverage, variation selector-16
+:coffin:\coffin, variation selector-16
+:cold_sweat:\face with open mouth and cold sweat
+:colombia:\regional indicator symbol letter c, regional indicator symbol letter o
+:comet:\comet, variation selector-16
+:comoros:\regional indicator symbol letter k, regional indicator symbol letter m
+:computer:\personal computer
+:computer_mouse:\three button mouse
+:confetti_ball:\confetti ball
+:confounded:\confounded face
+:confused:\confused face
+:congo_brazzaville:\regional indicator symbol letter c, regional indicator symbol letter g
+:congo_kinshasa:\regional indicator symbol letter c, regional indicator symbol letter d
+:congratulations:\circled ideograph congratulation, variation selector-16
+:construction:\construction sign
+:construction_worker_man:\construction worker
+:construction_worker_woman:\construction worker, zero width joiner, female sign, variation selector-16
+:control_knobs:\control knobs
+:convenience_store:\convenience store
+:cook_islands:\regional indicator symbol letter c, regional indicator symbol letter k
+:cookie:\cookie
+:cool:\squared cool
+:copyright:\copyright sign, variation selector-16
+:corn:\ear of maize
+:costa_rica:\regional indicator symbol letter c, regional indicator symbol letter r
+:cote_divoire:\regional indicator symbol letter c, regional indicator symbol letter i
+:couch_and_lamp:\couch and lamp
+:couple:\man and woman holding hands
+:couple_with_heart_man_man:\man, zero width joiner, heavy black heart, variation selector-16, zero width joiner, man
+:couple_with_heart_woman_man:\couple with heart
+:couple_with_heart_woman_woman:\woman, zero width joiner, heavy black heart, variation selector-16, zero width joiner, woman
+:couplekiss_man_man:\man, zero width joiner, heavy black heart, variation selector-16, zero width joiner, kiss mark, zero width joiner, man
+:couplekiss_man_woman:\kiss
+:couplekiss_woman_woman:\woman, zero width joiner, heavy black heart, variation selector-16, zero width joiner, kiss mark, zero width joiner, woman
+:cow2:\cow
+:cow:\cow face
+:cowboy_hat_face:\face with cowboy hat
+:crab:\crab
+:crayon:\lower left crayon
+:credit_card:\credit card
+:crescent_moon:\crescent moon
+:cricket:\cricket bat and ball
+:croatia:\regional indicator symbol letter h, regional indicator symbol letter r
+:crocodile:\crocodile
+:croissant:\croissant
+:crossed_fingers:\hand with index and middle fingers crossed
+:crossed_flags:\crossed flags
+:crossed_swords:\crossed swords, variation selector-16
+:crown:\crown
+:cry:\crying face
+:crying_cat_face:\crying cat face
+:crystal_ball:\crystal ball
+:cuba:\regional indicator symbol letter c, regional indicator symbol letter u
+:cucumber:\cucumber
+:cupid:\heart with arrow
+:curacao:\regional indicator symbol letter c, regional indicator symbol letter w
+:curly_loop:\curly loop
+:currency_exchange:\currency exchange
+:curry:\curry and rice
+:custard:\custard
+:customs:\customs
+:cyclone:\cyclone
+:cyprus:\regional indicator symbol letter c, regional indicator symbol letter y
+:czech_republic:\regional indicator symbol letter c, regional indicator symbol letter z
+:d\laughter
+:dagger:\dagger knife
+:dancer:\dancer
+:dancing_men:\woman with bunny ears, zero width joiner, male sign, variation selector-16
+:dancing_women:\woman with bunny ears
+:dango:\dango
+:dark_sunglasses:\dark sunglasses
+:dart:\direct hit
+:dash:\dash symbol
+:date:\calendar
+:de:\regional indicator symbol letter d, regional indicator symbol letter e
+:deciduous_tree:\deciduous tree
+:deer:\deer
+:denmark:\regional indicator symbol letter d, regional indicator symbol letter k
+:department_store:\department store
+:derelict_house:\derelict house building
+:desert:\desert
+:desert_island:\desert island
+:desktop_computer:\desktop computer
+:diamond_shape_with_a_dot_inside:\diamond shape with a dot inside
+:diamonds:\black diamond suit, variation selector-16
+:disappointed:\disappointed face
+:disappointed_relieved:\disappointed but relieved face
+:dizzy:\dizzy symbol
+:dizzy_face:\dizzy face
+:djibouti:\regional indicator symbol letter d, regional indicator symbol letter j
+:do_not_litter:\do not litter symbol
+:dog2:\dog
+:dog:\dog face
+:dollar:\banknote with dollar sign
+:dolls:\japanese dolls
+:dolphin:\dolphin
+:dominica:\regional indicator symbol letter d, regional indicator symbol letter m
+:dominican_republic:\regional indicator symbol letter d, regional indicator symbol letter o
+:door:\door
+:doughnut:\doughnut
+:dove:\dove of peace
+:dragon:\dragon
+:dragon_face:\dragon face
+:dress:\dress
+:dromedary_camel:\dromedary camel
+:drooling_face:\drooling face
+:droplet:\droplet
+:drum:\drum with drumsticks
+:duck:\duck
+:dvd:\dvd
+:e-mail:\e-mail symbol
+:eagle:\eagle
+:ear:\ear
+:ear_of_rice:\ear of rice
+:earth_africa:\earth globe europe-africa
+:earth_americas:\earth globe americas
+:earth_asia:\earth globe asia-australia
+:ecuador:\regional indicator symbol letter e, regional indicator symbol letter c
+:egg:\egg
+:eggplant:\aubergine
+:egypt:\regional indicator symbol letter e, regional indicator symbol letter g
+:eight:\8, variation selector-16, combining enclosing keycap
+:eight_pointed_black_star:\eight pointed black star, variation selector-16
+:eight_spoked_asterisk:\eight spoked asterisk, variation selector-16
+:el_salvador:\regional indicator symbol letter s, regional indicator symbol letter v
+:electric_plug:\electric plug
+:elephant:\elephant
+:email:\envelope, variation selector-16
+:end:\end with leftwards arrow above
+:envelope_with_arrow:\envelope with downwards arrow above
+:equatorial_guinea:\regional indicator symbol letter g, regional indicator symbol letter q
+:eritrea:\regional indicator symbol letter e, regional indicator symbol letter r
+:es:\regional indicator symbol letter e, regional indicator symbol letter s
+:estonia:\regional indicator symbol letter e, regional indicator symbol letter e
+:ethiopia:\regional indicator symbol letter e, regional indicator symbol letter t
+:eu:\regional indicator symbol letter e, regional indicator symbol letter u
+:euro:\banknote with euro sign
+:european_castle:\european castle
+:european_post_office:\european post office
+:evergreen_tree:\evergreen tree
+:exclamation:\heavy exclamation mark symbol, variation selector-16
+:expressionless:\expressionless face
+:eye:\eye
+:eye_speech_bubble:\eye, zero width joiner, left speech bubble
+:eyeglasses:\eyeglasses
+:eyes:\eyes
+:face_with_head_bandage:\face with head-bandage
+:face_with_thermometer:\face with thermometer
+:factory:\factory
+:falkland_islands:\regional indicator symbol letter f, regional indicator symbol letter k
+:fallen_leaf:\fallen leaf
+:family_man_boy:\man, zero width joiner, boy
+:family_man_boy_boy:\man, zero width joiner, boy, zero width joiner, boy
+:family_man_girl:\man, zero width joiner, girl
+:family_man_girl_boy:\man, zero width joiner, girl, zero width joiner, boy
+:family_man_girl_girl:\man, zero width joiner, girl, zero width joiner, girl
+:family_man_man_boy:\man, zero width joiner, man, zero width joiner, boy
+:family_man_man_boy_boy:\man, zero width joiner, man, zero width joiner, boy, zero width joiner, boy
+:family_man_man_girl:\man, zero width joiner, man, zero width joiner, girl
+:family_man_man_girl_boy:\man, zero width joiner, man, zero width joiner, girl, zero width joiner, boy
+:family_man_man_girl_girl:\man, zero width joiner, man, zero width joiner, girl, zero width joiner, girl
+:family_man_woman_boy:\family
+:family_man_woman_boy_boy:\man, zero width joiner, woman, zero width joiner, boy, zero width joiner, boy
+:family_man_woman_girl:\man, zero width joiner, woman, zero width joiner, girl
+:family_man_woman_girl_boy:\man, zero width joiner, woman, zero width joiner, girl, zero width joiner, boy
+:family_man_woman_girl_girl:\man, zero width joiner, woman, zero width joiner, girl, zero width joiner, girl
+:family_woman_boy:\woman, zero width joiner, boy
+:family_woman_boy_boy:\woman, zero width joiner, boy, zero width joiner, boy
+:family_woman_girl:\woman, zero width joiner, girl
+:family_woman_girl_boy:\woman, zero width joiner, girl, zero width joiner, boy
+:family_woman_girl_girl:\woman, zero width joiner, girl, zero width joiner, girl
+:family_woman_woman_boy:\woman, zero width joiner, woman, zero width joiner, boy
+:family_woman_woman_boy_boy:\woman, zero width joiner, woman, zero width joiner, boy, zero width joiner, boy
+:family_woman_woman_girl:\woman, zero width joiner, woman, zero width joiner, girl
+:family_woman_woman_girl_boy:\woman, zero width joiner, woman, zero width joiner, girl, zero width joiner, boy
+:family_woman_woman_girl_girl:\woman, zero width joiner, woman, zero width joiner, girl, zero width joiner, girl
+:faroe_islands:\regional indicator symbol letter f, regional indicator symbol letter o
+:fast_forward:\black right-pointing double triangle
+:fax:\fax machine
+:fearful:\fearful face
+:feet:\paw prints
+:female_detective:\sleuth or spy, variation selector-16, zero width joiner, female sign, variation selector-16
+:ferris_wheel:\ferris wheel
+:ferry:\ferry
+:field_hockey:\field hockey stick and ball
+:fiji:\regional indicator symbol letter f, regional indicator symbol letter j
+:file_cabinet:\file cabinet
+:file_folder:\file folder
+:film_projector:\film projector
+:film_strip:\film frames
+:finland:\regional indicator symbol letter f, regional indicator symbol letter i
+:fire:\fire
+:fire_engine:\fire engine
+:fireworks:\fireworks
+:first_quarter_moon:\first quarter moon symbol
+:first_quarter_moon_with_face:\first quarter moon with face
+:fish:\fish
+:fish_cake:\fish cake with swirl design
+:fishing_pole_and_fish:\fishing pole and fish
+:fist_left:\left-facing fist
+:fist_oncoming:\fisted hand sign
+:fist_raised:\raised fist
+:fist_right:\right-facing fist
+:five:\5, variation selector-16, combining enclosing keycap
+:flags:\carp streamer
+:flashlight:\electric torch
+:fleur_de_lis:\fleur-de-lis, variation selector-16
+:flight_arrival:\airplane arriving
+:flight_departure:\airplane departure
+:floppy_disk:\floppy disk
+:flower_playing_cards:\flower playing cards
+:flushed:\flushed face
+:fog:\fog
+:foggy:\foggy
+:football:\american football
+:footprints:\footprints
+:fork_and_knife:\fork and knife
+:fountain:\fountain, variation selector-16
+:fountain_pen:\lower left fountain pen
+:four:\4, variation selector-16, combining enclosing keycap
+:four_leaf_clover:\four leaf clover
+:fox_face:\fox face
+:fr:\regional indicator symbol letter f, regional indicator symbol letter r
+:framed_picture:\frame with picture
+:free:\squared free
+:french_guiana:\regional indicator symbol letter g, regional indicator symbol letter f
+:french_polynesia:\regional indicator symbol letter p, regional indicator symbol letter f
+:french_southern_territories:\regional indicator symbol letter t, regional indicator symbol letter f
+:fried_egg:\cooking
+:fried_shrimp:\fried shrimp
+:fries:\french fries
+:frog:\frog face
+:frowning:\frowning face with open mouth
+:frowning_face:\white frowning face, variation selector-16
+:frowning_man:\person frowning, zero width joiner, male sign, variation selector-16
+:frowning_woman:\person frowning
+:fuelpump:\fuel pump, variation selector-16
+:full_moon:\full moon symbol
+:full_moon_with_face:\full moon with face
+:funeral_urn:\funeral urn, variation selector-16
+:gabon:\regional indicator symbol letter g, regional indicator symbol letter a
+:gambia:\regional indicator symbol letter g, regional indicator symbol letter m
+:game_die:\game die
+:gb:\regional indicator symbol letter g, regional indicator symbol letter b
+:gear:\gear, variation selector-16
+:gem:\gem stone
+:gemini:\gemini, variation selector-16
+:georgia:\regional indicator symbol letter g, regional indicator symbol letter e
+:ghana:\regional indicator symbol letter g, regional indicator symbol letter h
+:ghost:\ghost
+:gibraltar:\regional indicator symbol letter g, regional indicator symbol letter i
+:gift:\wrapped present
+:gift_heart:\heart with ribbon
+:girl:\girl
+:globe_with_meridians:\globe with meridians
+:goal_net:\goal net
+:goat:\goat
+:golf:\flag in hole, variation selector-16
+:golfing_man:\golfer, variation selector-16
+:golfing_woman:\golfer, variation selector-16, zero width joiner, female sign, variation selector-16
+:gorilla:\gorilla
+:grapes:\grapes
+:greece:\regional indicator symbol letter g, regional indicator symbol letter r
+:green_apple:\green apple
+:green_book:\green book
+:green_heart:\green heart
+:green_salad:\green salad
+:greenland:\regional indicator symbol letter g, regional indicator symbol letter l
+:grenada:\regional indicator symbol letter g, regional indicator symbol letter d
+:grey_exclamation:\white exclamation mark ornament
+:grey_question:\white question mark ornament
+:grimacing:\grimacing face
+:grin:\grinning face with smiling eyes
+:grinning:\grinning face
+:guadeloupe:\regional indicator symbol letter g, regional indicator symbol letter p
+:guam:\regional indicator symbol letter g, regional indicator symbol letter u
+:guardsman:\guardsman
+:guardswoman:\guardsman, zero width joiner, female sign, variation selector-16
+:guatemala:\regional indicator symbol letter g, regional indicator symbol letter t
+:guernsey:\regional indicator symbol letter g, regional indicator symbol letter g
+:guinea:\regional indicator symbol letter g, regional indicator symbol letter n
+:guinea_bissau:\regional indicator symbol letter g, regional indicator symbol letter w
+:guitar:\guitar
+:gun:\pistol
+:guyana:\regional indicator symbol letter g, regional indicator symbol letter y
+:haircut_man:\haircut, zero width joiner, male sign, variation selector-16
+:haircut_woman:\haircut
+:haiti:\regional indicator symbol letter h, regional indicator symbol letter t
+:hamburger:\hamburger
+:hammer:\hammer
+:hammer_and_pick:\hammer and pick
+:hammer_and_wrench:\hammer and wrench
+:hamster:\hamster face
+:hand:\raised hand
+:handbag:\handbag
+:handshake:\handshake
+:hankey:\pile of poo
+:hash:\#, variation selector-16, combining enclosing keycap
+:hatched_chick:\front-facing baby chick
+:hatching_chick:\hatching chick
+:headphones:\headphone
+:hear_no_evil:\hear-no-evil monkey
+:heart:\heavy black heart, variation selector-16
+:heart_decoration:\heart decoration
+:heart_eyes:\smiling face with heart-shaped eyes
+:heart_eyes_cat:\smiling cat face with heart-shaped eyes
+:heartbeat:\beating heart
+:heartpulse:\growing heart
+:hearts:\black heart suit, variation selector-16
+:heavy_check_mark:\heavy check mark, variation selector-16
+:heavy_division_sign:\heavy division sign
+:heavy_dollar_sign:\heavy dollar sign
+:heavy_heart_exclamation:\heavy heart exclamation mark ornament, variation selector-16
+:heavy_minus_sign:\heavy minus sign
+:heavy_multiplication_x:\heavy multiplication x, variation selector-16
+:heavy_plus_sign:\heavy plus sign
+:helicopter:\helicopter
+:herb:\herb
+:hibiscus:\hibiscus
+:high_brightness:\high brightness symbol
+:high_heel:\high-heeled shoe
+:hocho:\hocho
+:hole:\hole
+:honduras:\regional indicator symbol letter h, regional indicator symbol letter n
+:honey_pot:\honey pot
+:hong_kong:\regional indicator symbol letter h, regional indicator symbol letter k
+:horse:\horse face
+:horse_racing:\horse racing
+:hospital:\hospital
+:hot_pepper:\hot pepper
+:hotdog:\hot dog
+:hotel:\hotel
+:hotsprings:\hot springs, variation selector-16
+:hourglass:\hourglass, variation selector-16
+:hourglass_flowing_sand:\hourglass with flowing sand
+:house:\house building
+:house_with_garden:\house with garden
+:houses:\house buildings
+:hugs:\hugging face
+:hungary:\regional indicator symbol letter h, regional indicator symbol letter u
+:hushed:\hushed face
+:i\hmmm
+:ice_cream:\ice cream
+:ice_hockey:\ice hockey stick and puck
+:ice_skate:\ice skate
+:icecream:\soft ice cream
+:iceland:\regional indicator symbol letter i, regional indicator symbol letter s
+:id:\squared id
+:ideograph_advantage:\circled ideograph advantage
+:imp:\imp
+:inbox_tray:\inbox tray
+:incoming_envelope:\incoming envelope
+:india:\regional indicator symbol letter i, regional indicator symbol letter n
+:indonesia:\regional indicator symbol letter i, regional indicator symbol letter d
+:information_source:\information source, variation selector-16
+:innocent:\smiling face with halo
+:interrobang:\exclamation question mark, variation selector-16
+:iphone:\mobile phone
+:iran:\regional indicator symbol letter i, regional indicator symbol letter r
+:iraq:\regional indicator symbol letter i, regional indicator symbol letter q
+:ireland:\regional indicator symbol letter i, regional indicator symbol letter e
+:isle_of_man:\regional indicator symbol letter i, regional indicator symbol letter m
+:israel:\regional indicator symbol letter i, regional indicator symbol letter l
+:it:\regional indicator symbol letter i, regional indicator symbol letter t
+:izakaya_lantern:\izakaya lantern
+:jack_o_lantern:\jack-o-lantern
+:jamaica:\regional indicator symbol letter j, regional indicator symbol letter m
+:japan:\silhouette of japan
+:japanese_castle:\japanese castle
+:japanese_goblin:\japanese goblin
+:japanese_ogre:\japanese ogre
+:jeans:\jeans
+:jersey:\regional indicator symbol letter j, regional indicator symbol letter e
+:jordan:\regional indicator symbol letter j, regional indicator symbol letter o
+:joy:\face with tears of joy
+:joy_cat:\cat face with tears of joy
+:joystick:\joystick
+:jp:\regional indicator symbol letter j, regional indicator symbol letter p
+:kaaba:\kaaba
+:kazakhstan:\regional indicator symbol letter k, regional indicator symbol letter z
+:kenya:\regional indicator symbol letter k, regional indicator symbol letter e
+:key:\key
+:keyboard:\keyboard, variation selector-16
+:keycap_ten:\keycap ten
+:kick_scooter:\scooter
+:kimono:\kimono
+:kiribati:\regional indicator symbol letter k, regional indicator symbol letter i
+:kiss:\kiss mark
+:kissing:\kissing face
+:kissing_cat:\kissing cat face with closed eyes
+:kissing_closed_eyes:\kissing face with closed eyes
+:kissing_heart:\face throwing a kiss
+:kissing_smiling_eyes:\kissing face with smiling eyes
+:kiwi_fruit:\kiwifruit
+:koala:\koala
+:koko:\squared katakana koko
+:kosovo:\regional indicator symbol letter x, regional indicator symbol letter k
+:kr:\regional indicator symbol letter k, regional indicator symbol letter r
+:kuwait:\regional indicator symbol letter k, regional indicator symbol letter w
+:kyrgyzstan:\regional indicator symbol letter k, regional indicator symbol letter g
+:label:\label
+:laos:\regional indicator symbol letter l, regional indicator symbol letter a
+:large_blue_circle:\large blue circle
+:large_blue_diamond:\large blue diamond
+:large_orange_diamond:\large orange diamond
+:last_quarter_moon:\last quarter moon symbol
+:last_quarter_moon_with_face:\last quarter moon with face
+:latin_cross:\latin cross, variation selector-16
+:latvia:\regional indicator symbol letter l, regional indicator symbol letter v
+:laughing:\smiling face with open mouth and tightly-closed eyes
+:leaves:\leaf fluttering in wind
+:lebanon:\regional indicator symbol letter l, regional indicator symbol letter b
+:ledger:\ledger
+:left_luggage:\left luggage
+:left_right_arrow:\left right arrow, variation selector-16
+:leftwards_arrow_with_hook:\leftwards arrow with hook, variation selector-16
+:lemon:\lemon
+:leo:\leo, variation selector-16
+:leopard:\leopard
+:lesotho:\regional indicator symbol letter l, regional indicator symbol letter s
+:level_slider:\level slider
+:liberia:\regional indicator symbol letter l, regional indicator symbol letter r
+:libra:\libra, variation selector-16
+:libya:\regional indicator symbol letter l, regional indicator symbol letter y
+:liechtenstein:\regional indicator symbol letter l, regional indicator symbol letter i
+:light_rail:\light rail
+:link:\link symbol
+:lion:\lion face
+:lips:\mouth
+:lipstick:\lipstick
+:lithuania:\regional indicator symbol letter l, regional indicator symbol letter t
+:lizard:\lizard
+:lock:\lock
+:lock_with_ink_pen:\lock with ink pen
+:lollipop:\lollipop
+:loop:\double curly loop
+:loud_sound:\speaker with three sound waves
+:loudspeaker:\public address loudspeaker
+:love_hotel:\love hotel
+:love_letter:\love letter
+:low_brightness:\low brightness symbol
+:luxembourg:\regional indicator symbol letter l, regional indicator symbol letter u
+:lying_face:\lying face
+:m:\circled latin capital letter m, variation selector-16
+:macau:\regional indicator symbol letter m, regional indicator symbol letter o
+:macedonia:\regional indicator symbol letter m, regional indicator symbol letter k
+:madagascar:\regional indicator symbol letter m, regional indicator symbol letter g
+:mag:\left-pointing magnifying glass
+:mag_right:\right-pointing magnifying glass
+:mahjong:\mahjong tile red dragon, variation selector-16
+:mailbox:\closed mailbox with raised flag
+:mailbox_closed:\closed mailbox with lowered flag
+:mailbox_with_mail:\open mailbox with raised flag
+:mailbox_with_no_mail:\open mailbox with lowered flag
+:malawi:\regional indicator symbol letter m, regional indicator symbol letter w
+:malaysia:\regional indicator symbol letter m, regional indicator symbol letter y
+:maldives:\regional indicator symbol letter m, regional indicator symbol letter v
+:male_detective:\sleuth or spy, variation selector-16
+:mali:\regional indicator symbol letter m, regional indicator symbol letter l
+:malta:\regional indicator symbol letter m, regional indicator symbol letter t
+:man:\man
+:man_artist:\man, zero width joiner, artist palette
+:man_astronaut:\man, zero width joiner, rocket
+:man_cartwheeling:\person doing cartwheel, zero width joiner, male sign, variation selector-16
+:man_cook:\man, zero width joiner, cooking
+:man_dancing:\man dancing
+:man_facepalming:\face palm, zero width joiner, male sign, variation selector-16
+:man_factory_worker:\man, zero width joiner, factory
+:man_farmer:\man, zero width joiner, ear of rice
+:man_firefighter:\man, zero width joiner, fire engine
+:man_health_worker:\man, zero width joiner, staff of aesculapius, variation selector-16
+:man_in_tuxedo:\man in tuxedo
+:man_judge:\man, zero width joiner, scales, variation selector-16
+:man_juggling:\juggling, zero width joiner, male sign, variation selector-16
+:man_mechanic:\man, zero width joiner, wrench
+:man_office_worker:\man, zero width joiner, briefcase
+:man_pilot:\man, zero width joiner, airplane, variation selector-16
+:man_playing_handball:\handball, zero width joiner, male sign, variation selector-16
+:man_playing_water_polo:\water polo, zero width joiner, male sign, variation selector-16
+:man_scientist:\man, zero width joiner, microscope
+:man_shrugging:\shrug, zero width joiner, male sign, variation selector-16
+:man_singer:\man, zero width joiner, microphone
+:man_student:\man, zero width joiner, graduation cap
+:man_teacher:\man, zero width joiner, school
+:man_technologist:\man, zero width joiner, personal computer
+:man_with_gua_pi_mao:\man with gua pi mao
+:man_with_turban:\man with turban
+:mans_shoe:\mans shoe
+:mantelpiece_clock:\mantelpiece clock
+:maple_leaf:\maple leaf
+:marshall_islands:\regional indicator symbol letter m, regional indicator symbol letter h
+:martial_arts_uniform:\martial arts uniform
+:martinique:\regional indicator symbol letter m, regional indicator symbol letter q
+:mask:\face with medical mask
+:massage_man:\face massage, zero width joiner, male sign, variation selector-16
+:massage_woman:\face massage
+:mauritania:\regional indicator symbol letter m, regional indicator symbol letter r
+:mauritius:\regional indicator symbol letter m, regional indicator symbol letter u
+:mayotte:\regional indicator symbol letter y, regional indicator symbol letter t
+:meat_on_bone:\meat on bone
+:medal_military:\military medal
+:medal_sports:\sports medal
+:mega:\cheering megaphone
+:melon:\melon
+:memo:\memo
+:men_wrestling:\wrestlers, zero width joiner, male sign, variation selector-16
+:menorah:\menorah with nine branches
+:mens:\mens symbol
+:metal:\sign of the horns
+:metro:\metro
+:mexico:\regional indicator symbol letter m, regional indicator symbol letter x
+:micronesia:\regional indicator symbol letter f, regional indicator symbol letter m
+:microphone:\microphone
+:microscope:\microscope
+:middle_finger:\reversed hand with middle finger extended
+:milk_glass:\glass of milk
+:milky_way:\milky way
+:minibus:\minibus
+:minidisc:\minidisc
+:mobile_phone_off:\mobile phone off
+:moldova:\regional indicator symbol letter m, regional indicator symbol letter d
+:monaco:\regional indicator symbol letter m, regional indicator symbol letter c
+:money_mouth_face:\money-mouth face
+:money_with_wings:\money with wings
+:moneybag:\money bag
+:mongolia:\regional indicator symbol letter m, regional indicator symbol letter n
+:monkey:\monkey
+:monkey_face:\monkey face
+:monorail:\monorail
+:montenegro:\regional indicator symbol letter m, regional indicator symbol letter e
+:montserrat:\regional indicator symbol letter m, regional indicator symbol letter s
+:moon:\waxing gibbous moon symbol
+:morocco:\regional indicator symbol letter m, regional indicator symbol letter a
+:mortar_board:\graduation cap
+:mosque:\mosque
+:motor_boat:\motor boat
+:motor_scooter:\motor scooter
+:motorcycle:\racing motorcycle
+:motorway:\motorway
+:mount_fuji:\mount fuji
+:mountain:\mountain
+:mountain_biking_man:\mountain bicyclist
+:mountain_biking_woman:\mountain bicyclist, zero width joiner, female sign, variation selector-16
+:mountain_cableway:\mountain cableway
+:mountain_railway:\mountain railway
+:mountain_snow:\snow capped mountain
+:mouse2:\mouse
+:mouse:\mouse face
+:movie_camera:\movie camera
+:moyai:\moyai
+:mozambique:\regional indicator symbol letter m, regional indicator symbol letter z
+:mrs_claus:\mother christmas
+:muscle:\flexed biceps
+:mushroom:\mushroom
+:musical_keyboard:\musical keyboard
+:musical_note:\musical note
+:musical_score:\musical score
+:mute:\speaker with cancellation stroke
+:myanmar:\regional indicator symbol letter m, regional indicator symbol letter m
+:nail_care:\nail polish
+:name_badge:\name badge
+:namibia:\regional indicator symbol letter n, regional indicator symbol letter a
+:national_park:\national park
+:nauru:\regional indicator symbol letter n, regional indicator symbol letter r
+:nauseated_face:\nauseated face
+:necktie:\necktie
+:negative_squared_cross_mark:\negative squared cross mark
+:nepal:\regional indicator symbol letter n, regional indicator symbol letter p
+:nerd_face:\nerd face
+:netherlands:\regional indicator symbol letter n, regional indicator symbol letter l
+:neutral_face:\neutral face
+:new:\squared new
+:new_caledonia:\regional indicator symbol letter n, regional indicator symbol letter c
+:new_moon:\new moon symbol
+:new_moon_with_face:\new moon with face
+:new_zealand:\regional indicator symbol letter n, regional indicator symbol letter z
+:newspaper:\newspaper
+:newspaper_roll:\rolled-up newspaper
+:next_track_button:\black right-pointing double triangle with vertical bar
+:ng:\squared ng
+:nicaragua:\regional indicator symbol letter n, regional indicator symbol letter i
+:niger:\regional indicator symbol letter n, regional indicator symbol letter e
+:nigeria:\regional indicator symbol letter n, regional indicator symbol letter g
+:night_with_stars:\night with stars
+:nine:\9, variation selector-16, combining enclosing keycap
+:niue:\regional indicator symbol letter n, regional indicator symbol letter u
+:no_bell:\bell with cancellation stroke
+:no_bicycles:\no bicycles
+:no_entry:\no entry, variation selector-16
+:no_entry_sign:\no entry sign
+:no_good_man:\face with no good gesture, zero width joiner, male sign, variation selector-16
+:no_good_woman:\face with no good gesture
+:no_mobile_phones:\no mobile phones
+:no_mouth:\face without mouth
+:no_pedestrians:\no pedestrians
+:no_smoking:\no smoking symbol
+:non-potable_water:\non-potable water symbol
+:norfolk_island:\regional indicator symbol letter n, regional indicator symbol letter f
+:north_korea:\regional indicator symbol letter k, regional indicator symbol letter p
+:northern_mariana_islands:\regional indicator symbol letter m, regional indicator symbol letter p
+:norway:\regional indicator symbol letter n, regional indicator symbol letter o
+:nose:\nose
+:notebook:\notebook
+:notebook_with_decorative_cover:\notebook with decorative cover
+:notes:\multiple musical notes
+:nut_and_bolt:\nut and bolt
+:o\yelling
+:o2:\negative squared latin capital letter o, variation selector-16
+:o:\heavy large circle, variation selector-16
+:ocean:\water wave
+:octopus:\octopus
+:oden:\oden
+:office:\office building
+:oil_drum:\oil drum
+:ok:\squared ok
+:ok_hand:\ok hand sign
+:ok_man:\face with ok gesture, zero width joiner, male sign, variation selector-16
+:ok_woman:\face with ok gesture
+:old_key:\old key
+:older_man:\older man
+:older_woman:\older woman
+:om:\om symbol
+:oman:\regional indicator symbol letter o, regional indicator symbol letter m
+:on:\on with exclamation mark with left right arrow above
+:oncoming_automobile:\oncoming automobile
+:oncoming_bus:\oncoming bus
+:oncoming_police_car:\oncoming police car
+:oncoming_taxi:\oncoming taxi
+:one:\1, variation selector-16, combining enclosing keycap
+:open_file_folder:\open file folder
+:open_hands:\open hands sign
+:open_mouth:\face with open mouth
+:open_umbrella:\umbrella, variation selector-16
+:ophiuchus:\ophiuchus
+:orange_book:\orange book
+:orthodox_cross:\orthodox cross, variation selector-16
+:outbox_tray:\outbox tray
+:owl:\owl
+:ox:\ox
+:package:\package
+:page_facing_up:\page facing up
+:page_with_curl:\page with curl
+:pager:\pager
+:paintbrush:\lower left paintbrush
+:pakistan:\regional indicator symbol letter p, regional indicator symbol letter k
+:palau:\regional indicator symbol letter p, regional indicator symbol letter w
+:palestinian_territories:\regional indicator symbol letter p, regional indicator symbol letter s
+:palm_tree:\palm tree
+:panama:\regional indicator symbol letter p, regional indicator symbol letter a
+:pancakes:\pancakes
+:panda_face:\panda face
+:paperclip:\paperclip
+:paperclips:\linked paperclips
+:papua_new_guinea:\regional indicator symbol letter p, regional indicator symbol letter g
+:paraguay:\regional indicator symbol letter p, regional indicator symbol letter y
+:parasol_on_ground:\umbrella on ground
+:parking:\negative squared latin capital letter p, variation selector-16
+:part_alternation_mark:\part alternation mark, variation selector-16
+:partly_sunny:\sun behind cloud, variation selector-16
+:passenger_ship:\passenger ship
+:passport_control:\passport control
+:pause_button:\double vertical bar
+:peace_symbol:\peace symbol, variation selector-16
+:peach:\peach
+:peanuts:\peanuts
+:pear:\pear
+:pen:\lower left ballpoint pen
+:pencil2:\pencil, variation selector-16
+:penguin:\penguin
+:pensive:\pensive face
+:performing_arts:\performing arts
+:persevere:\persevering face
+:person_fencing:\fencer
+:peru:\regional indicator symbol letter p, regional indicator symbol letter e
+:philippines:\regional indicator symbol letter p, regional indicator symbol letter h
+:phone:\black telephone, variation selector-16
+:pick:\pick
+:pig2:\pig
+:pig:\pig face
+:pig_nose:\pig nose
+:pill:\pill
+:pineapple:\pineapple
+:ping_pong:\table tennis paddle and ball
+:pisces:\pisces, variation selector-16
+:pitcairn_islands:\regional indicator symbol letter p, regional indicator symbol letter n
+:pizza:\slice of pizza
+:place_of_worship:\place of worship
+:plate_with_cutlery:\fork and knife with plate
+:play_or_pause_button:\black right-pointing triangle with double vertical bar
+:point_down:\white down pointing backhand index
+:point_left:\white left pointing backhand index
+:point_right:\white right pointing backhand index
+:point_up:\white up pointing index, variation selector-16
+:point_up_2:\white up pointing backhand index
+:poland:\regional indicator symbol letter p, regional indicator symbol letter l
+:police_car:\police car
+:policeman:\police officer
+:policewoman:\police officer, zero width joiner, female sign, variation selector-16
+:poodle:\poodle
+:popcorn:\popcorn
+:portugal:\regional indicator symbol letter p, regional indicator symbol letter t
+:post_office:\japanese post office
+:postal_horn:\postal horn
+:postbox:\postbox
+:potable_water:\potable water symbol
+:potato:\potato
+:pouch:\pouch
+:poultry_leg:\poultry leg
+:pound:\banknote with pound sign
+:pouting_cat:\pouting cat face
+:pouting_man:\person with pouting face, zero width joiner, male sign, variation selector-16
+:pouting_woman:\person with pouting face
+:pray:\person with folded hands
+:prayer_beads:\prayer beads
+:pregnant_woman:\pregnant woman
+:previous_track_button:\black left-pointing double triangle with vertical bar
+:prince:\prince
+:princess:\princess
+:printer:\printer
+:puerto_rico:\regional indicator symbol letter p, regional indicator symbol letter r
+:purple_heart:\purple heart
+:purse:\purse
+:pushpin:\pushpin
+:put_litter_in_its_place:\put litter in its place symbol
+:q\what?
+:qatar:\regional indicator symbol letter q, regional indicator symbol letter a
+:question:\black question mark ornament
+:rabbit2:\rabbit
+:rabbit:\rabbit face
+:racehorse:\horse
+:racing_car:\racing car
+:radio:\radio
+:radio_button:\radio button
+:radioactive:\radioactive sign, variation selector-16
+:rage:\pouting face
+:railway_car:\railway car
+:railway_track:\railway track
+:rainbow:\rainbow
+:rainbow_flag:\waving white flag, variation selector-16, zero width joiner, rainbow
+:raised_back_of_hand:\raised back of hand
+:raised_hand_with_fingers_splayed:\raised hand with fingers splayed
+:raised_hands:\person raising both hands in celebration
+:raising_hand_man:\happy person raising one hand, zero width joiner, male sign, variation selector-16
+:raising_hand_woman:\happy person raising one hand
+:ram:\ram
+:ramen:\steaming bowl
+:rat:\rat
+:record_button:\black circle for record
+:recycle:\black universal recycling symbol, variation selector-16
+:red_circle:\large red circle
+:registered:\registered sign, variation selector-16
+:relaxed:\white smiling face, variation selector-16
+:relieved:\relieved face
+:reminder_ribbon:\reminder ribbon
+:repeat:\clockwise rightwards and leftwards open circle arrows
+:repeat_one:\clockwise rightwards and leftwards open circle arrows with circled one overlay
+:rescue_worker_helmet:\helmet with white cross
+:restroom:\restroom
+:reunion:\regional indicator symbol letter r, regional indicator symbol letter e
+:revolving_hearts:\revolving hearts
+:rewind:\black left-pointing double triangle
+:rhinoceros:\rhinoceros
+:ribbon:\ribbon
+:rice:\cooked rice
+:rice_ball:\rice ball
+:rice_cracker:\rice cracker
+:rice_scene:\moon viewing ceremony
+:right_anger_bubble:\right anger bubble
+:ring:\ring
+:robot:\robot face
+:rocket:\rocket
+:rofl:\rolling on the floor laughing
+:roll_eyes:\face with rolling eyes
+:roller_coaster:\roller coaster
+:romania:\regional indicator symbol letter r, regional indicator symbol letter o
+:rooster:\rooster
+:rose:\rose
+:rosette:\rosette
+:rotating_light:\police cars revolving light
+:round_pushpin:\round pushpin
+:rowing_man:\rowboat
+:rowing_woman:\rowboat, zero width joiner, female sign, variation selector-16
+:ru:\regional indicator symbol letter r, regional indicator symbol letter u
+:rugby_football:\rugby football
+:running_man:\runner
+:running_shirt_with_sash:\running shirt with sash
+:running_woman:\runner, zero width joiner, female sign, variation selector-16
+:rwanda:\regional indicator symbol letter r, regional indicator symbol letter w
+:sa:\squared katakana sa, variation selector-16
+:sagittarius:\sagittarius, variation selector-16
+:sake:\sake bottle and cup
+:samoa:\regional indicator symbol letter w, regional indicator symbol letter s
+:san_marino:\regional indicator symbol letter s, regional indicator symbol letter m
+:sandal:\womans sandal
+:santa:\father christmas
+:sao_tome_principe:\regional indicator symbol letter s, regional indicator symbol letter t
+:satellite:\satellite antenna
+:saudi_arabia:\regional indicator symbol letter s, regional indicator symbol letter a
+:saxophone:\saxophone
+:school:\school
+:school_satchel:\school satchel
+:scissors:\black scissors, variation selector-16
+:scorpion:\scorpion
+:scorpius:\scorpius, variation selector-16
+:scream:\face screaming in fear
+:scream_cat:\weary cat face
+:scroll:\scroll
+:seat:\seat
+:secret:\circled ideograph secret, variation selector-16
+:see_no_evil:\see-no-evil monkey
+:seedling:\seedling
+:selfie:\selfie
+:senegal:\regional indicator symbol letter s, regional indicator symbol letter n
+:serbia:\regional indicator symbol letter r, regional indicator symbol letter s
+:seven:\7, variation selector-16, combining enclosing keycap
+:seychelles:\regional indicator symbol letter s, regional indicator symbol letter c
+:shallow_pan_of_food:\shallow pan of food
+:shamrock:\shamrock, variation selector-16
+:shark:\shark
+:shaved_ice:\shaved ice
+:sheep:\sheep
+:shell:\spiral shell
+:shield:\shield
+:shinto_shrine:\shinto shrine
+:ship:\ship
+:shirt:\t-shirt
+:shopping:\shopping bags
+:shopping_cart:\shopping trolley
+:shower:\shower
+:shrimp:\shrimp
+:sierra_leone:\regional indicator symbol letter s, regional indicator symbol letter l
+:signal_strength:\antenna with bars
+:singapore:\regional indicator symbol letter s, regional indicator symbol letter g
+:sint_maarten:\regional indicator symbol letter s, regional indicator symbol letter x
+:six:\6, variation selector-16, combining enclosing keycap
+:six_pointed_star:\six pointed star with middle dot
+:ski:\ski and ski boot
+:skier:\skier
+:skull:\skull
+:skull_and_crossbones:\skull and crossbones, variation selector-16
+:sleeping:\sleeping face
+:sleeping_bed:\sleeping accommodation
+:sleepy:\sleepy face
+:slightly_frowning_face:\slightly frowning face
+:slightly_smiling_face:\slightly smiling face
+:slot_machine:\slot machine
+:slovakia:\regional indicator symbol letter s, regional indicator symbol letter k
+:slovenia:\regional indicator symbol letter s, regional indicator symbol letter i
+:small_airplane:\small airplane
+:small_blue_diamond:\small blue diamond
+:small_orange_diamond:\small orange diamond
+:small_red_triangle:\up-pointing red triangle
+:small_red_triangle_down:\down-pointing red triangle
+:smile:\smiling face with open mouth and smiling eyes
+:smile_cat:\grinning cat face with smiling eyes
+:smiley:\smiling face with open mouth
+:smiley_cat:\smiling cat face with open mouth
+:smiling_imp:\smiling face with horns
+:smirk:\smirking face
+:smirk_cat:\cat face with wry smile
+:smoking:\smoking symbol
+:snail:\snail
+:snake:\snake
+:sneezing_face:\sneezing face
+:snowboarder:\snowboarder
+:snowflake:\snowflake, variation selector-16
+:snowman:\snowman without snow, variation selector-16
+:snowman_with_snow:\snowman, variation selector-16
+:sob:\loudly crying face
+:soccer:\soccer ball, variation selector-16
+:solomon_islands:\regional indicator symbol letter s, regional indicator symbol letter b
+:somalia:\regional indicator symbol letter s, regional indicator symbol letter o
+:soon:\soon with rightwards arrow above
+:sos:\squared sos
+:sound:\speaker with one sound wave
+:south_africa:\regional indicator symbol letter z, regional indicator symbol letter a
+:south_georgia_south_sandwich_islands:\regional indicator symbol letter g, regional indicator symbol letter s
+:south_sudan:\regional indicator symbol letter s, regional indicator symbol letter s
+:space_invader:\alien monster
+:spades:\black spade suit, variation selector-16
+:spaghetti:\spaghetti
+:sparkle:\sparkle, variation selector-16
+:sparkler:\firework sparkler
+:sparkles:\sparkles
+:sparkling_heart:\sparkling heart
+:speak_no_evil:\speak-no-evil monkey
+:speaker:\speaker
+:speaking_head:\speaking head in silhouette
+:speech_balloon:\speech balloon
+:speedboat:\speedboat
+:spider:\spider
+:spider_web:\spider web
+:spiral_calendar:\spiral calendar pad
+:spiral_notepad:\spiral note pad
+:spoon:\spoon
+:squid:\squid
+:sri_lanka:\regional indicator symbol letter l, regional indicator symbol letter k
+:st_barthelemy:\regional indicator symbol letter b, regional indicator symbol letter l
+:st_helena:\regional indicator symbol letter s, regional indicator symbol letter h
+:st_kitts_nevis:\regional indicator symbol letter k, regional indicator symbol letter n
+:st_lucia:\regional indicator symbol letter l, regional indicator symbol letter c
+:st_pierre_miquelon:\regional indicator symbol letter p, regional indicator symbol letter m
+:st_vincent_grenadines:\regional indicator symbol letter v, regional indicator symbol letter c
+:stadium:\stadium
+:star2:\glowing star
+:star:\white medium star, variation selector-16
+:star_and_crescent:\star and crescent, variation selector-16
+:star_of_david:\star of david, variation selector-16
+:stars:\shooting star
+:station:\station
+:statue_of_liberty:\statue of liberty
+:steam_locomotive:\steam locomotive
+:stew:\pot of food
+:stop_button:\black square for stop
+:stop_sign:\octagonal sign
+:stopwatch:\stopwatch
+:straight_ruler:\straight ruler
+:strawberry:\strawberry
+:stuck_out_tongue:\face with stuck-out tongue
+:stuck_out_tongue_closed_eyes:\face with stuck-out tongue and tightly-closed eyes
+:stuck_out_tongue_winking_eye:\face with stuck-out tongue and winking eye
+:studio_microphone:\studio microphone
+:stuffed_flatbread:\stuffed flatbread
+:sudan:\regional indicator symbol letter s, regional indicator symbol letter d
+:sun_behind_large_cloud:\white sun behind cloud
+:sun_behind_rain_cloud:\white sun behind cloud with rain
+:sun_behind_small_cloud:\white sun with small cloud
+:sun_with_face:\sun with face
+:sunflower:\sunflower
+:sunglasses:\smiling face with sunglasses
+:sunny:\black sun with rays, variation selector-16
+:sunrise:\sunrise
+:sunrise_over_mountains:\sunrise over mountains
+:surfing_man:\surfer
+:surfing_woman:\surfer, zero width joiner, female sign, variation selector-16
+:suriname:\regional indicator symbol letter s, regional indicator symbol letter r
+:sushi:\sushi
+:suspension_railway:\suspension railway
+:swaziland:\regional indicator symbol letter s, regional indicator symbol letter z
+:sweat:\face with cold sweat
+:sweat_drops:\splashing sweat symbol
+:sweat_smile:\smiling face with open mouth and cold sweat
+:sweden:\regional indicator symbol letter s, regional indicator symbol letter e
+:sweet_potato:\roasted sweet potato
+:swimming_man:\swimmer
+:swimming_woman:\swimmer, zero width joiner, female sign, variation selector-16
+:switzerland:\regional indicator symbol letter c, regional indicator symbol letter h
+:symbols:\input symbol for symbols
+:synagogue:\synagogue
+:syria:\regional indicator symbol letter s, regional indicator symbol letter y
+:syringe:\syringe
+:taco:\taco
+:tada:\party popper
+:taiwan:\regional indicator symbol letter t, regional indicator symbol letter w
+:tajikistan:\regional indicator symbol letter t, regional indicator symbol letter j
+:tanabata_tree:\tanabata tree
+:tangerine:\tangerine
+:tanzania:\regional indicator symbol letter t, regional indicator symbol letter z
+:taurus:\taurus, variation selector-16
+:taxi:\taxi
+:tea:\teacup without handle
+:telephone_receiver:\telephone receiver
+:telescope:\telescope
+:tennis:\tennis racquet and ball
+:tent:\tent, variation selector-16
+:thailand:\regional indicator symbol letter t, regional indicator symbol letter h
+:thermometer:\thermometer
+:thinking:\thinking face
+:thought_balloon:\thought balloon
+:three:\3, variation selector-16, combining enclosing keycap
+:ticket:\ticket
+:tickets:\admission tickets
+:tiger2:\tiger
+:tiger:\tiger face
+:timer_clock:\timer clock
+:timor_leste:\regional indicator symbol letter t, regional indicator symbol letter l
+:tipping_hand_man:\information desk person, zero width joiner, male sign, variation selector-16
+:tipping_hand_woman:\information desk person
+:tired_face:\tired face
+:tm:\trade mark sign, variation selector-16
+:togo:\regional indicator symbol letter t, regional indicator symbol letter g
+:toilet:\toilet
+:tokelau:\regional indicator symbol letter t, regional indicator symbol letter k
+:tokyo_tower:\tokyo tower
+:tomato:\tomato
+:tonga:\regional indicator symbol letter t, regional indicator symbol letter o
+:tongue:\tongue
+:top:\top with upwards arrow above
+:tophat:\top hat
+:tornado:\cloud with tornado
+:tr:\regional indicator symbol letter t, regional indicator symbol letter r
+:trackball:\trackball
+:tractor:\tractor
+:traffic_light:\horizontal traffic light
+:train2:\train
+:train:\tram car
+:tram:\tram
+:triangular_flag_on_post:\triangular flag on post
+:triangular_ruler:\triangular ruler
+:trident:\trident emblem
+:trinidad_tobago:\regional indicator symbol letter t, regional indicator symbol letter t
+:triumph:\face with look of triumph
+:trolleybus:\trolleybus
+:trophy:\trophy
+:tropical_drink:\tropical drink
+:tropical_fish:\tropical fish
+:truck:\delivery truck
+:trumpet:\trumpet
+:tulip:\tulip
+:tumbler_glass:\tumbler glass
+:tunisia:\regional indicator symbol letter t, regional indicator symbol letter n
+:turkey:\turkey
+:turkmenistan:\regional indicator symbol letter t, regional indicator symbol letter m
+:turks_caicos_islands:\regional indicator symbol letter t, regional indicator symbol letter c
+:turtle:\turtle
+:tuvalu:\regional indicator symbol letter t, regional indicator symbol letter v
+:tv:\television
+:twisted_rightwards_arrows:\twisted rightwards arrows
+:two:\2, variation selector-16, combining enclosing keycap
+:two_hearts:\two hearts
+:two_men_holding_hands:\two men holding hands
+:two_women_holding_hands:\two women holding hands
+:u5272:\squared cjk unified ideograph-5272
+:u5408:\squared cjk unified ideograph-5408
+:u55b6:\squared cjk unified ideograph-55b6
+:u6307:\squared cjk unified ideograph-6307, variation selector-16
+:u6708:\squared cjk unified ideograph-6708, variation selector-16
+:u6709:\squared cjk unified ideograph-6709
+:u6e80:\squared cjk unified ideograph-6e80
+:u7121:\squared cjk unified ideograph-7121, variation selector-16
+:u7533:\squared cjk unified ideograph-7533
+:u7981:\squared cjk unified ideograph-7981
+:u7a7a:\squared cjk unified ideograph-7a7a
+:uganda:\regional indicator symbol letter u, regional indicator symbol letter g
+:ukraine:\regional indicator symbol letter u, regional indicator symbol letter a
+:umbrella:\umbrella with rain drops, variation selector-16
+:unamused:\unamused face
+:underage:\no one under eighteen symbol
+:unicorn:\unicorn face
+:united_arab_emirates:\regional indicator symbol letter a, regional indicator symbol letter e
+:unlock:\open lock
+:up:\squared up with exclamation mark
+:upside_down_face:\upside-down face
+:uruguay:\regional indicator symbol letter u, regional indicator symbol letter y
+:us:\regional indicator symbol letter u, regional indicator symbol letter s
+:us_virgin_islands:\regional indicator symbol letter v, regional indicator symbol letter i
+:uzbekistan:\regional indicator symbol letter u, regional indicator symbol letter z
+:v)\user has a broken nose, but it's the other way
+:v:\victory hand, variation selector-16
+:vanuatu:\regional indicator symbol letter v, regional indicator symbol letter u
+:vatican_city:\regional indicator symbol letter v, regional indicator symbol letter a
+:venezuela:\regional indicator symbol letter v, regional indicator symbol letter e
+:vertical_traffic_light:\vertical traffic light
+:vhs:\videocassette
+:vibration_mode:\vibration mode
+:video_camera:\video camera
+:video_game:\video game
+:vietnam:\regional indicator symbol letter v, regional indicator symbol letter n
+:violin:\violin
+:virgo:\virgo, variation selector-16
+:volcano:\volcano
+:volleyball:\volleyball
+:vs:\squared vs
+:vulcan_salute:\raised hand with part between middle and ring fingers
+:walking_man:\pedestrian
+:walking_woman:\pedestrian, zero width joiner, female sign, variation selector-16
+:wallis_futuna:\regional indicator symbol letter w, regional indicator symbol letter f
+:waning_crescent_moon:\waning crescent moon symbol
+:waning_gibbous_moon:\waning gibbous moon symbol
+:warning:\warning sign, variation selector-16
+:wastebasket:\wastebasket
+:watch:\watch, variation selector-16
+:water_buffalo:\water buffalo
+:watermelon:\watermelon
+:wave:\waving hand sign
+:wavy_dash:\wavy dash, variation selector-16
+:waxing_crescent_moon:\waxing crescent moon symbol
+:wc:\water closet
+:weary:\weary face
+:wedding:\wedding
+:weight_lifting_man:\weight lifter, variation selector-16
+:weight_lifting_woman:\weight lifter, variation selector-16, zero width joiner, female sign, variation selector-16
+:western_sahara:\regional indicator symbol letter e, regional indicator symbol letter h
+:whale2:\whale
+:whale:\spouting whale
+:wheel_of_dharma:\wheel of dharma, variation selector-16
+:wheelchair:\wheelchair symbol, variation selector-16
+:white_check_mark:\white heavy check mark
+:white_circle:\medium white circle, variation selector-16
+:white_flag:\waving white flag, variation selector-16
+:white_flower:\white flower
+:white_large_square:\white large square, variation selector-16
+:white_medium_small_square:\white medium small square, variation selector-16
+:white_medium_square:\white medium square, variation selector-16
+:white_small_square:\white small square, variation selector-16
+:white_square_button:\white square button
+:wilted_flower:\wilted flower
+:wind_chime:\wind chime
+:wind_face:\wind blowing face
+:wine_glass:\wine glass
+:wink:\winking face
+:wolf:\wolf face
+:woman:\woman
+:woman_artist:\woman, zero width joiner, artist palette
+:woman_astronaut:\woman, zero width joiner, rocket
+:woman_cartwheeling:\person doing cartwheel, zero width joiner, female sign, variation selector-16
+:woman_cook:\woman, zero width joiner, cooking
+:woman_facepalming:\face palm, zero width joiner, female sign, variation selector-16
+:woman_factory_worker:\woman, zero width joiner, factory
+:woman_farmer:\woman, zero width joiner, ear of rice
+:woman_firefighter:\woman, zero width joiner, fire engine
+:woman_health_worker:\woman, zero width joiner, staff of aesculapius, variation selector-16
+:woman_judge:\woman, zero width joiner, scales, variation selector-16
+:woman_juggling:\juggling, zero width joiner, female sign, variation selector-16
+:woman_mechanic:\woman, zero width joiner, wrench
+:woman_office_worker:\woman, zero width joiner, briefcase
+:woman_pilot:\woman, zero width joiner, airplane, variation selector-16
+:woman_playing_handball:\handball, zero width joiner, female sign, variation selector-16
+:woman_playing_water_polo:\water polo, zero width joiner, female sign, variation selector-16
+:woman_scientist:\woman, zero width joiner, microscope
+:woman_shrugging:\shrug, zero width joiner, female sign, variation selector-16
+:woman_singer:\woman, zero width joiner, microphone
+:woman_student:\woman, zero width joiner, graduation cap
+:woman_teacher:\woman, zero width joiner, school
+:woman_technologist:\woman, zero width joiner, personal computer
+:woman_with_turban:\man with turban, zero width joiner, female sign, variation selector-16
+:womans_clothes:\womans clothes
+:womans_hat:\womans hat
+:women_wrestling:\wrestlers, zero width joiner, female sign, variation selector-16
+:womens:\womens symbol
+:world_map:\world map
+:worried:\worried face
+:wrench:\wrench
+:writing_hand:\writing hand, variation selector-16
+:x:\cross mark
+:yellow_heart:\yellow heart
+:yemen:\regional indicator symbol letter y, regional indicator symbol letter e
+:yen:\banknote with yen sign
+:yin_yang:\yin yang, variation selector-16
+:yum:\face savouring delicious food
+:zambia:\regional indicator symbol letter z, regional indicator symbol letter m
+:zap:\high voltage sign, variation selector-16
+:zero:\0, variation selector-16, combining enclosing keycap
+:zimbabwe:\regional indicator symbol letter z, regional indicator symbol letter w
+:zipper_mouth_face:\zipper-mouth face
+:zzz:\sleeping symbol
+:{\what?
+:}\what should we call these? (what?)
+;-)\winky smiley. user just made a flirtatious and/or sarcastic remark.more of a "don't hit me for what i just said" smiley
+<:-i\user is a dunce
+<|-(\user is chinese and doesn't like these kind of jokes
+<|-)\user is chinese
+=)\variation on a theme
+=))\full of laughing
+=:-)\user is a hosehead
+=w=\whatever
+>:->\user just made a really devilish remark
+>;->\winky and devil combined. a very lewd remark was just made
+>u\screw you!
+?\huh?
+?4u\question for you
+@:-)\user is wearing a turban
+@=\user is pro-nuclear war

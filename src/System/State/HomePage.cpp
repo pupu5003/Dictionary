@@ -5,8 +5,10 @@
 #define TEXT_BOX_WIDTH  400
 #define TEXT_BOX_HEIGHT 230
 
-HomePage::HomePage(int &currentScreen, Dictionary &dictionary): currentScreen(currentScreen), dictionary(dictionary), randomWord(dictionary.getRandomWord())
+HomePage::HomePage(int &currentScreen, Dictionary &dictionary): currentScreen(currentScreen), dictionary(dictionary)
 {
+    randomWord = &dictionary.getRandomWord();
+
     homeTag = LoadTexture("asset/Image/HomeTag.png");
 
     historyButton.setButton("asset/Image/HistoryButton.png", 196.25, 204.81);
@@ -20,10 +22,12 @@ HomePage::HomePage(int &currentScreen, Dictionary &dictionary): currentScreen(cu
     changeWord.setButton("asset/Image/Reload_ic.png", 990, 324, 1.1);
 
     wordCard.setButton("asset/Image/WordCard.png", 181, 296);
+
 }
 
 void HomePage::display() const {
     DrawTexture(homeTag, 0, 0, WHITE);
+
 
     settingButton.display();
     historyButton.display();
@@ -31,11 +35,22 @@ void HomePage::display() const {
     practiceButton.display();
 
     wordCard.display();
-    DrawText(randomWord.word.c_str(), 232, 322, 40, BLACK);
-    DrawTextBoxed(randomWord.definition[0].c_str(), { 232, 380, TEXT_BOX_WIDTH, TEXT_BOX_HEIGHT }, 30, 0.5f, true);
+    DrawTextEx(FontHelper::getInstance().getFont(InterBold), randomWord -> word.c_str(), { 234, 320}, 45, 0.5f, BLACK);
+    float dis = GetStringWidth(FontHelper::getInstance().getFont(InterBold), randomWord -> word.c_str(), 45, 0.5f);
+    if (randomWord -> type.size() > 0)
+    DrawTextBoxed(FontHelper::getInstance().getFont(Inter), randomWord -> type[0].c_str(), { 234 + dis, 328, 636 -dis, 35}, 34, 0.5f, false, BLACK);
+    DrawTextBoxed(FontHelper::getInstance().getFont(Inter) ,randomWord -> definition[0].c_str(), {232, 380, 800, 280}, 38, 0.5f, true, BLACK);
     
-    dataSet data = engEng;
-    if (randomWord.isFavorite) {
+    if (CheckCollisionPointRec(GetMousePosition(), { 232, 650, 93, 33 })) {
+        DrawTextEx(FontHelper::getInstance().getFont(OpenSanBold), "(More...)", { 232, 650 }, 33, 0.5f, BLACK);
+    } 
+    else {
+        DrawTextEx(FontHelper::getInstance().getFont(OpenSan), "(More...)", { 232, 650 }, 33, 0.5f, BLACK);
+    }
+    DrawTextEx(FontHelper::getInstance().getFont(RussoOne), dataSetName[randomWord -> data].c_str(), {900, 650 }, 33, 0.5f, BLACK);
+    // Font font = LoadFontEx("asset/Font/ARIAL.ttf", 30, 0, 250);
+    // DrawTextEx( font, randomWord -> definition[0].c_str(), { 232, 380 }, 30, 0.5f, BLACK);;
+    if (randomWord -> isFavorite) {
         liked.display();
     } else {
         like.display();
@@ -47,76 +62,37 @@ void HomePage::display() const {
 }
 
 void HomePage::handleEvent() {
+    // if (randomWord.isFavorite) exit(0);
     if (historyButton.isPressed()) {
-        currentScreen = 1;
+        currentScreen = HISTORY;
     } else if (favoriteButton.isPressed()) {
-        currentScreen = 2;
+        currentScreen = FAVORITE;
     } else if (practiceButton.isPressed()) {
-        currentScreen = 3;
+        currentScreen = PRACTICE;
     } else if (settingButton.isPressed()) {
-        currentScreen = 4;
+        currentScreen = SETTING;
     } else if (like.isPressed()) {
-        randomWord.isFavorite = !randomWord.isFavorite;
-        if (randomWord.isFavorite) {
-            dictionary.addFavorite(randomWord.id, engEng);
+        // randomWord.isFavorite = !randomWord.isFavorite;
+        if (!randomWord -> isFavorite) {
+            dictionary.addFavorite(randomWord -> data, randomWord -> id);
         } else {
-            dictionary.removeFavorite(randomWord.id, engEng);
+            dictionary.removeFavorite(randomWord -> data, randomWord -> id);
         }
     } else if (edit.isPressed()) {
         cout << "Edit button is pressed" << endl;
     } else if (changeWord.isPressed()) {
-        randomWord = dictionary.getRandomWord();
+
+        randomWord = &dictionary.getRandomWord();
     }
+    else if (CheckCollisionPointRec(GetMousePosition(), { 232, 650, 93, 33 }) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+        currentScreen = SEARCH_RES;
+        SearchResPage::resetSrcoll();
+        SearchResPage::setSearchWord(randomWord);
+    }
+
 }
 
 HomePage::~HomePage() {
     UnloadTexture(homeTag);
 }
 
-void DrawTextBoxed(const char *text, Rectangle rec, int fontSize, float spacing, bool wordWrap) {
-    Font font = LoadFontEx("asset/Font/Russo_One.ttf", fontSize, 0, 0);
-    Vector2 position = { rec.x, rec.y };
-    float scale = (float)fontSize / (float)font.baseSize;
-
-    int textLength = TextLength(text);
-    int lastSpace = -1;
-    int lineStart = 0;
-
-    for (int i = 0; i < textLength; i++) {
-        char currentChar = text[i];
-
-        if (currentChar == ' ') lastSpace = i;
-
-        // Measure the substring from lineStart to the current character
-        std::string line(text + lineStart, i - lineStart + 1);
-        float textWidth = MeasureTextEx(font, line.c_str(), fontSize, spacing).x;
-
-        // Check if any part of the current line extends beyond the rectangle's width
-        if (currentChar == '\n' || (position.x + textWidth > rec.x + rec.width && wordWrap)) {
-            if (lastSpace >= 0 && wordWrap) i = lastSpace + 1; // Wrap at last space
-
-            // Draw the current line
-            DrawTextEx(font, &text[lineStart], position, fontSize, spacing, BLACK);
-
-            // Calculate the x-coordinate for the next line
-            position.x = rec.x;
-
-            // Move down for the next line
-            position.y += fontSize + 10;
-
-            // Reset the line start
-            lineStart = i;
-
-            // Reset lastSpace for the next line
-            lastSpace = -1;
-
-            // If it's a newline, advance the lineStart to skip the '\n'
-            if (currentChar == '\n') lineStart++;
-        }
-    }
-
-    // Draw the last line
-    if (lineStart < textLength) {
-        DrawTextEx(font, &text[lineStart], position, fontSize, spacing, BLACK);
-    }
-}

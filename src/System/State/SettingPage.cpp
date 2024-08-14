@@ -29,7 +29,7 @@ void SettingPage::handleEvent()
 {
    if (backButton.isPressed())
     {
-        currentScreen = 0;
+        currentScreen = HOME;
     }
     else if (resetButton.isPressed())
     {
@@ -37,7 +37,7 @@ void SettingPage::handleEvent()
     }
     else if (addWordButton.isPressed())
     {
-        currentScreen = 5;
+        currentScreen = ADD_WORD;
     }
 
 }

@@ -27,24 +27,24 @@ Button::~Button()
     UnloadTexture(texture);
 }
 
-void Button::display() const
+void Button::display(float x, float y) const
 {
-    if (CheckCollisionPointRec(GetMousePosition(), rect))
+    if (CheckCollisionPointRec(GetMousePosition(), {rect.x + x, rect.y + y, rect.width, rect.height}))
     {
         Texture2D temp = texture;
         temp.width = mRect.width;
         temp.height = mRect.height;
-        DrawTexture(temp, mRect.x, mRect.y, mColor);
+        DrawTexture(temp, mRect.x + x, mRect.y + y, mColor);
     }
     else
     {
-        DrawTexture(texture, rect.x, rect.y, color);
+        DrawTexture(texture, rect.x + x, rect.y + y, color);
     }
 }
 
-bool Button::isPressed() const
+bool Button::isPressed(float x, float y) const
 {
-    return IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec(GetMousePosition(), rect);
+    return IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec(GetMousePosition(), {rect.x + x, rect.y + y, rect.width, rect.height});
 }
 
 void Button::loadTexture(const char *path)

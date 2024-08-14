@@ -5,6 +5,8 @@
 #include <fstream>
 #include <sstream>
 #include "KeywordTrie.hpp"
+#include <wchar.h>
+#include "../src/System/State/UILibFunc.hpp"
 using namespace std;
 
 
@@ -16,11 +18,12 @@ enum dataSet
         emoji = 3,
         slang = 4
     };
-
+const string dataSetName[5] = {"engEng", "engVie", "vieEng", "emoji", "slang"};
 struct Word
 {
     int id;
     bool isFavorite;
+    dataSet data;
     string word;
     vector<string> type;
     vector<string> definition;  
@@ -39,12 +42,12 @@ private:
 public:
     Dictionary();
     ~Dictionary();
-    vector<Word> favorite[5];
+    vector<pair<dataSet, int>> favorite;
    void lodadData();
-   Word& getRandomWord(dataSet data = engEng);
+   Word& getRandomWord(dataSet data = engVie);
    void addWord(Word word, dataSet data);
    void removeWord(int id, dataSet data);
    void editWord(int id, dataSet data, int curDef, string& def);
-   void addFavorite(int id, dataSet data);
-   void removeFavorite(int id, dataSet data);
+   void addFavorite(dataSet data, int id);
+   void removeFavorite(dataSet data, int id);
 };

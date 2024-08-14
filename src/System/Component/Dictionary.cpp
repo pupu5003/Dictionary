@@ -2,16 +2,12 @@
 #include <chrono>
 using namespace std;
 
-int random(int min, int max)
-{
-    srand(chrono::system_clock::now().time_since_epoch().count());
-    return rand() % (max - min + 1) + min;
-}
 
 Word::Word()
 {
     id = -1;
     word = "";
+    data = engEng;
     type.clear();
     definition.clear();
     isFavorite = false;
@@ -25,6 +21,12 @@ Word::~Word()
 
 Dictionary::Dictionary()
 {
+    for (int i = 0; i < sizeof(VNCodePoints) / sizeof(int); i++)
+    {
+        mapChar[VNCodePoints[i]] = i;
+    }
+    // cout << sizeof(VNCodePoints) / sizeof(int);
+    // exit(0);
     lodadData();
 }
 
@@ -40,7 +42,7 @@ void Dictionary::lodadData()
 {
     const char *fileName[5] = {"data/DictionaryData/engEng.txt", "data/DictionaryData/engVie.txt", "data/DictionaryData/vieEng.txt", "data/DictionaryData/emoji.txt", "data/DictionaryData/slang.txt"};
 
-    for (int i = 0; i < 1; i++)
+    for (int i = 0; i < 3; i++)
     {
         ifstream file(fileName[i]);
         if (!file.is_open())
@@ -53,22 +55,57 @@ void Dictionary::lodadData()
         {
             stringstream ss(line);
             string keyWord, type, definition;
-            getline(ss, keyWord, ',');
-            getline(ss, type, ',');
+            getline(ss, keyWord, '\\');
+            getline(ss, type, '\\');
             getline(ss, definition);
+            if (words[i].size() > 0 && words[i].back().word == keyWord)
+            {
+                words[i].back().type.push_back(type);
+                words[i].back().definition.push_back(definition);
+                continue;
+            }
             Word word;
             word.id = words[i].size();
             word.word = keyWord;
+            word.data = (dataSet)i;
             word.type.push_back(type);
             word.definition.push_back(definition);
             words[i].push_back(word);
             wordTrie[i].insert(keyWord, word.id);
+            // cout << definition << endl;
+        }
+    }
+
+    for (int i = 3; i < 5; i++)
+    {
+        ifstream file(fileName[i]);
+        if (!file.is_open())
+        {
+            cout << "Can't open file " << fileName[i] << endl;
+            return;
+        }
+        string line;
+        while (getline(file, line))
+        {
+            stringstream ss(line);
+            string keyWord, definition;
+            getline(ss, keyWord, '\\');
+            getline(ss, definition);
+            Word word;
+            word.id = words[i].size();
+            word.word = keyWord;
+            word.data = (dataSet)i;
+            word.definition.push_back(definition);
+            words[i].push_back(word);
+            // wordTrie[i].insert(keyWord, word.id);
+            // cout << definition << endl;
         }
     }
 }
 
 Word& Dictionary::getRandomWord(dataSet data)
 {
+    data = (dataSet)random(0, 4);
     return words[data][random(0, words[data].size() - 1)];
 }
 
@@ -102,18 +139,19 @@ void Dictionary::editWord(int id, dataSet data, int curDef, string& def)
     words[data][id].definition[curDef] = def;
 }
 
-void Dictionary::addFavorite(int id, dataSet data){
+void Dictionary::addFavorite(dataSet data, int id){
     words[data][id].isFavorite = true;
-    favorite[data].push_back(words[data][id]);
+    favorite.push_back({data, id});
 }
 
-void Dictionary::removeFavorite(int id, dataSet data){
+void Dictionary::removeFavorite(dataSet data, int id){
     words[data][id].isFavorite = false;
-    for (int i = 0; i < favorite[data].size(); i++)
+    for (int i = 0; i < favorite.size(); i++)
     {
-        if (favorite[data][i].id == id)
+        if (favorite[i].first == data && favorite[i].second == id)
         {
-            favorite[data].erase(favorite[data].begin() + i);
+            swap(favorite[i], favorite.back());
+            favorite.pop_back();
             break;
         }
     }
