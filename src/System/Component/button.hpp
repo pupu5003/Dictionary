@@ -13,13 +13,13 @@ struct Button
     Button(const char* path, float x, float y, float scale = 1.2);
     ~Button();
     void setButton(const char *path, float x, float y, float scale = 1.2);
-    bool isPressed() const;
+    bool isPressed(float x = 0, float y = 0) const;
     void loadTexture(const char *path);
     void setRect(float x, float y, float width, float height);
     void setScale(float scale);
     void disable();
     void enable();
-    void display() const;
+    void display(float x = 0, float y = 0) const;
 };
 
 struct nButton

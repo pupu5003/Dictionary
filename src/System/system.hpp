@@ -10,6 +10,7 @@
 #include "../src/System/State/PracticePage.hpp"
 #include "../src/System/State/PracticeQuestionPage.hpp"
 #include "../src/System/State/AddWordPage.hpp"
+#include "../src/System/State/SearchResPage.hpp"
 #include "../asset/Color/color.hpp"
 #include "../src/System/Component/Dictionary.hpp"
 using namespace std;
@@ -25,6 +26,7 @@ private:
     Dictionary dictionary;
     HistoryManager hisManager;
 public:
+    // Word *searchWord;
     System(/* args */);
     ~System();
     void run();

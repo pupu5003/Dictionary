@@ -1,13 +1,17 @@
 #pragma once
 #include <iostream>
 #include <vector>
+#include <raylib.h>
 #include "../src/DataStructure/Trie.hpp"
 #include <stack>
 #include <wchar.h>
+// #include "Dictionary.hpp"
 using namespace std;
 
 const int limitPredict = 10;
-const int limitLetter = 126;
+const int limitLetter = 262;
+
+static int mapChar[10000];
 
 struct KeywordNode
 {

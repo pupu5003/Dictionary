@@ -8,9 +8,20 @@
 #include <../src/System/Component/Dictionary.hpp>
 #include <../src/System/Component/FontHelper.hpp>
 #include <../src/System/Component/TextBox.hpp>
+#include <../src/System/Component/KeywordTrie.hpp>
 #include <chrono>
 
-
+enum PageType
+{
+    HOME = 1,
+    FAVORITE = 3,
+    HISTORY = 2,
+    SETTING = 5,
+    PRACTICE = 4,
+    PRACTICE_QUESTION = 4,
+    ADD_WORD = 6,
+    SEARCH_RES = 0
+};
 
 void DrawTextBoxed(Font font, const char *text, Rectangle rec, float fontSize, float spacing, bool wordWrap, Color tint = GRAY);
 

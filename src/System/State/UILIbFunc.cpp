@@ -35,7 +35,7 @@ void DrawTextBoxed(Font font, const char *text, Rectangle rec, float fontSize, f
 
         // NOTE: Normally we exit the decoding sequence as soon as a bad byte is found (and return 0x3f)
         // but we need to draw all of the bad bytes using the '?' symbol moving one byte
-        // if (codepoint == 0x3f) codepointByteCount = 1;
+        if (codepoint == 0x3f) codepointByteCount = 1;
         i += (codepointByteCount - 1);
 
         float glyphWidth = 0;
@@ -167,6 +167,7 @@ float GetStringWidth(Font font, const char *text, float fontSize, float spacing)
 
     return width;
 }
+
 
 int random(int min, int max)
 {

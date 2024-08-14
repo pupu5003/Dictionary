@@ -35,10 +35,11 @@ void HomePage::display() const {
     practiceButton.display();
 
     wordCard.display();
-    DrawTextEx(FontHelper::getInstance().getFont(InterBold), randomWord -> word.c_str(), { 232, 330 }, 55, 0.5f, BLACK);
-    float dis = GetStringWidth(FontHelper::getInstance().getFont(InterBold), randomWord -> word.c_str(), 55, 0.5f);
-    DrawTextBoxed(FontHelper::getInstance().getFont(Inter), randomWord -> type[0].c_str(), { 232 + dis, 344, 600, 40}, 35, 0.5f, false, BLACK);
-    DrawTextBoxed(FontHelper::getInstance().getFont(Inter) ,randomWord -> definition[0].c_str(), {232, 420, 800, 240}, 40, 0.5f, true, BLACK);
+    DrawTextEx(FontHelper::getInstance().getFont(InterBold), randomWord -> word.c_str(), { 234, 320}, 45, 0.5f, BLACK);
+    float dis = GetStringWidth(FontHelper::getInstance().getFont(InterBold), randomWord -> word.c_str(), 45, 0.5f);
+    if (randomWord -> type.size() > 0)
+    DrawTextBoxed(FontHelper::getInstance().getFont(Inter), randomWord -> type[0].c_str(), { 234 + dis, 328, 636 -dis, 35}, 34, 0.5f, false, BLACK);
+    DrawTextBoxed(FontHelper::getInstance().getFont(Inter) ,randomWord -> definition[0].c_str(), {232, 380, 800, 280}, 38, 0.5f, true, BLACK);
     
     if (CheckCollisionPointRec(GetMousePosition(), { 232, 650, 93, 33 })) {
         DrawTextEx(FontHelper::getInstance().getFont(OpenSanBold), "(More...)", { 232, 650 }, 33, 0.5f, BLACK);
@@ -46,6 +47,7 @@ void HomePage::display() const {
     else {
         DrawTextEx(FontHelper::getInstance().getFont(OpenSan), "(More...)", { 232, 650 }, 33, 0.5f, BLACK);
     }
+    DrawTextEx(FontHelper::getInstance().getFont(RussoOne), dataSetName[randomWord -> data].c_str(), {900, 650 }, 33, 0.5f, BLACK);
     // Font font = LoadFontEx("asset/Font/ARIAL.ttf", 30, 0, 250);
     // DrawTextEx( font, randomWord -> definition[0].c_str(), { 232, 380 }, 30, 0.5f, BLACK);;
     if (randomWord -> isFavorite) {
@@ -62,13 +64,13 @@ void HomePage::display() const {
 void HomePage::handleEvent() {
     // if (randomWord.isFavorite) exit(0);
     if (historyButton.isPressed()) {
-        currentScreen = 1;
+        currentScreen = HISTORY;
     } else if (favoriteButton.isPressed()) {
-        currentScreen = 2;
+        currentScreen = FAVORITE;
     } else if (practiceButton.isPressed()) {
-        currentScreen = 3;
+        currentScreen = PRACTICE;
     } else if (settingButton.isPressed()) {
-        currentScreen = 4;
+        currentScreen = SETTING;
     } else if (like.isPressed()) {
         // randomWord.isFavorite = !randomWord.isFavorite;
         if (!randomWord -> isFavorite) {
@@ -81,6 +83,11 @@ void HomePage::handleEvent() {
     } else if (changeWord.isPressed()) {
 
         randomWord = &dictionary.getRandomWord();
+    }
+    else if (CheckCollisionPointRec(GetMousePosition(), { 232, 650, 93, 33 }) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+        currentScreen = SEARCH_RES;
+        SearchResPage::resetSrcoll();
+        SearchResPage::setSearchWord(randomWord);
     }
 
 }

@@ -35,11 +35,11 @@ void HistoryPage::handleEvent()
 {
     if (backButton.isPressed())
     {
-        currentScreen = 0;
+        currentScreen = HOME;
     }
     else if (settingButton.isPressed())
     {
-        currentScreen = 4;
+        currentScreen = SETTING;
     }
     else if (clearButton.isPressed())
     {

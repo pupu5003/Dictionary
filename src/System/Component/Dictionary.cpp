@@ -21,6 +21,12 @@ Word::~Word()
 
 Dictionary::Dictionary()
 {
+    for (int i = 0; i < sizeof(VNCodePoints) / sizeof(int); i++)
+    {
+        mapChar[VNCodePoints[i]] = i;
+    }
+    // cout << sizeof(VNCodePoints) / sizeof(int);
+    // exit(0);
     lodadData();
 }
 
@@ -65,6 +71,32 @@ void Dictionary::lodadData()
             word.type.push_back(type);
             word.definition.push_back(definition);
             words[i].push_back(word);
+            wordTrie[i].insert(keyWord, word.id);
+            // cout << definition << endl;
+        }
+    }
+
+    for (int i = 3; i < 5; i++)
+    {
+        ifstream file(fileName[i]);
+        if (!file.is_open())
+        {
+            cout << "Can't open file " << fileName[i] << endl;
+            return;
+        }
+        string line;
+        while (getline(file, line))
+        {
+            stringstream ss(line);
+            string keyWord, definition;
+            getline(ss, keyWord, '\\');
+            getline(ss, definition);
+            Word word;
+            word.id = words[i].size();
+            word.word = keyWord;
+            word.data = (dataSet)i;
+            word.definition.push_back(definition);
+            words[i].push_back(word);
             // wordTrie[i].insert(keyWord, word.id);
             // cout << definition << endl;
         }
@@ -73,8 +105,8 @@ void Dictionary::lodadData()
 
 Word& Dictionary::getRandomWord(dataSet data)
 {
-    data = engVie;//(dataSet)random(0, 2);
-    return words[data][random(words[data].size() - 1, words[data].size() - 1)];
+    data = (dataSet)random(0, 4);
+    return words[data][random(0, words[data].size() - 1)];
 }
 
 void Dictionary::addWord(Word word, dataSet data)

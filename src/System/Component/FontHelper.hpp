@@ -10,10 +10,11 @@ enum fontType
     Inter = 2,
     InterBold = 3,
     OpenSan = 4,
-    OpenSanBold = 5
+    OpenSanBold = 5,
+    RussoOne = 6
 };
 
-const int VNCodePoints[] = {
+static const int VNCodePoints[] = {
     97,   65,   224,  192,  7843, 7842, 227,  195,  225,  193,  7841, 7840,
     259,  258,  7857, 7856, 7859, 7858, 7861, 7860, 7855, 7854, 7863, 7862,
     226,  194,  7847, 7846, 7849, 7848, 7851, 7850, 7845, 7844, 7853, 7852,

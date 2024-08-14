@@ -5,6 +5,7 @@
 #include <../src/System/Component/button.hpp>
 #include <../asset/Color/color.hpp>
 #include <../src/System/Component/Dictionary.hpp>
+#include "UILibFunc.hpp"
 
 class FavoritePage : public Page
 {

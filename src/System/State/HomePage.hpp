@@ -1,6 +1,7 @@
 #pragma once
 #include "UILibFunc.hpp"
 #include <../src/System/Component/Dictionary.hpp>
+#include "SearchResPage.hpp"
 using namespace std;
 
 class HomePage : public Page

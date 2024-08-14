@@ -18,7 +18,7 @@ enum dataSet
         emoji = 3,
         slang = 4
     };
-
+const string dataSetName[5] = {"engEng", "engVie", "vieEng", "emoji", "slang"};
 struct Word
 {
     int id;
