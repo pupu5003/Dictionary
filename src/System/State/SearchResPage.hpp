@@ -16,7 +16,8 @@ private:
     Button liked;
     Button edit;
     Button deleteButton;
-    vector<pair<int, pair<float, float>>> idGap;
+    int l, r;
+    static vector<float> Gap;
     int& currentScreen;
     static Word* searchWord;
     static float scroll;

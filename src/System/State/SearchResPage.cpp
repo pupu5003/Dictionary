@@ -11,6 +11,7 @@ using namespace std;
 
 Word *SearchResPage::searchWord = nullptr;
 float SearchResPage::scroll = 0;
+vector<float> SearchResPage::Gap;
 
 SearchResPage::SearchResPage(int &currentScreen) : currentScreen(currentScreen)
 {
@@ -28,17 +29,34 @@ SearchResPage::SearchResPage(int &currentScreen) : currentScreen(currentScreen)
 
 void SearchResPage::display() const
 {
+    // int l = lower_bound(Gap.begin(), Gap.end(), visibleUP - scroll + gap) - Gap.begin() - 1;
+    // int r = upper_bound(Gap.begin(), Gap.end(), visibleDOWN - scroll) - Gap.begin() - 1;
+    // if (r < 0) r = 0; if (l < 0) l = 0;
+    // if (r > Gap.size() - 2) r = Gap.size() - 2; if (l > Gap.size() - 2) l = Gap.size() - 2; 
 
-    for (auto v : idGap)
+
+    // if (l == 0 && scroll > scrollUp) 
+    // {
+    //     scroll = scrollUp;
+    //     space = scroll;
+    // }
+    // else if (r == searchWord -> definition.size() - 1 && space + height < scrollDown) 
+    // {
+    //     space -= scroll;    
+    //     scroll = scrollDown - height - space;
+    //     space += scroll;
+    // }
+
+    for (int i = l; i <= r; i++)
     {
-        int i = v.first;
-        float space = v.second.first;
-        float height = v.second.second;
+        float height = Gap[i + 1] - Gap[i] - gap;
+        float space = Gap[i] + scroll;
         float heightDef = height - 100;
         float roundness = 0.15*444/height;
+
         DrawRectangleRounded({120, 210 + space, 1000, height}, roundness, 0, Color{244, 210, 210, 50});
         DrawRectangleRoundedLines({120, 210 + space, 1000, height}, roundness, 0, 1, BLACK);
-        if (i < searchWord -> type.size())
+        if (i < searchWord -> type.size() && searchWord -> type[i].size() > 2)
         {
             float dis = GetStringWidth(FontHelper::getInstance().getFont(Inter), searchWord -> type[i].c_str(), 36, 0.5f);
             DrawTextEx(FontHelper::getInstance().getFont(Inter), searchWord -> type[i].c_str(), { 622 - dis/2, 220 + space}, 36, 0.5f, RED);
@@ -95,37 +113,30 @@ void SearchResPage::handleEvent()
     }
 
     scroll += (int)(GetMouseWheelMove() * scrollSpeed);
-    idGap.clear();
-    float space = scroll;
-    for (int i = 0; i < searchWord -> definition.size(); i++)
+    l = lower_bound(Gap.begin(), Gap.end(), visibleUP - scroll - 210) - Gap.begin() - 1;
+    r = upper_bound(Gap.begin(), Gap.end(), visibleDOWN - scroll - 210) - Gap.begin() - 1;
+    if (r < 0) r = 0; if (l < 0) l = 0;
+    if (r > Gap.size() - 2) r = Gap.size() - 2; if (l > Gap.size() - 2) l = Gap.size() - 2; 
+
+    if (l == 0 && scroll > scrollUp) 
     {
-        float heightDef = (int)((GetStringWidth(FontHelper::getInstance().getFont(Inter), searchWord -> definition[i].c_str(), 40, 0.5f) + 871)/ 872) * 60 + gap;
-        float height = 100 + heightDef;
-        float roundness = 0.15*444/height;
-        if (i == 0 && scroll > scrollUp) 
-        {
-            scroll = scrollUp;
-            space = scroll;
-        }
-        else if (i == searchWord -> definition.size() - 1 && space + height < scrollDown) 
-        {
-            space -= scroll;    
-            scroll = scrollDown - height - space;
-            space += scroll;
-        }
+        scroll = scrollUp;
+    }
+    else if (r == searchWord -> definition.size() - 1 && scroll + Gap.back() - gap < scrollDown) 
+    {
+        scroll = scrollDown - Gap.back() + gap;
+    }
+
+    for (int i = l; i <= r; i++)
+    {
+        float height = Gap[i + 1] - Gap[i] - gap;
+        float space = Gap[i] + scroll;
+        float heightDef = height - 100;
     
-        if (210 + space + height < visibleUP || 210 + space > visibleDOWN) 
-        {
-            space += height + 40;
-            continue;
-        }
-        idGap.push_back({i, {space, height}});
         if (edit.isPressed(0, space))
         {
             cout << "Edit button is pressed " << i << endl;
         }
-        space += height + 40;
-
     }
 
 
@@ -135,7 +146,16 @@ void SearchResPage::handleEvent()
 void SearchResPage::setSearchWord(Word* word)
 {
     searchWord = word;
-    
+    Gap.clear();
+    float space = 0;
+    for (int i = 0; i < searchWord -> definition.size(); i++)
+    {
+        float heightDef = (int)((GetStringWidth(FontHelper::getInstance().getFont(Inter), searchWord -> definition[i].c_str(), 40, 0.5f) + 871)/ 872) * 60 + gap;
+        float height = 100 + heightDef;
+        Gap.push_back(space);
+        space += height + 40;
+    }
+    Gap.push_back(space);
     
 }
 

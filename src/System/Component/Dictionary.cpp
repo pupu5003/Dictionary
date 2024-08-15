@@ -42,7 +42,7 @@ void Dictionary::lodadData()
 {
     const char *fileName[5] = {"data/DictionaryData/engEng.txt", "data/DictionaryData/engVie.txt", "data/DictionaryData/vieEng.txt", "data/DictionaryData/emoji.txt", "data/DictionaryData/slang.txt"};
 
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < 5; i++)
     {
         ifstream file(fileName[i]);
         if (!file.is_open())
@@ -68,6 +68,7 @@ void Dictionary::lodadData()
             word.id = words[i].size();
             word.word = keyWord;
             word.data = (dataSet)i;
+            if (type == "") type = "()";
             word.type.push_back(type);
             word.definition.push_back(definition);
             words[i].push_back(word);
@@ -76,31 +77,32 @@ void Dictionary::lodadData()
         }
     }
 
-    for (int i = 3; i < 5; i++)
-    {
-        ifstream file(fileName[i]);
-        if (!file.is_open())
-        {
-            cout << "Can't open file " << fileName[i] << endl;
-            return;
-        }
-        string line;
-        while (getline(file, line))
-        {
-            stringstream ss(line);
-            string keyWord, definition;
-            getline(ss, keyWord, '\\');
-            getline(ss, definition);
-            Word word;
-            word.id = words[i].size();
-            word.word = keyWord;
-            word.data = (dataSet)i;
-            word.definition.push_back(definition);
-            words[i].push_back(word);
-            // wordTrie[i].insert(keyWord, word.id);
-            // cout << definition << endl;
-        }
-    }
+    // for (int i = 3; i < 5; i++)
+    // {
+    //     ifstream file(fileName[i]);
+        
+    //     if (!file.is_open())
+    //     {
+    //         cout << "Can't open file " << fileName[i] << endl;
+    //         return;
+    //     }
+    //     string line;
+    //     while (getline(file, line))
+    //     {
+    //         stringstream ss(line);
+    //         string keyWord, definition;
+    //         getline(ss, keyWord, '\\');
+    //         getline(ss, definition);
+    //         Word word;
+    //         word.id = words[i].size();
+    //         word.word = keyWord;
+    //         word.data = (dataSet)i;
+    //         word.definition.push_back(definition);
+    //         words[i].push_back(word);
+    //         // wordTrie[i].insert(keyWord, word.id);
+    //         // cout << definition << endl;
+    //     }
+    // }
 }
 
 Word& Dictionary::getRandomWord(dataSet data)

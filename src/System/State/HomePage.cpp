@@ -37,8 +37,10 @@ void HomePage::display() const {
     wordCard.display();
     DrawTextEx(FontHelper::getInstance().getFont(InterBold), randomWord -> word.c_str(), { 234, 320}, 45, 0.5f, BLACK);
     float dis = GetStringWidth(FontHelper::getInstance().getFont(InterBold), randomWord -> word.c_str(), 45, 0.5f);
-    if (randomWord -> type.size() > 0)
+   
+    if (randomWord -> type.size() > 0 && randomWord -> type[0].size() > 2)
     DrawTextBoxed(FontHelper::getInstance().getFont(Inter), randomWord -> type[0].c_str(), { 234 + dis, 328, 636 -dis, 35}, 34, 0.5f, false, BLACK);
+   
     DrawTextBoxed(FontHelper::getInstance().getFont(Inter) ,randomWord -> definition[0].c_str(), {232, 380, 800, 280}, 38, 0.5f, true, BLACK);
     
     if (CheckCollisionPointRec(GetMousePosition(), { 232, 650, 93, 33 })) {
@@ -48,8 +50,7 @@ void HomePage::display() const {
         DrawTextEx(FontHelper::getInstance().getFont(OpenSan), "(More...)", { 232, 650 }, 33, 0.5f, BLACK);
     }
     DrawTextEx(FontHelper::getInstance().getFont(RussoOne), dataSetName[randomWord -> data].c_str(), {900, 650 }, 33, 0.5f, BLACK);
-    // Font font = LoadFontEx("asset/Font/ARIAL.ttf", 30, 0, 250);
-    // DrawTextEx( font, randomWord -> definition[0].c_str(), { 232, 380 }, 30, 0.5f, BLACK);;
+   
     if (randomWord -> isFavorite) {
         liked.display();
     } else {
