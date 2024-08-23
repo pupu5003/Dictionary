@@ -26,6 +26,10 @@ PracticeQuestionPage::PracticeQuestionPage(int &currentScreen, PracticeQuestion 
         answerBox[2].setButton("asset/Image/PracticeAnswerBox_Word.png", 723, 375);
         answerBox[3].setButton("asset/Image/PracticeAnswerBox_Word.png", 723, 500);
     }
+
+    questionBox.setText(q.question, Arial, 30, 3, true, BLACK);
+    for (int i = 0; i < 4; ++i) 
+        answerBox[i].setText(q.answer[i], Arial, 20, 3, true, BLACK);
 }
 
 void PracticeQuestionPage::display() const

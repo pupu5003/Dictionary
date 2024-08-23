@@ -14,13 +14,24 @@ Button::Button(const char* path, float x, float y, float scale) {
     setButton(path, x, y, scale);
 }
 
-void Button::setButton(const char *path, float x, float y, float scale)
+// Button::Button(const char* path, float x, float y, float scale, string text, fontType font, float fontSize, float spacing, bool wordWrap, Color color) {
+//     setButton(path, x, y, scale, text, font, fontSize, spacing, wordWrap, color);
+// }
 
+void Button::setButton(const char *path, float x, float y, float scale)
 {
     loadTexture(path);
     setRect(x, y, texture.width, texture.height);
     this->scale = scale;
 }
+
+// void Button::setButton(const char *path, float x, float y, float scale, string text, fontType font, float fontSize, float spacing, bool wordWrap, Color color)
+// {
+//     loadTexture(path);
+//     setRect(x, y, texture.width, texture.height);
+//     this->scale = scale;
+//     this->text.setTextBox(font, text, this->rect, fontSize, spacing, wordWrap, color);
+// }
 
 Button::~Button()
 {
@@ -35,10 +46,15 @@ void Button::display(float x, float y) const
         temp.width = mRect.width;
         temp.height = mRect.height;
         DrawTexture(temp, mRect.x + x, mRect.y + y, mColor);
+
+        TextBox tempText = text;
+        tempText.zoomIn(scale);
+        tempText.display();
     }
     else
     {
         DrawTexture(texture, rect.x + x, rect.y + y, color);
+        text.display();
     }
 }
 
@@ -62,6 +78,10 @@ void Button::setScale(float scale)
 {
     this->scale = scale;
     setRect(rect.x, rect.y, rect.width, rect.height);
+}
+
+void Button::setText(string text, fontType font, float fontSize, float spacing, bool wordWrap, Color color) {
+        this->text.setTextBox(font, text, this->rect, fontSize, spacing, wordWrap, color);
 }
 
 void Button::disable()
