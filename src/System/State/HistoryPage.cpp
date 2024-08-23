@@ -1,7 +1,7 @@
 #include "HistoryPage.hpp"
 using namespace std;
 
-HistoryPage::HistoryPage(int &currentScreen, HistoryManager& hisManeger) : currentScreen(currentScreen) , hisManeger(hisManeger)
+HistoryPage::HistoryPage(int &currentScreen) : currentScreen(currentScreen)
 {
     historyTag = LoadTexture("asset/Image/HistoryTag.png");
     
@@ -9,7 +9,7 @@ HistoryPage::HistoryPage(int &currentScreen, HistoryManager& hisManeger) : curre
 
     settingButton.setButton("asset/Image/settings_ic.png", 1159, 23);
 
-    clearButton.setButton("asset/Image/ClearAllButton.png", 490, 150);
+    clearButton.setButton("asset/Image/ClearAllButton.png", 531, 124);
 
 }
 

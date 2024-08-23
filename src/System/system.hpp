@@ -5,7 +5,6 @@
 #include "../src/System/State/HomePage.hpp"
 #include "../src/System/State/FavoritePage.hpp"
 #include "../src/System/State/HistoryPage.hpp"
-#include "../src/System/Component/HistoryManager.hpp"
 #include "../src/System/State/SettingPage.hpp"
 #include "../src/System/State/PracticePage.hpp"
 #include "../src/System/State/PracticeQuestionPage.hpp"
@@ -24,7 +23,6 @@ private:
     int currentScreen;
     vector<Page*> pages;
     Dictionary dictionary;
-    HistoryManager hisManager;
 public:
     // Word *searchWord;
     System(/* args */);

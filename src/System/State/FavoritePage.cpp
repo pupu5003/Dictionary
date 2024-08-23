@@ -1,9 +1,13 @@
 #include "FavoritePage.hpp"
 using namespace std;
 
-#define VISIBLE_HISTORY_ITEMS 4
+#define visibleItems 7
+#define scrollSpeed 4
+#define gap 115
+#define scrollUp 20
+#define scrollDown -25
 
-FavoritePage::FavoritePage(int &currentScreen, Dictionary &dictionary) : currentScreen(currentScreen), dictionary(dictionary)
+FavoritePage::FavoritePage(int &currentScreen, Dictionary &dictionary) : currentScreen(currentScreen), dictionary(dictionary), favorite(dictionary.getFavorite())
 {
     favoriteTag = LoadTexture("asset/Image/FavouriteTag.png");
     
@@ -11,72 +15,102 @@ FavoritePage::FavoritePage(int &currentScreen, Dictionary &dictionary) : current
 
     settingButton.setButton("asset/Image/settings_ic.png", 1159, 23);
 
-    clearButton.setButton("asset/Image/ClearAllButton.png", 490, 150);
+    clearButton.setButton("asset/Image/ClearAllButton.png", 531, 124);
+    xButton.setButton("asset/Image/XImage.png", 1060, 237, 1.1);
 
     Box = LoadTexture("asset/Image/FavoriteBox.png");
-    XButton = LoadTexture("asset/Image/XImage.png");
-    fontRussoOne = LoadFontEx("asset/Font/Russo_One.ttf", 200, 0, 250);
+
+    barrier = LoadTexture("asset/Image/SearchResTag.png");
+
+    scroll = 0;
+    
+    upWord = 0; downWord = -1;
 }
 
 void FavoritePage::display() const
 {
+    
+    for (int i = upWord; i <= downWord; i++)
+    {   
+        DrawTexture(Box, 120, 217 + i * gap + scroll, WHITE);
+        xButton.display(0, i * gap + scroll);
+        const Word &word = dictionary.getWord(favorite[i].first, favorite[i].second);
+        DrawTextEx(FontHelper::getInstance().getFont(InterBold), word.word.c_str(), { 172, 240 + i * gap + scroll}, 40, 0.5f, BLACK);
+    }
+    
+    
+    
+    DrawTexture(barrier, 0, 0, WHITE);
     DrawTexture(favoriteTag, 0, 0, WHITE);
 
     settingButton.display();
 
     backButton.display();
 
+
     clearButton.display();
 
-    for (int i = 0; i < dictionary.favorite.size() && i < VISIBLE_HISTORY_ITEMS; i++) {
-        Rectangle historyBox = {80, (float)257 + 114*i, 1043, 75};
-        Rectangle xButtonBox = {1163, historyBox.y + 20, (float)XButton.height,(float) XButton.width};
-        DrawTexture(Box, historyBox.x, historyBox.y, WHITE);
-        DrawTexture(XButton, xButtonBox.x, xButtonBox.y, WHITE);
-
-        // // Draw word and description
-        // const char* text2 = dictionary.favorite[engEng][i].word.c_str();
-        // int fontSize2 = 40;
-        // float spacing2 = 1.0f; // Spacing between letters
-        // Vector2 textSize2 = MeasureTextEx(fontRussoOne, text2, fontSize2, spacing2);
-        // float posY = historyBox.y + (historyBox.height - textSize2.y) / 2;
-        // DrawTextEx(fontRussoOne, text2, {historyBox.x + 40, posY}, fontSize2, spacing2, BLACK);
-    }
+    DrawLine(107, 192, 1136, 192, BLACK);
 
 }
 
 void FavoritePage::handleEvent()
 {
+    scroll += GetMouseWheelMove() * scrollSpeed;
+    if ((int)favorite.size() == 0)
+    {
+        upWord = 0; downWord = -1;
+    }
+    else
+    {
+        upWord = (int)(scrollDown - scroll) / gap - 1;
+        if (upWord < 0) upWord = 0;
+        downWord = min(upWord + visibleItems, (int)favorite.size() - 1);
+
+        if (upWord == 0 && scroll > scrollUp) scroll = scrollUp;
+        
+        if (favorite.size() <= 4)
+        {
+            if (scroll < scrollDown) scroll = scrollDown;
+        }
+        else
+        {
+            if (downWord == favorite.size() - 1 && scroll + (downWord - 3) * gap < scrollDown) scroll = scrollDown - (downWord - 3) * gap;
+        }
+
+    }
     if (backButton.isPressed())
     {
+        scroll = 0;
         currentScreen = HOME;
     }
     else if (settingButton.isPressed())
     {
+        scroll = 0;
         currentScreen = SETTING;
     }
     else if (clearButton.isPressed())
     {
-        for (auto& temp : dictionary.favorite) {
-            dictionary.removeFavorite(temp.first, temp.second);
+       dictionary.removeAllFavorite();
+    }
+    else
+    {
+        for (int i = upWord; i <= downWord; i++)
+        {
+            if (xButton.isPressed(0, i * gap + scroll))
+            {
+                dictionary.removeFavorite(favorite[i].first, favorite[i].second);
+                break;
+            }
         }
     }
 
-    for (int i = 0; i < dictionary.favorite.size(); i++) {
-        Rectangle historyBox = {80, (float)257 + 114*i, 1043, 75};
-        Rectangle xButtonBox = {1163, historyBox.y + 20, (float)XButton.height, (float)XButton.width};
-        DrawTexture(Box, historyBox.x, historyBox.y, WHITE);
-        DrawTexture(XButton, xButtonBox.x, xButtonBox.y, WHITE);
-
-        if (CheckCollisionPointRec(GetMousePosition(), xButtonBox) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
-            dictionary.removeFavorite(dictionary.favorite[i].first, dictionary.favorite[i].second);
-            break;
-        }
-    }    
 
 }
 
 FavoritePage::~FavoritePage()
 {
     UnloadTexture(favoriteTag);
+    UnloadTexture(barrier);
+    UnloadTexture(Box);
 }

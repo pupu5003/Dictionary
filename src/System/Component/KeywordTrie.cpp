@@ -1,6 +1,8 @@
 #include "KeywordTrie.hpp"
 using namespace std;
 
+int mapChar[10000] = {0};
+
 int utf8ToCodepoint(const std::string& utf8Str, int& index) {
     int codepoint = 0;
     unsigned char lead = utf8Str[index];
@@ -41,6 +43,14 @@ KeywordNode::KeywordNode()
     }
 }
 
+void initMapChar()
+{
+    for (int i = 0; i < sizeof(VNCodePoints) / sizeof(int); i++)
+    {
+        mapChar[VNCodePoints[i]] = i;
+    }
+}
+
 KeywordTrie::KeywordTrie() 
 {
     root = new KeywordNode();
@@ -65,6 +75,7 @@ void KeywordTrie::insert(string& keyword, int Id)
         //     exit(0);
         // }
         int index = mapChar[codepoint];
+        // cout << codepoint << " " << index << endl;
         if (temp->children[index] == nullptr)
         {
             temp->children[index] = new KeywordNode();

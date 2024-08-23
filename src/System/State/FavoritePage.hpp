@@ -11,14 +11,18 @@ class FavoritePage : public Page
 {
 private:
     Texture2D favoriteTag;
+    Texture2D barrier;
     Texture2D Box;
-    Texture2D XButton;
+    Button xButton;
     Button backButton;
     Button settingButton; 
     Button clearButton;
-    Font fontRussoOne;
 
+    float scroll;
+
+    int upWord, downWord;
     int& currentScreen;
+    vector<pair<dataSet,int>>& favorite;
     Dictionary& dictionary;
 
 public:
