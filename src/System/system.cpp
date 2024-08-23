@@ -1,7 +1,7 @@
 #include "system.hpp"
 using namespace std;
 
-System::System(/* args */): searchBar(dictionary)
+System::System(/* args */): currentScreen(1), searchBar(dictionary, currentScreen)
 {
     InitWindow(screenWidth, screenHeight,"The Dictionary");
     SetTargetFPS(60);
@@ -9,12 +9,11 @@ System::System(/* args */): searchBar(dictionary)
     // load components
     pages.push_back(new SearchResPage(currentScreen, dictionary));
     pages.push_back(new HomePage(currentScreen, dictionary));
-    pages.push_back(new HistoryPage(currentScreen));
+    pages.push_back(new HistoryPage(currentScreen, dictionary));
     pages.push_back(new FavoritePage(currentScreen, dictionary));
     pages.push_back(new PracticeQuestionPage(currentScreen, dictionary));
     pages.push_back(new SettingPage(currentScreen));
     pages.push_back(new AddWordPage(currentScreen)); 
-    currentScreen = 1;
     cout << "System is created" << endl;
 }
 

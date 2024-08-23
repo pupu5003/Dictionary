@@ -21,12 +21,11 @@ private:
     int& currentScreen;
     Dictionary& dictionary;
     static Word* searchWord;
-    static float scroll;
+    float scroll;
 public:
     SearchResPage(int &currentScreen, Dictionary &dictionary);
     ~SearchResPage();
     static void setSearchWord(Word* word);
-    static void resetSrcoll();
     void display() const override;
     void handleEvent() override;
 };

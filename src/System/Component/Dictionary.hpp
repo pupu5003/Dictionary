@@ -57,5 +57,9 @@ public:
     void removeFavorite(dataSet data, int id);
     void removeAllFavorite();
     vector<pair<dataSet,int>>& getFavorite();
+    void addHistory(dataSet data, int id);
+    void removeHistory(dataSet data, int id);
+    void removeAllHistory();
+    vector<pair<dataSet,int>>& getHistory();
     vector<int> predict(vector<int> &codePoints, dataSet data = engEng);
 };

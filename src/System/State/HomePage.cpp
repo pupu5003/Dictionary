@@ -87,7 +87,6 @@ void HomePage::handleEvent() {
     }
     else if (CheckCollisionPointRec(GetMousePosition(), { 232, 650, 93, 33 }) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
         currentScreen = SEARCH_RES;
-        SearchResPage::resetSrcoll();
         SearchResPage::setSearchWord(randomWord);
     }
 

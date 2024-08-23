@@ -3,7 +3,7 @@
 using namespace std;
 
 
-SearchBar::SearchBar(Dictionary& dictionary) : dictionary(dictionary)
+SearchBar::SearchBar(Dictionary& dictionary, int& currentScreen) : dictionary(dictionary), currentScreen(currentScreen)
 {
     isHandle = false;
 }
@@ -20,6 +20,7 @@ void SearchBar::display() const
     DrawTextCodepoints(FontHelper::getInstance().getFont(Inter), (int*)(codePoints.data()), (int)codePoints.size(), {350, 110}, 40, 0.5, BLACK);
 
     //print predict
+    if (isHandle)
     for (int i = 0; i < predict.size(); i++)
     {
         Word& word = dictionary.getWord(engEng, predict[i]);
@@ -38,6 +39,19 @@ void SearchBar::handleEvent()
     {
         isHandle = false;
     }
+
+    for (float i = 0; i < predict.size(); i++)
+    {
+        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec(GetMousePosition(), {339.41, 163 + 61 * i, 580.74, 61}))
+        {
+            isHandle = false;
+            SearchResPage::setSearchWord(&dictionary.getWord(engEng, predict[i]));
+            currentScreen = 0;
+            dictionary.addHistory(engEng, predict[i]);
+            return;
+        }
+    }
+
     if (isHandle == false)
     {
         return;
@@ -66,5 +80,11 @@ void SearchBar::handleEvent()
     {
         predict = dictionary.predict(codePoints);
     }
+    else
+    {
+        predict.clear();
+    }
+
+    
 
 }

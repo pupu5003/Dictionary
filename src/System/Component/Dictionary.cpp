@@ -144,6 +144,23 @@ vector<pair<dataSet,int>>& Dictionary::getFavorite(){
     return favorite;
 }
 
+void Dictionary::addHistory(dataSet data, int id){
+    history.push_back({data, id});
+}
+
+void Dictionary::removeHistory(dataSet data, int id){
+    auto it = find(history.begin(), history.end(), make_pair(data, id));
+    history.erase(it);
+}
+
+void Dictionary::removeAllHistory(){
+    history.clear();
+}
+vector<pair<dataSet, int>>& Dictionary::getHistory()
+{
+    return history;
+}
+
 vector<int> Dictionary::predict(vector<int> &codePoints, dataSet data)
 {
     return wordTrie[data].predict(codePoints);

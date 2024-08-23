@@ -10,7 +10,6 @@ using namespace std;
 #define SLIGHTRED Color{244, 210, 210, 50}
 
 Word *SearchResPage::searchWord = nullptr;
-float SearchResPage::scroll = 0;
 vector<float> SearchResPage::Gap;
 
 SearchResPage::SearchResPage(int &currentScreen, Dictionary& dictionary) : currentScreen(currentScreen), dictionary(dictionary)
@@ -28,6 +27,8 @@ SearchResPage::SearchResPage(int &currentScreen, Dictionary& dictionary) : curre
     deleteButton.setButton("asset/Image/Delete_ic.png", 1046, 134, 1.1);
 
     edit.setButton("asset/Image/Edit_ic.png", 1053, 215, 1.1);
+
+    scroll = 0;
 }
 
 void SearchResPage::display() const
@@ -80,10 +81,12 @@ void SearchResPage::handleEvent()
     
     if (backButton.isPressed())
     {
+        scroll = 0;
         currentScreen = HOME;
     }
     else if (settingButton.isPressed())
     {
+        scroll = 0;
         currentScreen = SETTING;
     }
     else if (like.isPressed())
@@ -150,11 +153,6 @@ void SearchResPage::setSearchWord(Word* word)
     }
     Gap.push_back(space);
     
-}
-
-void SearchResPage::resetSrcoll()
-{
-    scroll = 0;
 }
 
 SearchResPage::~SearchResPage()
