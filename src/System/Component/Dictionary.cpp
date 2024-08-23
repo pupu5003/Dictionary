@@ -127,9 +127,12 @@ void Dictionary::removeFavorite(dataSet data, int id){
     favorite.erase(it);
 }
 
-void Dictionary::removeFavorite(int index){
-    words[favorite[index].first][favorite[index].second].isFavorite = false;
-    favorite.erase(favorite.begin() + index);
+void Dictionary::removeAllFavorite(){
+    for (auto v : favorite)
+    {
+        words[v.first][v.second].isFavorite = false;
+    }
+    favorite.clear();
 }
 
 vector<pair<dataSet,int>>& Dictionary::getFavorite(){

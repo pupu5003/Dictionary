@@ -11,6 +11,7 @@ class FavoritePage : public Page
 {
 private:
     Texture2D favoriteTag;
+    Texture2D barrier;
     Texture2D Box;
     Button xButton;
     Button backButton;

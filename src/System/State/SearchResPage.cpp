@@ -13,7 +13,7 @@ Word *SearchResPage::searchWord = nullptr;
 float SearchResPage::scroll = 0;
 vector<float> SearchResPage::Gap;
 
-SearchResPage::SearchResPage(int &currentScreen) : currentScreen(currentScreen)
+SearchResPage::SearchResPage(int &currentScreen, Dictionary& dictionary) : currentScreen(currentScreen), dictionary(dictionary)
 {
     searchResTag = LoadTexture("asset/Image/SearchResTag.png");
     
@@ -88,7 +88,14 @@ void SearchResPage::handleEvent()
     }
     else if (like.isPressed())
     {
-        searchWord -> isFavorite = !searchWord -> isFavorite;
+        if (!searchWord -> isFavorite)
+        {
+            dictionary.addFavorite(searchWord -> data, searchWord -> id);
+        }
+        else
+        {
+            dictionary.removeFavorite(searchWord -> data, searchWord -> id);
+        }
     }
     else if (liked.isPressed())
     {
@@ -126,11 +133,7 @@ void SearchResPage::handleEvent()
                 cout << "Edit button is pressed " << i << endl;
             }
         }
-    }
-
-
-
-        
+    }        
 }
 
 void SearchResPage::setSearchWord(Word* word)

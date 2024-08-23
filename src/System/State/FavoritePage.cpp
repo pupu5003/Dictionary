@@ -20,6 +20,8 @@ FavoritePage::FavoritePage(int &currentScreen, Dictionary &dictionary) : current
 
     Box = LoadTexture("asset/Image/FavoriteBox.png");
 
+    barrier = LoadTexture("asset/Image/SearchResTag.png");
+
     scroll = 0;
     
     upWord = 0; downWord = -1;
@@ -38,11 +40,13 @@ void FavoritePage::display() const
     
     
     
+    DrawTexture(barrier, 0, 0, WHITE);
     DrawTexture(favoriteTag, 0, 0, WHITE);
 
     settingButton.display();
 
     backButton.display();
+
 
     clearButton.display();
 
@@ -87,15 +91,16 @@ void FavoritePage::handleEvent()
     }
     else if (clearButton.isPressed())
     {
-       
+       dictionary.removeAllFavorite();
     }
     else
     {
         for (int i = upWord; i <= downWord; i++)
         {
-            if (xButton.isPressed())
+            if (xButton.isPressed(0, i * gap + scroll))
             {
-
+                dictionary.removeFavorite(favorite[i].first, favorite[i].second);
+                break;
             }
         }
     }
@@ -106,4 +111,6 @@ void FavoritePage::handleEvent()
 FavoritePage::~FavoritePage()
 {
     UnloadTexture(favoriteTag);
+    UnloadTexture(barrier);
+    UnloadTexture(Box);
 }

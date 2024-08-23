@@ -51,6 +51,6 @@ public:
     void editWord(int id, dataSet data, int curDef, string& def);
     void addFavorite(dataSet data, int id);
     void removeFavorite(dataSet data, int id);
-    void removeFavorite(int index);
+    void removeAllFavorite();
     vector<pair<dataSet,int>>& getFavorite();
 };
