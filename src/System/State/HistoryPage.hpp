@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include "UILibFunc.hpp"
-#include "../Component/HistoryManager.hpp"
+// #include "../Component/HistoryManager.hpp"
 
 using namespace std;
 
@@ -14,9 +14,8 @@ private:
     Button clearButton;
 
     int& currentScreen;
-    HistoryManager& hisManeger;
 public:
-    HistoryPage(int &currentScreen, HistoryManager& hisManeger);
+    HistoryPage(int &currentScreen);
     ~HistoryPage();
     void display() const override;
     void handleEvent() override;

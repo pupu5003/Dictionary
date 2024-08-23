@@ -39,15 +39,18 @@ private:
     vector<Word> words[5];
     KeywordTrie wordTrie[5];
     vector<int> vaildId[5];
+    vector<pair<dataSet, int>> favorite, history;
 public:
     Dictionary();
     ~Dictionary();
-    vector<pair<dataSet, int>> favorite;
-   void lodadData();
-   Word& getRandomWord(dataSet data = engVie);
-   void addWord(Word word, dataSet data);
-   void removeWord(int id, dataSet data);
-   void editWord(int id, dataSet data, int curDef, string& def);
-   void addFavorite(dataSet data, int id);
-   void removeFavorite(dataSet data, int id);
+    void lodadData();
+    Word& getRandomWord(dataSet data = engVie);
+    Word& getWord(dataSet data, int id);
+    void addWord(Word word, dataSet data);
+    void removeWord(int id, dataSet data);
+    void editWord(int id, dataSet data, int curDef, string& def);
+    void addFavorite(dataSet data, int id);
+    void removeFavorite(dataSet data, int id);
+    void removeFavorite(int index);
+    vector<pair<dataSet,int>>& getFavorite();
 };

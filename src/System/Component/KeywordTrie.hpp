@@ -4,14 +4,16 @@
 #include <raylib.h>
 #include "../src/DataStructure/Trie.hpp"
 #include <stack>
-#include <wchar.h>
+#include "FontHelper.hpp"
 // #include "Dictionary.hpp"
 using namespace std;
 
 const int limitPredict = 10;
 const int limitLetter = 262;
 
-static int mapChar[10000];
+extern int mapChar[10000];
+
+void initMapChar();
 
 struct KeywordNode
 {

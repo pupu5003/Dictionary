@@ -21,10 +21,7 @@ Word::~Word()
 
 Dictionary::Dictionary()
 {
-    for (int i = 0; i < sizeof(VNCodePoints) / sizeof(int); i++)
-    {
-        mapChar[VNCodePoints[i]] = i;
-    }
+    initMapChar();
     // cout << sizeof(VNCodePoints) / sizeof(int);
     // exit(0);
     lodadData();
@@ -73,42 +70,20 @@ void Dictionary::lodadData()
             word.definition.push_back(definition);
             words[i].push_back(word);
             wordTrie[i].insert(keyWord, word.id);
-            // cout << definition << endl;
         }
     }
 
-    // for (int i = 3; i < 5; i++)
-    // {
-    //     ifstream file(fileName[i]);
-        
-    //     if (!file.is_open())
-    //     {
-    //         cout << "Can't open file " << fileName[i] << endl;
-    //         return;
-    //     }
-    //     string line;
-    //     while (getline(file, line))
-    //     {
-    //         stringstream ss(line);
-    //         string keyWord, definition;
-    //         getline(ss, keyWord, '\\');
-    //         getline(ss, definition);
-    //         Word word;
-    //         word.id = words[i].size();
-    //         word.word = keyWord;
-    //         word.data = (dataSet)i;
-    //         word.definition.push_back(definition);
-    //         words[i].push_back(word);
-    //         // wordTrie[i].insert(keyWord, word.id);
-    //         // cout << definition << endl;
-    //     }
-    // }
 }
 
 Word& Dictionary::getRandomWord(dataSet data)
 {
     data = (dataSet)random(0, 4);
     return words[data][random(0, words[data].size() - 1)];
+}
+
+Word& Dictionary::getWord(dataSet data, int id)
+{
+    return words[data][id];
 }
 
 void Dictionary::addWord(Word word, dataSet data)
@@ -148,14 +123,15 @@ void Dictionary::addFavorite(dataSet data, int id){
 
 void Dictionary::removeFavorite(dataSet data, int id){
     words[data][id].isFavorite = false;
-    for (int i = 0; i < favorite.size(); i++)
-    {
-        if (favorite[i].first == data && favorite[i].second == id)
-        {
-            swap(favorite[i], favorite.back());
-            favorite.pop_back();
-            break;
-        }
-    }
+    auto it = find(favorite.begin(), favorite.end(), make_pair(data, id));
+    favorite.erase(it);
 }
 
+void Dictionary::removeFavorite(int index){
+    words[favorite[index].first][favorite[index].second].isFavorite = false;
+    favorite.erase(favorite.begin() + index);
+}
+
+vector<pair<dataSet,int>>& Dictionary::getFavorite(){
+    return favorite;
+}
