@@ -5,8 +5,9 @@
 #include <fstream>
 #include <sstream>
 #include "KeywordTrie.hpp"
+#include "FontHelper.hpp"
+#include "OtherFunc.hpp"
 #include <wchar.h>
-#include "../src/System/State/UILibFunc.hpp"
 using namespace std;
 
 
@@ -43,8 +44,12 @@ private:
 public:
     Dictionary();
     ~Dictionary();
+
     void lodadData();
-    Word& getRandomWord(dataSet data = engVie);
+
+    vector<pair<dataSet, int>> favorite;
+    Word& getRandomWord();
+    Word& getRandomWord(dataSet data);
     Word& getWord(dataSet data, int id);
     void addWord(Word word, dataSet data);
     void removeWord(int id, dataSet data);
