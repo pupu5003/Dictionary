@@ -74,6 +74,10 @@ void KeywordTrie::insert(string& keyword, int Id)
         //     cout << "Error:" <<i << " " << keyword <<  " " << getCode<< " " <<mapChar[getCode]  << endl;
         //     exit(0);
         // }
+        if (codepoint >= 65 && codepoint <= 90)
+        {
+            codepoint += 32;
+        }   
         int index = mapChar[codepoint];
         // cout << codepoint << " " << index << endl;
         if (temp->children[index] == nullptr)
@@ -130,13 +134,13 @@ void KeywordTrie::internalRemove(KeywordNode* &node, string& keyword, int index)
     return;
 }
 
-vector<int> KeywordTrie::predict(string& keyword) 
+vector<int> KeywordTrie::predict(vector<int>& codePoints) 
 {
     KeywordNode *temp = root;
     vector<int> result;
-    for (int i = 0; i < keyword.size(); i++)
+    for (int i = 0; i < codePoints.size(); i++)
     {
-        int index = mapChar[(int)keyword[i]];
+        int index = mapChar[codePoints[i]];
         if (temp->children[index] == nullptr)
         {
             return result;

@@ -143,3 +143,8 @@ void Dictionary::removeAllFavorite(){
 vector<pair<dataSet,int>>& Dictionary::getFavorite(){
     return favorite;
 }
+
+vector<int> Dictionary::predict(vector<int> &codePoints, dataSet data)
+{
+    return wordTrie[data].predict(codePoints);
+}

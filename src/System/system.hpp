@@ -12,6 +12,7 @@
 #include "../src/System/State/SearchResPage.hpp"
 #include "../asset/Color/color.hpp"
 #include "../src/System/Component/Dictionary.hpp"
+#include "../src/System/Component/SearchBar.hpp"
 using namespace std;
 
 class System
@@ -23,6 +24,7 @@ private:
     int currentScreen;
     vector<Page*> pages;
     Dictionary dictionary;
+    SearchBar searchBar;
 public:
     // Word *searchWord;
     System(/* args */);

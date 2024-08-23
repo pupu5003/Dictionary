@@ -47,7 +47,6 @@ public:
 
     void lodadData();
 
-    vector<pair<dataSet, int>> favorite;
     Word& getRandomWord();
     Word& getRandomWord(dataSet data);
     Word& getWord(dataSet data, int id);
@@ -58,4 +57,5 @@ public:
     void removeFavorite(dataSet data, int id);
     void removeAllFavorite();
     vector<pair<dataSet,int>>& getFavorite();
+    vector<int> predict(vector<int> &codePoints, dataSet data = engEng);
 };

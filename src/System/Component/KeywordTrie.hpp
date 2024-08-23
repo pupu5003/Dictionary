@@ -34,5 +34,5 @@ public:
     void insert(string& keyword, int Id);
     int search(string& keyword);
     void remove(string& keyword);
-    vector<int> predict(string& keyword);
+    vector<int> predict(vector<int>& codePoints);
 };
