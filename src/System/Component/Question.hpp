@@ -1,5 +1,6 @@
 #include <string>
 #include <vector>
+#include "Dictionary.hpp"
 using namespace std;
 
 
@@ -17,4 +18,4 @@ struct PracticeQuestion {
     PracticeQuestion(bool type, std::string question, std::string a, std::string b, std::string c, std::string d, int correct);
 };
 
-PracticeQuestion generateQuestion();
+PracticeQuestion generateQuestion(Dictionary& dictionary, dataSet data);

@@ -105,9 +105,14 @@ void Dictionary::lodadData()
     // }
 }
 
+Word& Dictionary::getRandomWord()
+{
+    int data = random((int)0, (int)4);
+    return words[data][random(0, words[data].size() - 1)];
+}
+
 Word& Dictionary::getRandomWord(dataSet data)
 {
-    data = (dataSet)random(0, 4);
     return words[data][random(0, words[data].size() - 1)];
 }
 

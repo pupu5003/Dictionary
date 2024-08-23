@@ -1,9 +1,10 @@
 #include "PracticeQuestionPage.hpp"
 using namespace std;
 
-PracticeQuestionPage::PracticeQuestionPage(int &currentScreen, PracticeQuestion q) : currentScreen(currentScreen)
+PracticeQuestionPage::PracticeQuestionPage(int &currentScreen, Dictionary& dictionary) : currentScreen(currentScreen), dictionary(dictionary)
 {
-    question = q;
+    this->dictionary = dictionary;
+    question = generateQuestion(dictionary, data);
 
     practiceTag = LoadTexture("asset/Image/PracticeTag.png");
     backButton.setButton("asset/Image/back_ic.png", 45, 31);
@@ -27,9 +28,9 @@ PracticeQuestionPage::PracticeQuestionPage(int &currentScreen, PracticeQuestion 
         answerBox[3].setButton("asset/Image/PracticeAnswerBox_Word.png", 723, 500);
     }
 
-    questionBox.setText(q.question, Arial, 30, 3, true, BLACK);
+    questionBox.setText(this->question.question, Arial, 30, 3, true, BLACK);
     for (int i = 0; i < 4; ++i) 
-        answerBox[i].setText(q.answer[i], Arial, 20, 3, true, BLACK);
+        answerBox[i].setText(this->question.answer[i], Arial, 20, 3, true, BLACK);
 }
 
 void PracticeQuestionPage::display() const
@@ -57,6 +58,9 @@ void PracticeQuestionPage::handleEvent()
     {
         chosenAnswer = -1;
         newQuestion();
+        questionBox.setText(this->question.question, Arial, 30, 3, true, BLACK);
+        for (int i = 0; i < 4; ++i) 
+            answerBox[i].setText(this->question.answer[i], Arial, 20, 3, true, BLACK);
     }
     else if (chosenAnswer != -1) {}      //If answer has been chosen, do nothing  
     else {
@@ -97,7 +101,7 @@ const PracticeQuestionPage& PracticeQuestionPage::operator=(const PracticeQuesti
 }
 
 void PracticeQuestionPage::newQuestion() {
-    question = generateQuestion();
+    question = generateQuestion(dictionary, data);
     if (question.type_askByWord) {
         questionBox.setButton("asset/Image/PracticeQuestionBox_Word.png", 75, 140);
         questionBox.disable();

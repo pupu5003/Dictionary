@@ -14,12 +14,14 @@ private:
     Button questionBox;
     Button answerBox[4];
 
+    dataSet data = engVie;
     PracticeQuestion question;
     int chosenAnswer = -1;
 
     int& currentScreen;
+    Dictionary& dictionary;
 public:
-    PracticeQuestionPage(int& currentScreen, PracticeQuestion q);
+    PracticeQuestionPage(int& currentScreen, Dictionary& dictionary);
     ~PracticeQuestionPage();
     void display() const override;
     void handleEvent() override;
