@@ -27,6 +27,7 @@ void SearchBar::display() const
         DrawRectangle(339.41, 163 + 61 * i, 580.74, 61, WHITE);
         DrawTextEx(FontHelper::getInstance().getFont(Inter), word.word.c_str(), {(float)350, (float)(163 + 61 * i)}, 40, 0.5, BLACK);
     }
+
 }
 
 void SearchBar::handleEvent()
@@ -56,24 +57,31 @@ void SearchBar::handleEvent()
     {
         return;
     }
-    int key = GetKeyPressed();
+    int key = GetCharPressed();
+    while(key > 0)
+    {
+        if (key >= 32 && key <= 999999)
+        {
+            if (key >= 65 && key <= 90)
+            {
+                key += 32;
+            }
+            cout << key << endl;
+            codePoints.push_back(key);
+        }
+        key = GetCharPressed();
+    }
+
     if (IsKeyPressed(KEY_BACKSPACE))
     {
-        cout << "Backspace" << endl;
         if (codePoints.size() > 0)
-        codePoints.pop_back();
-        cout << codePoints.size() << endl;
-    }
-    else
-    if ((key >= 32) && (key <= 999999))
-    {
-        cout << key << endl;
-        cout << "adding" << endl;
-        if (key >= 65 && key <= 90)
         {
-            key += 32;
+            codePoints.pop_back();
         }
-        codePoints.push_back(key);
+    }
+    if (IsKeyPressed(KEY_ENTER))
+    {
+        isHandle = false;
     }
 
     if (codePoints.size() > 0)
