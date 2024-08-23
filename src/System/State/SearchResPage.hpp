@@ -16,7 +16,7 @@ private:
     Button liked;
     Button edit;
     Button deleteButton;
-    int l, r;
+    int upDef, downDef;
     static vector<float> Gap;
     int& currentScreen;
     static Word* searchWord;

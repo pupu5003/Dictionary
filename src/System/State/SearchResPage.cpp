@@ -1,4 +1,5 @@
 #include "SearchResPage.hpp"
+using namespace std;
 
 #define scrollUp 70
 #define scrollDown 244
@@ -6,8 +7,7 @@
 #define visibleUP 100
 #define visibleDOWN 800
 #define gap 40
-using namespace std;
-
+#define SLIGHTRED Color{244, 210, 210, 50}
 
 Word *SearchResPage::searchWord = nullptr;
 float SearchResPage::scroll = 0;
@@ -22,45 +22,32 @@ SearchResPage::SearchResPage(int &currentScreen) : currentScreen(currentScreen)
     settingButton.setButton("asset/Image/settings_ic.png", 1159, 23);
 
     like.setButton("asset/Image/Heart_ic.png", 983, 141, 1.1);
+
     liked.setButton("asset/Image/Hear1_ic.png", 983, 141, 1.1);
+
     deleteButton.setButton("asset/Image/Delete_ic.png", 1046, 134, 1.1);
+
     edit.setButton("asset/Image/Edit_ic.png", 1053, 215, 1.1);
 }
 
 void SearchResPage::display() const
 {
-    // int l = lower_bound(Gap.begin(), Gap.end(), visibleUP - scroll + gap) - Gap.begin() - 1;
-    // int r = upper_bound(Gap.begin(), Gap.end(), visibleDOWN - scroll) - Gap.begin() - 1;
-    // if (r < 0) r = 0; if (l < 0) l = 0;
-    // if (r > Gap.size() - 2) r = Gap.size() - 2; if (l > Gap.size() - 2) l = Gap.size() - 2; 
-
-
-    // if (l == 0 && scroll > scrollUp) 
-    // {
-    //     scroll = scrollUp;
-    //     space = scroll;
-    // }
-    // else if (r == searchWord -> definition.size() - 1 && space + height < scrollDown) 
-    // {
-    //     space -= scroll;    
-    //     scroll = scrollDown - height - space;
-    //     space += scroll;
-    // }
-
-    for (int i = l; i <= r; i++)
+    for (int i = upDef; i <= downDef; i++)
     {
         float height = Gap[i + 1] - Gap[i] - gap;
         float space = Gap[i] + scroll;
         float heightDef = height - 100;
         float roundness = 0.15*444/height;
 
-        DrawRectangleRounded({120, 210 + space, 1000, height}, roundness, 0, Color{244, 210, 210, 50});
+        DrawRectangleRounded({120, 210 + space, 1000, height}, roundness, 0, SLIGHTRED);
         DrawRectangleRoundedLines({120, 210 + space, 1000, height}, roundness, 0, 1, BLACK);
+
         if (i < searchWord -> type.size() && searchWord -> type[i].size() > 2)
         {
             float dis = GetStringWidth(FontHelper::getInstance().getFont(Inter), searchWord -> type[i].c_str(), 36, 0.5f);
             DrawTextEx(FontHelper::getInstance().getFont(Inter), searchWord -> type[i].c_str(), { 622 - dis/2, 220 + space}, 36, 0.5f, RED);
         }
+
         edit.display(0, space);
         DrawTextBoxed(FontHelper::getInstance().getFont(Inter), searchWord -> definition[i].c_str(), { 184, 268 + space, 872, heightDef}, 40, 0.5f, true, BLACK);
     }
@@ -111,33 +98,36 @@ void SearchResPage::handleEvent()
     {
         cout << "Delete button is pressed" << endl;
     }
-
-    scroll += (int)(GetMouseWheelMove() * scrollSpeed);
-    l = lower_bound(Gap.begin(), Gap.end(), visibleUP - scroll - 210) - Gap.begin() - 1;
-    r = upper_bound(Gap.begin(), Gap.end(), visibleDOWN - scroll - 210) - Gap.begin() - 1;
-    if (r < 0) r = 0; if (l < 0) l = 0;
-    if (r > Gap.size() - 2) r = Gap.size() - 2; if (l > Gap.size() - 2) l = Gap.size() - 2; 
-
-    if (l == 0 && scroll > scrollUp) 
+    else
     {
-        scroll = scrollUp;
-    }
-    else if (r == searchWord -> definition.size() - 1 && scroll + Gap.back() - gap < scrollDown) 
-    {
-        scroll = scrollDown - Gap.back() + gap;
-    }
+        scroll += (int)(GetMouseWheelMove() * scrollSpeed);
+        upDef = lower_bound(Gap.begin(), Gap.end(), visibleUP - scroll - 210) - Gap.begin() - 1;
+        downDef = upper_bound(Gap.begin(), Gap.end(), visibleDOWN - scroll - 210) - Gap.begin() - 1;
+        if (downDef < 0) downDef = 0; if (upDef < 0) upDef = 0;
+        if (downDef > Gap.size() - 2) downDef = Gap.size() - 2; if (upDef > Gap.size() - 2) upDef = Gap.size() - 2; 
 
-    for (int i = l; i <= r; i++)
-    {
-        float height = Gap[i + 1] - Gap[i] - gap;
-        float space = Gap[i] + scroll;
-        float heightDef = height - 100;
-    
-        if (edit.isPressed(0, space))
+        if (upDef == 0 && scroll > scrollUp) 
         {
-            cout << "Edit button is pressed " << i << endl;
+            scroll = scrollUp;
+        }
+        else if (downDef == searchWord -> definition.size() - 1 && scroll + Gap.back() - gap < scrollDown) 
+        {
+            scroll = scrollDown - Gap.back() + gap;
+        }
+
+        for (int i = upDef; i <= downDef; i++)
+        {
+            float height = Gap[i + 1] - Gap[i] - gap;
+            float space = Gap[i] + scroll;
+            float heightDef = height - 100;
+        
+            if (edit.isPressed(0, space))
+            {
+                cout << "Edit button is pressed " << i << endl;
+            }
         }
     }
+
 
 
         
@@ -153,7 +143,7 @@ void SearchResPage::setSearchWord(Word* word)
         float heightDef = (int)((GetStringWidth(FontHelper::getInstance().getFont(Inter), searchWord -> definition[i].c_str(), 40, 0.5f) + 871)/ 872) * 60 + gap;
         float height = 100 + heightDef;
         Gap.push_back(space);
-        space += height + 40;
+        space += height + gap;
     }
     Gap.push_back(space);
     
