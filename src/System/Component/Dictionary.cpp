@@ -91,6 +91,7 @@ Word& Dictionary::getRandomWord(dataSet data)
 
 Word& Dictionary::getWord(dataSet data, int id)
 {
+    // cout <<  data << endl;
     return words[data][id];
 }
 

@@ -3,7 +3,6 @@
 #include <../src/System/Component/Dictionary.hpp>
 #include <../src/System/Component/SearchBar.hpp>
 
-#include "SearchResPage.hpp"
 using namespace std;
 
 class HomePage : public Page

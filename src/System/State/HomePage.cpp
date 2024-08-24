@@ -5,7 +5,7 @@
 #define TEXT_BOX_WIDTH  400
 #define TEXT_BOX_HEIGHT 230
 
-HomePage::HomePage(int &currentScreen, Dictionary &dictionary): currentScreen(currentScreen), dictionary(dictionary), searchBar(dictionary, currentScreen, {339.41f, 102})
+HomePage::HomePage(int &currentScreen, Dictionary &dictionary): currentScreen(currentScreen), dictionary(dictionary), searchBar(dictionary, currentScreen, {280, 102})
 {
     randomWord = &dictionary.getRandomWord();
 

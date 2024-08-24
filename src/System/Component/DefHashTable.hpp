@@ -32,4 +32,5 @@ public:
     void remove(string &def, int Id);
     void setCountSize(int size);
     vector<int> predict(vector<int> &codePoints);
+
 };

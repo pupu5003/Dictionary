@@ -10,18 +10,23 @@ using namespace std;
 // enum 
 enum Search
 {
-    Keyword = 0,
-    Definition = 1
+    Keyword = (bool)0,
+    Definition = (bool)1
 };
 
 class SearchBar
 {
 private:
+    Texture2D curDataSet[5];   
+    Texture2D dataSetOptions;
+    Texture2D curTypeSearch[2];
     Vector2 pos;
-    Search typeSearch;
+    Rectangle dataSetBut;
+    Rectangle typeSearchBut;
+    bool typeSearch;
     vector<int> codePoints;
     dataSet data;
-    bool isActive;
+    bool typing, choseeData;
     vector<int> predict;
     int &currentScreen;
     Dictionary& dictionary;
@@ -29,6 +34,7 @@ public:
     SearchBar(Dictionary& dictionary, int &currentScreen, Vector2 pos);
     ~SearchBar();
     bool getActive() const;
+    void resetPredict();
     void display() const;
     void handleEvent();
 };
