@@ -1,7 +1,7 @@
 #include "system.hpp"
 using namespace std;
 
-System::System(/* args */): currentScreen(1), searchBar(dictionary, currentScreen)
+System::System(/* args */): currentScreen(1)
 {
     InitWindow(screenWidth, screenHeight,"The Dictionary");
     SetTargetFPS(60);
@@ -34,7 +34,7 @@ void System::run()
     {
 
         //event handling
-        searchBar.handleEvent();
+        // searchBar.handleEvent();
         pages[currentScreen] -> handleEvent();
         if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
         {
@@ -45,10 +45,10 @@ void System::run()
         BeginDrawing();
         ClearBackground(BACKGROUND);
         pages[currentScreen]->display();
-        if ((int)currentScreen == 1)
-        {
-            searchBar.display();
-        }
+        // if ((int)currentScreen == 1)
+        // {
+        //     searchBar.display();
+        // }
         EndDrawing();
     }
 

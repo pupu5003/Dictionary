@@ -1,6 +1,8 @@
 #pragma once
 #include "UILibFunc.hpp"
 #include <../src/System/Component/Dictionary.hpp>
+#include <../src/System/Component/SearchBar.hpp>
+
 #include "SearchResPage.hpp"
 using namespace std;
 
@@ -17,7 +19,7 @@ private:
     Button changeWord;
     Button edit;
     nButton wordCard;
-
+    SearchBar searchBar;
     Word* randomWord;
     int& currentScreen;
     Dictionary& dictionary;

@@ -8,6 +8,7 @@ Button::Button()
     color = WHITE;
     mColor = LIGHTGRAY;
     scale = 1.2;
+    zoom = true;
 }
 
 Button::Button(const char* path, float x, float y, float scale) {
@@ -40,7 +41,7 @@ Button::~Button()
 
 void Button::display(float x, float y) const
 {
-    if (CheckCollisionPointRec(GetMousePosition(), {rect.x + x, rect.y + y, rect.width, rect.height}))
+    if (zoom && CheckCollisionPointRec(GetMousePosition(), {rect.x + x, rect.y + y, rect.width, rect.height}))
     {
         Texture2D temp = texture;
         temp.width = mRect.width;
@@ -86,14 +87,12 @@ void Button::setText(string text, fontType font, float fontSize, float spacing, 
 
 void Button::disable()
 {
-    this->setScale(1.0f);
-    this->mColor = WHITE;
+    zoom = false;
 }
 
 void Button::enable()
 {
-    this->setScale(1.2f);
-    this->mColor = LIGHTGRAY;
+    zoom = true;
 }
 
 nButton::nButton()

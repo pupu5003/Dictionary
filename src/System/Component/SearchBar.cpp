@@ -1,11 +1,17 @@
 #include "SearchBar.hpp"
-
 using namespace std;
 
+const float widthBar = 580.74f;
+const float heightBar = 61;
+const float gapTextX = 10.6f;
+const float gapTextY = 8;
 
-SearchBar::SearchBar(Dictionary& dictionary, int& currentScreen) : dictionary(dictionary), currentScreen(currentScreen)
+
+SearchBar::SearchBar(Dictionary& dictionary, int& currentScreen, Vector2 pos) : dictionary(dictionary), pos(pos), currentScreen(currentScreen)
 {
-    isHandle = false;
+    isActive = false;
+    typeSearch = Definition;
+    data = engEng;
 }
 
 SearchBar::~SearchBar()
@@ -14,38 +20,38 @@ SearchBar::~SearchBar()
 
 void SearchBar::display() const
 {
-    DrawRectangle(339.41, 102, 580.74, 61, WHITE);
-    DrawRectangleLines(339.41, 102, 580.74, 61, BLACK); 
+    DrawRectangleRec({pos.x, pos.y, widthBar, heightBar}, WHITE);
+    DrawRectangleLinesEx({pos.x, pos.y, widthBar, heightBar}, 1.0f,  BLACK); 
 
-    DrawTextCodepoints(FontHelper::getInstance().getFont(Inter), (int*)(codePoints.data()), (int)codePoints.size(), {350, 110}, 40, 0.5, BLACK);
+    DrawTextCodepoints(FontHelper::getInstance().getFont(Inter), (int*)(codePoints.data()), (int)codePoints.size(), {pos.x + gapTextX, pos.y + gapTextY}, 40, 0.5f, BLACK);
 
     //print predict
-    if (isHandle)
+    if (isActive)
     for (int i = 0; i < predict.size(); i++)
     {
         Word& word = dictionary.getWord(engEng, predict[i]);
-        DrawRectangle(339.41, 163 + 61 * i, 580.74, 61, WHITE);
-        DrawTextEx(FontHelper::getInstance().getFont(Inter), word.word.c_str(), {(float)350, (float)(163 + 61 * i)}, 40, 0.5, BLACK);
+        DrawRectangleRec({pos.x, pos.y + 61 * (i + 1), widthBar, heightBar}, WHITE);
+        DrawTextEx(FontHelper::getInstance().getFont(Inter), word.word.c_str(), {pos.x + gapTextX, pos.y + gapTextY + heightBar * (i + 1)}, 40, 0.5f, BLACK);
     }
 
 }
 
 void SearchBar::handleEvent()
 {
-    if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec(GetMousePosition(), {339.41, 102, 580.74, 61}))
+    if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec(GetMousePosition(), {pos.x, pos.y, widthBar, heightBar}))
     {
-        isHandle = true;
+        isActive = true;
     }
     else if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
     {
-        isHandle = false;
+        isActive = false;
     }
 
     for (float i = 0; i < predict.size(); i++)
     {
-        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec(GetMousePosition(), {339.41, 163 + 61 * i, 580.74, 61}))
+        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec(GetMousePosition(), {pos.x + gapTextX, pos.y + gapTextY + heightBar * (i + 1), widthBar, heightBar}))
         {
-            isHandle = false;
+            isActive = false;
             SearchResPage::setSearchWord(&dictionary.getWord(engEng, predict[i]));
             currentScreen = 0;
             dictionary.addHistory(engEng, predict[i]);
@@ -53,21 +59,19 @@ void SearchBar::handleEvent()
         }
     }
 
-    if (isHandle == false)
+    if (isActive == false)
     {
         return;
     }
+    bool change = false;
     int key = GetCharPressed();
     while(key > 0)
     {
         if (key >= 32 && key <= 999999)
         {
-            if (key >= 65 && key <= 90)
-            {
-                key += 32;
-            }
             cout << key << endl;
             codePoints.push_back(key);
+            change = true;
         }
         key = GetCharPressed();
     }
@@ -77,22 +81,29 @@ void SearchBar::handleEvent()
         if (codePoints.size() > 0)
         {
             codePoints.pop_back();
+            change = true;
         }
     }
     if (IsKeyPressed(KEY_ENTER))
     {
-        isHandle = false;
+        isActive = false;
     }
 
-    if (codePoints.size() > 0)
+    if (change && codePoints.size() > 0)
     {
-        predict = dictionary.predict(codePoints);
+        if (typeSearch == Keyword)
+        predict = dictionary.predictKeyword(data, codePoints);
+        else
+        predict = dictionary.predictDefinition(data, codePoints);
     }
-    else
+    else if (change)
     {
         predict.clear();
     }
 
-    
+}
 
+bool SearchBar::getActive() const
+{
+    return isActive;
 }

@@ -21,7 +21,6 @@ Word::~Word()
 
 Dictionary::Dictionary()
 {
-    initMapChar();
     // cout << sizeof(VNCodePoints) / sizeof(int);
     // exit(0);
     lodadData();
@@ -55,10 +54,12 @@ void Dictionary::lodadData()
             getline(ss, keyWord, '\\');
             getline(ss, type, '\\');
             getline(ss, definition);
-            if (words[i].size() > 0 && words[i].back().word == keyWord)
+            int fi = wordTrie[i].search(keyWord);
+            if (fi != -1)
             {
-                words[i].back().type.push_back(type);
-                words[i].back().definition.push_back(definition);
+                words[i][fi].type.push_back(type);
+                words[i][fi].definition.push_back(definition);
+                defTable[i].insert(definition, fi);
                 continue;
             }
             Word word;
@@ -70,9 +71,11 @@ void Dictionary::lodadData()
             word.definition.push_back(definition);
             words[i].push_back(word);
             wordTrie[i].insert(keyWord, word.id);
+            defTable[i].insert(definition, word.id);
         }
+        file.close();
+        defTable[i].setCountSize(words[i].size());
     }
-
 }
 
 Word& Dictionary::getRandomWord()
@@ -91,7 +94,7 @@ Word& Dictionary::getWord(dataSet data, int id)
     return words[data][id];
 }
 
-void Dictionary::addWord(Word word, dataSet data)
+void Dictionary::addWord(dataSet data, Word word)
 {
     if ((int)vaildId[data].size() > 0)
     {
@@ -109,14 +112,14 @@ void Dictionary::addWord(Word word, dataSet data)
 
 }
 
-void Dictionary::removeWord(int id, dataSet data)
+void Dictionary::removeWord(dataSet data, int id)
 {
     vaildId[data].push_back(id);
     wordTrie[data].remove(words[data][id].word);
     words[data][id] = Word();
 }
 
-void Dictionary::editWord(int id, dataSet data, int curDef, string& def)
+void Dictionary::editWord(dataSet data, int id, int curDef, string& def)
 {
     words[data][id].definition[curDef] = def;
 }
@@ -161,7 +164,12 @@ vector<pair<dataSet, int>>& Dictionary::getHistory()
     return history;
 }
 
-vector<int> Dictionary::predict(vector<int> &codePoints, dataSet data)
+vector<int> Dictionary::predictKeyword(dataSet data, vector<int> &codePoints)
 {
     return wordTrie[data].predict(codePoints);
 }
+
+vector<int> Dictionary::predictDefinition(dataSet data, vector<int> &codePoints)
+{
+    return defTable[data].predict(codePoints);
+};

@@ -24,7 +24,7 @@ private:
     int currentScreen;
     vector<Page*> pages;
     Dictionary dictionary;
-    SearchBar searchBar;
+    // SearchBar searchBar;
 public:
     // Word *searchWord;
     System(/* args */);

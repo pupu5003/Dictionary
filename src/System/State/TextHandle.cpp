@@ -168,4 +168,68 @@ float GetStringWidth(Font font, const char *text, float fontSize, float spacing)
     return width;
 }
 
+int utf8ToCodepoint(const std::string& utf8Str, int& index) {
+    int codepoint = 0;
+    unsigned char lead = utf8Str[index];
+    
+    if (lead < 0x80) {
+        codepoint = lead;
+    } else if ((lead >> 5) == 0x6) {
+        codepoint = ((lead & 0x1F) << 6) | (utf8Str[index + 1] & 0x3F);
+        index++;
+    } else if ((lead >> 4) == 0xE) {
+        codepoint = ((lead & 0x0F) << 12) | ((utf8Str[index + 1] & 0x3F) << 6) | (utf8Str[index + 2] & 0x3F);
+        index += 2;
+    } else if ((lead >> 3) == 0x1E) {
+        codepoint = ((lead & 0x07) << 18) | ((utf8Str[index + 1] & 0x3F) << 12) | ((utf8Str[index + 2] & 0x3F) << 6) | (utf8Str[index + 3] & 0x3F);
+        index += 3;
+    }
+    
+    return codepoint;
+}
 
+
+
+CodeHelper::CodeHelper()
+{
+    numCode = 0;
+    for (int i = 0; i < 10000; i++)
+    {
+        mapCode[i] = -1;
+    }
+    for (int i = 0; i < sizeof(VNCodePoints) / sizeof(int); i++)
+    {
+        mapCode[VNCodePoints[i]] = i;
+        numCode++;
+    }
+}
+
+CodeHelper::~CodeHelper()
+{
+
+}
+
+CodeHelper& CodeHelper::getInstance()
+{
+    static CodeHelper intance;
+    return intance;
+}
+
+int CodeHelper::mapCodepoint(int codepoint)
+{
+    if (mapCode[codepoint] == -1)
+    {
+        mapCode[codepoint] = numCode++;
+    }
+    if (mapCode[codepoint]%2 == 1 && mapCode[codepoint] < 186)
+    return mapCode[codepoint] - 1;
+
+    return mapCode[codepoint];
+}
+
+int CodeHelper::mapChar(string& st, int &index)
+{
+    int codepoint = utf8ToCodepoint(st, index);
+
+    return mapCodepoint(codepoint);
+}

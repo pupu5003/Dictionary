@@ -7,6 +7,7 @@
 #include "KeywordTrie.hpp"
 #include "FontHelper.hpp"
 #include "OtherFunc.hpp"
+#include "DefHashTable.hpp"
 #include <wchar.h>
 using namespace std;
 
@@ -39,6 +40,7 @@ private:
 
     vector<Word> words[5];
     KeywordTrie wordTrie[5];
+    DefHashTable defTable[5];
     vector<int> vaildId[5];
     vector<pair<dataSet, int>> favorite, history;
 public:
@@ -50,9 +52,9 @@ public:
     Word& getRandomWord();
     Word& getRandomWord(dataSet data);
     Word& getWord(dataSet data, int id);
-    void addWord(Word word, dataSet data);
-    void removeWord(int id, dataSet data);
-    void editWord(int id, dataSet data, int curDef, string& def);
+    void addWord(dataSet data, Word word);
+    void removeWord(dataSet data, int id);
+    void editWord(dataSet data, int id, int curDef, string& def);
     void addFavorite(dataSet data, int id);
     void removeFavorite(dataSet data, int id);
     void removeAllFavorite();
@@ -61,5 +63,6 @@ public:
     void removeHistory(dataSet data, int id);
     void removeAllHistory();
     vector<pair<dataSet,int>>& getHistory();
-    vector<int> predict(vector<int> &codePoints, dataSet data = engEng);
+    vector<int> predictKeyword(dataSet data, vector<int> &codePoints);
+    vector<int> predictDefinition(dataSet data, vector<int> &codePoints);
 };
