@@ -25,7 +25,7 @@ private:
     int& currentScreen;
     Dictionary& dictionary;
     static Word* searchWord;
-    float scroll;
+    static float scroll;
     SearchBar searchBar;
 public:
     SearchResPage(int &currentScreen, Dictionary &dictionary);

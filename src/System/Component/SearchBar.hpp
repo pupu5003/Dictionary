@@ -20,6 +20,7 @@ private:
     Texture2D dataSetOptions;
     Texture2D curTypeSearch[2];
     Texture2D lockUpic;
+    Texture2D historySic;
     Vector2 pos;
     Rectangle dataSetBut;
     Rectangle typeSearchBut;

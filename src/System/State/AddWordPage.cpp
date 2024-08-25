@@ -40,7 +40,7 @@ void AddWordPage::handleEvent()
 {
     if (backButton.isPressed())
     {
-        currentScreen = 4;
+        currentScreen = SETTING;
     }
     else if (addNewButton.isPressed())
     {

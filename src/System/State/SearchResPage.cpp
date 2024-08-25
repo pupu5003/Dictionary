@@ -10,6 +10,7 @@ using namespace std;
 #define SLIGHTRED Color{244, 210, 210, 50}
 
 Word *SearchResPage::searchWord = nullptr;
+float SearchResPage::scroll = 0;
 vector<float> SearchResPage::Gap;
 
 SearchResPage::SearchResPage(int &currentScreen, Dictionary& dictionary) : currentScreen(currentScreen), dictionary(dictionary), searchBar(dictionary, currentScreen, {280,35})
@@ -27,6 +28,7 @@ SearchResPage::SearchResPage(int &currentScreen, Dictionary& dictionary) : curre
     deleteButton.setButton("asset/Image/Delete_ic.png", 1046, 134, 1.1);
 
     edit.setButton("asset/Image/Edit_ic.png", 1053, 215, 1.1);
+    edit.enable();
 
     scroll = 0;
 
@@ -99,42 +101,21 @@ void SearchResPage::handleEvent()
         scroll = 0;
         currentScreen = SETTING;
     }
-    else if (like.isPressed())
+    else if (!searchWord -> isFavorite && like.isPressed())
+    {  
+        dictionary.addFavorite(searchWord -> data, searchWord -> id);
+    } else if (searchWord -> isFavorite && liked.isPressed())
     {
-        if (!searchWord -> isFavorite)
-        {
-            dictionary.addFavorite(searchWord -> data, searchWord -> id);
-        }
-        else
-        {
-            dictionary.removeFavorite(searchWord -> data, searchWord -> id);
-        }
-    }
-    else if (liked.isPressed())
-    {
-        searchWord -> isFavorite = false;
-    }
-    else if (deleteButton.isPressed())
+        dictionary.removeFavorite(searchWord -> data, searchWord -> id);
+    } else if (deleteButton.isPressed())
     {
         cout << "Delete button is pressed" << endl;
+        dictionary.removeWord(searchWord -> data, searchWord -> id);
+        searchBar.resetPredict();
+        currentScreen = HOME;
     }
     else
     {
-        scroll += (int)(GetMouseWheelMove() * scrollSpeed);
-        upDef = lower_bound(Gap.begin(), Gap.end(), visibleUP - scroll - 210) - Gap.begin() - 1;
-        downDef = upper_bound(Gap.begin(), Gap.end(), visibleDOWN - scroll - 210) - Gap.begin() - 1;
-        if (downDef < 0) downDef = 0; if (upDef < 0) upDef = 0;
-        if (downDef > Gap.size() - 2) downDef = Gap.size() - 2; if (upDef > Gap.size() - 2) upDef = Gap.size() - 2; 
-
-        if (upDef == 0 && scroll > scrollUp) 
-        {
-            scroll = scrollUp;
-        }
-        else if (downDef == searchWord -> definition.size() - 1 && scroll + Gap.back() - gap < scrollDown) 
-        {
-            scroll = scrollDown - Gap.back() + gap;
-        }
-
         for (int i = upDef; i <= downDef; i++)
         {
             float height = Gap[i + 1] - Gap[i] - gap;
@@ -147,10 +128,25 @@ void SearchResPage::handleEvent()
             }
         }
     }        
+    scroll += (int)(GetMouseWheelMove() * scrollSpeed);
+    upDef = lower_bound(Gap.begin(), Gap.end(), visibleUP - scroll - 210) - Gap.begin() - 1;
+    downDef = upper_bound(Gap.begin(), Gap.end(), visibleDOWN - scroll - 210) - Gap.begin() - 1;
+    if (downDef < 0) downDef = 0; if (upDef < 0) upDef = 0;
+    if (downDef > Gap.size() - 2) downDef = Gap.size() - 2; if (upDef > Gap.size() - 2) upDef = Gap.size() - 2; 
+
+    if (upDef == 0 && scroll > scrollUp) 
+    {
+        scroll = scrollUp;
+    }
+    else if (downDef == searchWord -> definition.size() - 1 && scroll + Gap.back() - gap < scrollDown) 
+    {
+        scroll = scrollDown - Gap.back() + gap;
+    }
 }
 
 void SearchResPage::setSearchWord(Word* word)
 {
+    scroll = 0;
     searchWord = word;
     Gap.clear();
     float space = 0;

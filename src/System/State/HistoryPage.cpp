@@ -1,4 +1,5 @@
 #include "HistoryPage.hpp"
+#include "SearchResPage.hpp"
 using namespace std;
 
 #define visibleItems 7
@@ -6,6 +7,7 @@ using namespace std;
 #define gap 115
 #define scrollUp 20
 #define scrollDown -25
+
 
 HistoryPage::HistoryPage(int &currentScreen, Dictionary &dictionary) : currentScreen(currentScreen), dictionary(dictionary), history(dictionary.getHistory())
 {
@@ -17,6 +19,8 @@ HistoryPage::HistoryPage(int &currentScreen, Dictionary &dictionary) : currentSc
 
     clearButton.setButton("asset/Image/ClearAllButton.png", 531, 124);
     xButton.setButton("asset/Image/XImage.png", 1060, 237, 1.1);
+    detailButton.setButton("asset/Image/DetailButton.png", 998, 237, 1.1);
+    detailButton.enable(); xButton.enable();
 
     Box = LoadTexture("asset/Image/FavoriteBox.png");
 
@@ -29,13 +33,20 @@ HistoryPage::HistoryPage(int &currentScreen, Dictionary &dictionary) : currentSc
 
 void HistoryPage::display() const
 {
-    
+
     for (int i = upWord; i <= downWord; i++)
     {   
         DrawTexture(Box, 120, 217 + i * gap + scroll, WHITE);
         xButton.display(0, i * gap + scroll);
-        const Word &word = dictionary.getWord(history[i].first, history[i].second);
-        DrawTextEx(FontHelper::getInstance().getFont(InterBold), word.word.c_str(), { 172, 240 + i * gap + scroll}, 40, 0.5f, BLACK);
+        detailButton.display(0, i * gap + scroll);
+
+        int index = history.size() - i - 1;
+        const Word &word = dictionary.getWord(history[index].first, history[index].second);
+       
+        DrawTextEx(FontHelper::getInstance().getFont(RussoOne), dataSetName[word.data].c_str(), { 142, 226 + i * gap + scroll}, 25, 0.5f, BLACK);
+
+        float width = MeasureTextEx(FontHelper::getInstance().getFont(InterBold), word.word.c_str(), 40, 0.5f).x;
+        DrawTextEx(FontHelper::getInstance().getFont(InterBold), word.word.c_str(), { 620 - width/2, 235 + i * gap + scroll}, 40, 0.5f, BLACK);
     }
     
     
@@ -57,6 +68,51 @@ void HistoryPage::display() const
 void HistoryPage::handleEvent()
 {
     scroll += GetMouseWheelMove() * scrollSpeed;
+    resetUpDownWord();
+    
+    if (backButton.isPressed())
+    {
+        scroll = 0;
+        upWord = 0; downWord = -1;
+        currentScreen = HOME;
+    }
+    else if (settingButton.isPressed())
+    {
+        upWord = 0; downWord = -1;
+        scroll = 0;
+        currentScreen = SETTING;
+    }
+    else if (clearButton.isPressed())
+    {
+        dictionary.removeAllHistory();
+        upWord = 0; downWord = -1;
+    }
+    else
+    {
+        for (int i = upWord; i <= downWord; i++)
+        {
+            if (xButton.isPressed(0, i * gap + scroll))
+            {
+                int index = history.size() - i - 1;
+                dictionary.removeHistory(history[index].first, history[index].second);
+                resetUpDownWord();
+                break;
+            } else if (detailButton.isPressed(0, i * gap + scroll))
+            {
+                int index = history.size() - i - 1;
+                SearchResPage::setSearchWord(&(dictionary.getWord(history[index].first, history[index].second)));
+                upWord = 0; downWord = -1;
+                currentScreen = SEARCH_RES;
+                break;
+            }
+        }
+    }
+
+
+}
+
+void HistoryPage::resetUpDownWord()
+{
     if ((int)history.size() == 0)
     {
         upWord = 0; downWord = -1;
@@ -79,33 +135,6 @@ void HistoryPage::handleEvent()
         }
 
     }
-    if (backButton.isPressed())
-    {
-        scroll = 0;
-        currentScreen = HOME;
-    }
-    else if (settingButton.isPressed())
-    {
-        scroll = 0;
-        currentScreen = SETTING;
-    }
-    else if (clearButton.isPressed())
-    {
-       dictionary.removeAllHistory();
-    }
-    else
-    {
-        for (int i = upWord; i <= downWord; i++)
-        {
-            if (xButton.isPressed(0, i * gap + scroll))
-            {
-                dictionary.removeHistory(history[i].first, history[i].second);
-                break;
-            }
-        }
-    }
-
-
 }
 
 HistoryPage::~HistoryPage()

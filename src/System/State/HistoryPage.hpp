@@ -17,6 +17,7 @@ private:
     Button backButton;
     Button settingButton; 
     Button clearButton;
+    Button detailButton;
 
     float scroll;
 
@@ -28,6 +29,7 @@ private:
 public:
     HistoryPage(int &currentScreen, Dictionary &dictionary);
     ~HistoryPage();
+    void resetUpDownWord();
     void display() const override;
     void handleEvent() override;
 };

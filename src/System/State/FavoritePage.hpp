@@ -17,6 +17,7 @@ private:
     Button backButton;
     Button settingButton; 
     Button clearButton;
+    Button detailButton;
 
     float scroll;
 
@@ -29,5 +30,6 @@ public:
     FavoritePage(int &currentScreen, Dictionary &dictionary);
     ~FavoritePage();
     void display() const override;
+    void resetUpDownWord();
     void handleEvent() override;
 };

@@ -8,7 +8,8 @@ Button::Button()
     color = WHITE;
     mColor = LIGHTGRAY;
     scale = 1.1;
-    zoom = true;
+    zoom = false;
+    autoZoom = false;
 }
 
 Button::Button(const char* path, float x, float y, float scale) {
@@ -41,7 +42,7 @@ Button::~Button()
 
 void Button::display(float x, float y) const
 {
-    if (zoom)
+    if ((zoom && !autoZoom)|| (autoZoom && CheckCollisionPointRec(GetMousePosition(), {rect.x + x, rect.y + y, rect.width, rect.height})))
     {
         Texture2D temp = texture;
         temp.width = mRect.width;
@@ -66,6 +67,7 @@ bool Button::isPressed(float x, float y)
         zoom = true;
         if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
         {
+            zoom = false;
             return true;
         }
     }
@@ -95,12 +97,12 @@ void Button::setText(string text, fontType font, float fontSize, float spacing, 
 
 void Button::disable()
 {
-    zoom = false;
+    autoZoom = false;
 }
 
 void Button::enable()
 {
-    zoom = true;
+    autoZoom = true;
 }
 
 nButton::nButton()

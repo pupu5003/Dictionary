@@ -16,7 +16,7 @@ private:
     Button like;
     Button liked;
     Button changeWord;
-    Button edit;
+    Button detailButton;
     nButton wordCard;
     SearchBar searchBar;
     Word* randomWord;

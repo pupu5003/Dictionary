@@ -13,6 +13,7 @@ struct Button
     float scale;
     TextBox text = {Arial, "", rect, 0, 0, 0, WHITE};
     bool zoom;
+    bool autoZoom;
     Button();
     Button(const char* path, float x, float y, float scale = 1.2);
     ~Button();
