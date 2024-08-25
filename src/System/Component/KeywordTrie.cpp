@@ -1,6 +1,8 @@
 #include "KeywordTrie.hpp"
 using namespace std;
 
+const int limitPredict = 10;
+
 
 
 KeywordNode::KeywordNode()

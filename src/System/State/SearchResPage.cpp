@@ -12,7 +12,7 @@ using namespace std;
 Word *SearchResPage::searchWord = nullptr;
 vector<float> SearchResPage::Gap;
 
-SearchResPage::SearchResPage(int &currentScreen, Dictionary& dictionary) : currentScreen(currentScreen), dictionary(dictionary)
+SearchResPage::SearchResPage(int &currentScreen, Dictionary& dictionary) : currentScreen(currentScreen), dictionary(dictionary), searchBar(dictionary, currentScreen, {280,35})
 {
     searchResTag = LoadTexture("asset/Image/SearchResTag.png");
     
@@ -29,10 +29,13 @@ SearchResPage::SearchResPage(int &currentScreen, Dictionary& dictionary) : curre
     edit.setButton("asset/Image/Edit_ic.png", 1053, 215, 1.1);
 
     scroll = 0;
+
+    upDef = 0; downDef = -1;
 }
 
 void SearchResPage::display() const
 {
+
     for (int i = upDef; i <= downDef; i++)
     {
         float height = Gap[i + 1] - Gap[i] - gap;
@@ -43,7 +46,7 @@ void SearchResPage::display() const
         DrawRectangleRounded({120, 210 + space, 1000, height}, roundness, 0, SLIGHTRED);
         DrawRectangleRoundedLines({120, 210 + space, 1000, height}, roundness, 0, 1, BLACK);
 
-        if (i < searchWord -> type.size() && searchWord -> type[i].size() > 2)
+        if (i < (int)searchWord -> type.size() && (int)searchWord -> type[i].size() > 2)
         {
             float dis = GetStringWidth(FontHelper::getInstance().getFont(Inter), searchWord -> type[i].c_str(), 36, 0.5f);
             DrawTextEx(FontHelper::getInstance().getFont(Inter), searchWord -> type[i].c_str(), { 622 - dis/2, 220 + space}, 36, 0.5f, RED);
@@ -52,6 +55,7 @@ void SearchResPage::display() const
         edit.display(0, space);
         DrawTextBoxed(FontHelper::getInstance().getFont(Inter), searchWord -> definition[i].c_str(), { 184, 268 + space, 872, heightDef}, 40, 0.5f, true, BLACK);
     }
+
 
     DrawTexture(searchResTag, 0, 0, WHITE);
 
@@ -73,12 +77,18 @@ void SearchResPage::display() const
     DrawTextEx(FontHelper::getInstance().getFont(RussoOne), dataSetName[searchWord -> data].c_str(), {849, 144 }, 33, 0.5f, BLACK);
     DrawLine(107, 192, 1136, 192, BLACK);
 
-
+    searchBar.display();
 }
 
 void SearchResPage::handleEvent()
 {
-    
+    if (searchBar.getActive()) 
+    {
+        searchBar.handleEvent();
+        return;
+    }
+    searchBar.handleEvent();
+
     if (backButton.isPressed())
     {
         scroll = 0;
@@ -144,7 +154,7 @@ void SearchResPage::setSearchWord(Word* word)
     searchWord = word;
     Gap.clear();
     float space = 0;
-    for (int i = 0; i < searchWord -> definition.size(); i++)
+    for (int i = 0; i < (int)searchWord -> definition.size(); i++)
     {
         float heightDef = (int)((GetStringWidth(FontHelper::getInstance().getFont(Inter), searchWord -> definition[i].c_str(), 40, 0.5f) + 871)/ 872) * 60 + gap;
         float height = 100 + heightDef;

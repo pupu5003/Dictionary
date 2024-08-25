@@ -1,11 +1,12 @@
 #include "raylib.h"
 #include "HomePage.hpp"
+#include "SearchResPage.hpp"
 #include <string>
 
 #define TEXT_BOX_WIDTH  400
 #define TEXT_BOX_HEIGHT 230
 
-HomePage::HomePage(int &currentScreen, Dictionary &dictionary): currentScreen(currentScreen), dictionary(dictionary), searchBar(dictionary, currentScreen, {280, 102})
+HomePage::HomePage(int &currentScreen, Dictionary &dictionary): currentScreen(currentScreen), dictionary(dictionary), searchBar(dictionary, currentScreen, {280, 90})
 {
     randomWord = &dictionary.getRandomWord();
 
@@ -66,21 +67,13 @@ void HomePage::display() const {
 
 void HomePage::handleEvent() {
     // if (randomWord.isFavorite) exit(0);
-    if (searchBar.getActive()) {
-        historyButton.disable();
-        favoriteButton.disable();
-        practiceButton.disable();
-        settingButton.disable();
+    if (searchBar.getActive()) 
+    {
         searchBar.handleEvent();
         return;
     }
-    else {
-        historyButton.enable();
-        favoriteButton.enable();
-        practiceButton.enable();
-        settingButton.enable();
-        searchBar.handleEvent();
-    }
+    searchBar.handleEvent();
+
     if (historyButton.isPressed()) {
         currentScreen = HISTORY;
     } else if (favoriteButton.isPressed()) {

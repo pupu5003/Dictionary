@@ -9,7 +9,6 @@
 // #include "Dictionary.hpp"
 using namespace std;
 
-const int limitPredict = 10;
 const int limitLetter = 262;
 
 struct KeywordNode

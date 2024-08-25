@@ -1,10 +1,11 @@
 #include "system.hpp"
 using namespace std;
 
-System::System(/* args */): currentScreen(1)
+System::System(/* args */)
 {
     InitWindow(screenWidth, screenHeight,"The Dictionary");
     SetTargetFPS(60);
+    currentScreen = HOME;
 
     // load components
     pages.push_back(new SearchResPage(currentScreen, dictionary));
@@ -51,7 +52,6 @@ void System::run()
         // }
         EndDrawing();
     }
-
 
     CloseWindow();
 }

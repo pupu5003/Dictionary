@@ -17,7 +17,7 @@ struct Button
     Button(const char* path, float x, float y, float scale = 1.2);
     ~Button();
     void setButton(const char *path, float x, float y, float scale = 1.2);
-    bool isPressed(float x = 0, float y = 0) const;
+    bool isPressed(float x = 0, float y = 0);
     void loadTexture(const char *path);
     void setRect(float x, float y, float width, float height);
     void setScale(float scale);

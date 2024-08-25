@@ -7,7 +7,7 @@ Button::Button()
     mRect = {0, 0, 0, 0};
     color = WHITE;
     mColor = LIGHTGRAY;
-    scale = 1.2;
+    scale = 1.1;
     zoom = true;
 }
 
@@ -41,13 +41,12 @@ Button::~Button()
 
 void Button::display(float x, float y) const
 {
-    if (zoom && CheckCollisionPointRec(GetMousePosition(), {rect.x + x, rect.y + y, rect.width, rect.height}))
+    if (zoom)
     {
         Texture2D temp = texture;
         temp.width = mRect.width;
         temp.height = mRect.height;
         DrawTexture(temp, mRect.x + x, mRect.y + y, mColor);
-
         TextBox tempText = text;
         tempText.zoomIn(scale);
         tempText.display();
@@ -59,9 +58,18 @@ void Button::display(float x, float y) const
     }
 }
 
-bool Button::isPressed(float x, float y) const
+bool Button::isPressed(float x, float y) 
 {
-    return IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec(GetMousePosition(), {rect.x + x, rect.y + y, rect.width, rect.height});
+    zoom = false;
+    if ( CheckCollisionPointRec(GetMousePosition(), {rect.x + x, rect.y + y, rect.width, rect.height}))
+    {
+        zoom = true;
+        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+        {
+            return true;
+        }
+    }
+    return false;
 }
 
 void Button::loadTexture(const char *path)

@@ -1,6 +1,24 @@
 #include "TextHandle.hpp"
 using namespace std;
 
+bool isSpecialSymbol(int codepoint)
+{
+    if (codepoint == '!' || codepoint == '?' || codepoint == '.' 
+    || codepoint == ',' || codepoint == ';' || codepoint == ':' 
+    || codepoint == '(' || codepoint == ')' || codepoint == '[' 
+    || codepoint == ']' || codepoint == '{' || codepoint == '}' 
+    || codepoint == '<' || codepoint == '>' || codepoint == '"' 
+    || codepoint == '\'' || codepoint == '-' || codepoint == '_' 
+    || codepoint == '=' || codepoint == '+' || codepoint == '*' 
+    || codepoint == '/' || codepoint == '\\' || codepoint == '|' 
+    || codepoint == '@' || codepoint == '#' || codepoint == '$' 
+    || codepoint == '%' || codepoint == '^' || codepoint == '&' 
+    || codepoint == '~' || codepoint == '`')
+    {
+        return true;
+    }
+    return false;
+}
 
 void DrawTextBoxed(Font font, const char *text, Rectangle rec, float fontSize, float spacing, bool wordWrap, Color tint)
 {
@@ -137,6 +155,29 @@ void DrawTextBoxed(Font font, const char *text, Rectangle rec, float fontSize, f
         if ((textOffsetX != 0) || (codepoint != ' ')) textOffsetX += glyphWidth; 
     }
 }
+float GetCodepointsWidth(Font font, int codepoint[], int sz, float fontSize, float spacing)
+{
+    float width = 0.0f;
+    float scaleFactor = fontSize / (float)font.baseSize;  // Scale factor based on the font size
+
+    // Get glyph index using codepoint
+    for (int i = 0; i < sz; i++)
+    {
+        int index = GetGlyphIndex(font, codepoint[i]);
+
+        float glyphWidth = 0;
+        if (codepoint[i] != '\n')
+        {
+            glyphWidth = (font.glyphs[index].advanceX == 0) ? font.recs[index].width*scaleFactor : font.glyphs[index].advanceX*scaleFactor;
+
+            glyphWidth = glyphWidth + spacing;
+        }
+        width += glyphWidth;
+    }
+
+    return width;
+}
+
 float GetStringWidth(Font font, const char *text, float fontSize, float spacing)
 {
     float width = 0.0f;

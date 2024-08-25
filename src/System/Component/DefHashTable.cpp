@@ -1,6 +1,8 @@
 #include "DefHashTable.hpp"
 using namespace std;
-#include <locale>
+
+const int limitPredict = 10;
+
 
 Slot::Slot()
 {
@@ -16,26 +18,32 @@ Slot::~Slot()
 
 DefHashTable::DefHashTable()
 {
+    for (int i = 0; i < Size; i++)
+    {
+        table[i] = nullptr;
+    }
 }
 
 DefHashTable::~DefHashTable()
 {
+    for (int i = 0; i < Size; i++)
+    {
+        if (table[i] != nullptr)
+        {
+            delete table[i];
+        }
+    }
 }
 
 pair<int, int> DefHashTable::hashFunction(string &def)
 {
-    string cur;
-    locale loc;
-    for (auto e : def) 
-    if (isalpha(e, loc))
-    {
-        cur += e;
-    }
     int hash = 0;
     int value = 0;
-    for (int i = 0; i < cur.size(); i++)
+    for (int i = 0; i < def.size(); i++)
     {
-        int index = CodeHelper::getInstance().mapChar(cur, i) + 1;
+        int codepoint = utf8ToCodepoint(def, i);
+        if (isSpecialSymbol(codepoint)) continue;
+        int index = CodeHelper::getInstance().mapCodepoint(codepoint) + 1;
         hash = (hash * Base + index) % Size;
         value = (1ll * Base * value % MOD + index) % MOD;
     }
@@ -166,7 +174,7 @@ vector<int> DefHashTable::predict(vector<int> &codePoints)
         hash = 0;
         value = 0;
     }
-    else
+    else if (!isSpecialSymbol(codePoints[i]))
     {
         int index = CodeHelper::getInstance().mapCodepoint(codePoints[i]) + 1;
         hash = (hash * Base + index) % Size;
@@ -179,19 +187,21 @@ vector<int> DefHashTable::predict(vector<int> &codePoints)
     for (auto e : codeList)
     if (e.first != 0)
     {
-        if (table[e.first] == nullptr)
-        {
-            return res;
-        }
         Slot *temp = table[e.first];
+        bool flag = false;
         while (temp != nullptr)
         {
             if (temp->value == e.second)
             {
                 filter.push_back(temp);
+                flag = true;
                 break;
             }
             temp = temp->next;
+        }
+        if (!flag)
+        {
+            return res;
         }
     }
 
@@ -208,7 +218,7 @@ vector<int> DefHashTable::predict(vector<int> &codePoints)
     if (count[id] == (int)filter.size())
     {
         res.push_back(id);
-        if (res.size() == 10)
+        if (res.size() == limitPredict)
         {
             break;
         }

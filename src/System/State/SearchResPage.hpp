@@ -3,8 +3,12 @@
 #include <raylib.h>
 #include "UILibFunc.hpp"
 #include "../src/System/Component/page.hpp"
+#include "../src/System/Component/SearchBar.hpp"
+
 
 using namespace std;
+
+// class SearchBar;
 
 class SearchResPage : public Page
 {
@@ -22,6 +26,7 @@ private:
     Dictionary& dictionary;
     static Word* searchWord;
     float scroll;
+    SearchBar searchBar;
 public:
     SearchResPage(int &currentScreen, Dictionary &dictionary);
     ~SearchResPage();

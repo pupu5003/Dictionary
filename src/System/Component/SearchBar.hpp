@@ -1,5 +1,4 @@
 #pragma once
-#include "../src/System/State/SearchResPage.hpp"
 #include "Dictionary.hpp"
 #include "raylib.h"
 #include <iostream>
@@ -20,14 +19,15 @@ private:
     Texture2D curDataSet[5];   
     Texture2D dataSetOptions;
     Texture2D curTypeSearch[2];
+    Texture2D lockUpic;
     Vector2 pos;
     Rectangle dataSetBut;
     Rectangle typeSearchBut;
-    bool typeSearch;
-    vector<int> codePoints;
-    dataSet data;
+    static Search typeSearch;
+    static dataSet data;
+    static vector<int> codePoints;
+    static vector<int> predict;
     bool typing, choseeData;
-    vector<int> predict;
     int &currentScreen;
     Dictionary& dictionary;
 public:

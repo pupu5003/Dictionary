@@ -4,17 +4,8 @@
 #include <raylib.h>
 #include <../src/System/Component/FontHelper.hpp>
 
-enum PageType
-{
-    HOME = 1,
-    FAVORITE = 3,
-    HISTORY = 2,
-    SETTING = 5,
-    PRACTICE = 4,
-    PRACTICE_QUESTION = 4,
-    ADD_WORD = 6,
-    SEARCH_RES = 0
-};
+
+bool isSpecialSymbol(int codepoint);
 
 void DrawTextBoxed(Font font, const char *text, Rectangle rec, float fontSize, float spacing, bool wordWrap, Color tint = GRAY);
 
@@ -23,6 +14,8 @@ void DrawTextBoxedSelectable(Font font, const char *text, Rectangle rec, float f
 float GetStringWidth(Font font, const char *text, float fontSize, float spacing);
 
 int utf8ToCodepoint(const std::string& utf8Str, int& index);
+
+float GetCodepointsWidth(Font font, int codepoint[], int sz, float fontSize, float spacing);
 
 
 class CodeHelper
