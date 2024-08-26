@@ -13,8 +13,8 @@ System::System(/* args */)
     pages.push_back(new HistoryPage(currentScreen, dictionary));
     pages.push_back(new FavoritePage(currentScreen, dictionary));
     pages.push_back(new PracticeQuestionPage(currentScreen, dictionary));
-    pages.push_back(new SettingPage(currentScreen));
-    pages.push_back(new AddWordPage(currentScreen)); 
+    pages.push_back(new SettingPage(currentScreen, dictionary));
+    pages.push_back(new AddWordPage(currentScreen,dictionary)); 
     cout << "System is created" << endl;
 }
 
