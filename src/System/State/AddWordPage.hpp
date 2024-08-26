@@ -11,11 +11,13 @@ private:
     Texture2D definitionBox;
     Button backButton;
     Button addNewButton;
+    DialogYesNo confirmDialog;
 
     int& currentScreen;
+    Dictionary &dictionary;
 
 public:
-    AddWordPage(int &currentScreen);
+    AddWordPage(int &currentScreen, Dictionary &dictionary);
     ~AddWordPage();
     void display() const override;
     void handleEvent() override;

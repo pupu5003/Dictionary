@@ -1,7 +1,8 @@
 #include "AddWordPage.hpp"
 using namespace std;
 
-AddWordPage::AddWordPage(int &currentScreen) : currentScreen(currentScreen)
+AddWordPage::AddWordPage(int &currentScreen, Dictionary &dictionary)
+    : currentScreen(currentScreen), confirmDialog(dictionary),dictionary(dictionary)
 {
     AddWordTag = LoadTexture("asset/Image/AddWordTag.png");
 
@@ -34,17 +35,25 @@ void AddWordPage::display() const
     backButton.display();
 
     addNewButton.display();
+
+    confirmDialog.display();
 }
 
 void AddWordPage::handleEvent()
 {
+    if (confirmDialog.isShown())
+    {
+        confirmDialog.handleEvent();
+        return; 
+    }
     if (backButton.isPressed())
     {
-        currentScreen = SETTING;
+        currentScreen = 4;
     }
     else if (addNewButton.isPressed())
     {
         cout << "Add new button is pressed" << endl;
+        confirmDialog.show();
     }
 }
 

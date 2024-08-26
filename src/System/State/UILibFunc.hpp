@@ -6,6 +6,8 @@
 #include <../src/System/Component/Dictionary.hpp>
 #include <../src/System/Component/TextBox.hpp>
 #include <../src/System/Component/KeywordTrie.hpp>
+#include <../src/System/State/DialogYesNo.hpp>
+#include <chrono>
 #include <algorithm>
 
 using namespace std;
