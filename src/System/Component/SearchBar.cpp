@@ -35,6 +35,8 @@ SearchBar::SearchBar(Dictionary& dictionary, int& currentScreen, Vector2 pos) : 
 
     dataSetBut = {pos.x - dataSetOptions.width, pos.y, (float)dataSetOptions.width, heightBar};
     typeSearchBut = {pos.x + widthBar, pos.y, (float)curTypeSearch[1].width, heightBar};
+    cursorPos = 0;
+    frame = 0;
     resetPredict();
 }
 
@@ -150,11 +152,19 @@ void SearchBar::handleEvent()
             resetPredict();
         }
         
-        typing = false;
         if (CheckCollisionPointRec(GetMousePosition(), {pos.x, pos.y, widthBar, heightBar}))
         {
             typing = true;
-            choseeData = false;
+            cursorPos = codePoints.size();
+        }
+        else
+        {
+            if (typing)
+            {
+                if (frame <= 25) codePoints.erase(codePoints.begin() + cursorPos);
+                frame = 0;
+            }
+            typing = false;
         }
         if (CheckCollisionPointRec(GetMousePosition(), dataSetBut))
             choseeData = !choseeData;
@@ -171,7 +181,8 @@ void SearchBar::handleEvent()
         if (key >= 32 && key <= 999999)
         {
             cout << key << endl;
-            codePoints.push_back(key);
+            codePoints.insert(codePoints.begin() + cursorPos, key);
+            cursorPos++;
             change = true;
         }
         key = GetCharPressed();
@@ -179,9 +190,10 @@ void SearchBar::handleEvent()
 
     if (IsKeyPressed(KEY_BACKSPACE))
     {
-        if (codePoints.size() > 0)
+        if (cursorPos > 0)
         {
-            codePoints.pop_back();
+            codePoints.erase(codePoints.begin() + cursorPos - 1);
+            cursorPos--;
             change = true;
         }
     }
@@ -194,12 +206,24 @@ void SearchBar::handleEvent()
     if (change)
     {
         resetPredict();
+    }  
+
+    if (frame % 50 == 0)
+    {
+        codePoints.insert(codePoints.begin() + cursorPos, 124);
+        frame = 0;
+    } 
+    else if (frame % 25 == 0)
+    {
+        codePoints.erase(codePoints.begin() + cursorPos);
     }
+    frame++;
 }
 
 void SearchBar::resetPredict()
 {
     predict.clear();
+    if (1 <= frame && frame <= 25) codePoints.erase(codePoints.begin() + cursorPos);
     if (codePoints.size() > 0)
     {
         if (typeSearch == Keyword)
@@ -217,6 +241,7 @@ void SearchBar::resetPredict()
             if (predict.size() == limHIs) break;
         }
     }
+    if (1 <= frame && frame <= 25) codePoints.insert(codePoints.begin() + cursorPos, 124);
 }
 
 bool SearchBar::getActive() const

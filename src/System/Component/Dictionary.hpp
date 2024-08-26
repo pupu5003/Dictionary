@@ -54,7 +54,7 @@ public:
     Word& getWord(dataSet data, int id);
     void addWord(dataSet data, Word word);
     void removeWord(dataSet data, int id);
-    void editWord(dataSet data, int id, int curDef, string& def);
+    void editWord(dataSet data, int id, int index, string ty, string def);
     void addFavorite(dataSet data, int id);
     void removeFavorite(dataSet data, int id);
     void removeAllFavorite();

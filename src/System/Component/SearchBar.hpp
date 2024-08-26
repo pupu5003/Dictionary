@@ -28,6 +28,8 @@ private:
     static dataSet data;
     static vector<int> codePoints;
     static vector<int> predict;
+    int cursorPos;
+    int frame;
     bool typing, choseeData;
     int &currentScreen;
     Dictionary& dictionary;

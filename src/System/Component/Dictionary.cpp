@@ -129,9 +129,25 @@ void Dictionary::removeWord(dataSet data, int id)
     removeHistory(data, id);
 }
 
-void Dictionary::editWord(dataSet data, int id, int curDef, string& def)
+void Dictionary::editWord(dataSet data, int id, int index, string ty, string def)
 {
-    words[data][id].definition[curDef] = def;
+    if (ty == "") ty = "()";
+    if (index == (int)words[data][id].definition.size())
+    {
+        words[data][id].type.push_back(ty);
+        words[data][id].definition.push_back(def);
+        defTable[data].insert(def, id);
+    }
+    else
+    {
+        words[data][id].type[index] = ty;
+        if (def != words[data][id].definition[index])
+        {
+            defTable[data].remove(words[data][id].definition[index], id);
+            words[data][id].definition[index] = def;
+            defTable[data].insert(def, id);
+        }
+    }
 }
 
 void Dictionary::addFavorite(dataSet data, int id){

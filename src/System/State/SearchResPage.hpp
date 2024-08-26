@@ -4,7 +4,7 @@
 #include "UILibFunc.hpp"
 #include "../src/System/Component/page.hpp"
 #include "../src/System/Component/SearchBar.hpp"
-
+#include "../src/System/Component/TextInputBox.hpp"
 
 using namespace std;
 
@@ -20,7 +20,13 @@ private:
     Button liked;
     Button edit;
     Button deleteButton;
-    int upDef, downDef;
+    Button addDefButton;
+    Button saveDefButton;
+    Button cancelDefButton;
+    TextInputBox inputDef;
+    TextInputBox inputType;
+    int isEdit;
+    static int upDef, downDef;
     static vector<float> Gap;
     int& currentScreen;
     Dictionary& dictionary;
@@ -33,4 +39,6 @@ public:
     static void setSearchWord(Word* word);
     void display() const override;
     void handleEvent() override;
+    static void resetGap();
+    void resetUpDownDef();
 };
