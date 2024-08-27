@@ -17,7 +17,8 @@ enum Search
 class SearchBar
 {
 private:
-    Texture2D curDataSet[5];   
+    Texture2D curDataSet[5];
+    Texture2D optDataSet[6];   
     Texture2D dataSetOptions;
     Texture2D curTypeSearch[2];
     Texture2D lockUpic;

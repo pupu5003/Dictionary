@@ -120,7 +120,15 @@ PracticeQuestionPage::~PracticeQuestionPage()
     UnloadTexture(curDataSet[2]);
     UnloadTexture(curDataSet[3]);
     UnloadTexture(curDataSet[4]);
+
     UnloadTexture(dataSetOptions);
+
+    UnloadTexture(optionBut[0]);
+    UnloadTexture(optionBut[1]);
+    UnloadTexture(optionBut[2]);
+    UnloadTexture(optionBut[3]);
+    UnloadTexture(optionBut[4]);
+    UnloadTexture(optionBut[5]);
 }
 
 const PracticeQuestionPage& PracticeQuestionPage::operator=(const PracticeQuestionPage& rhs) {

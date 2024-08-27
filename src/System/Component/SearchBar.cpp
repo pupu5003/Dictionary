@@ -30,6 +30,14 @@ SearchBar::SearchBar(Dictionary& dictionary, int& currentScreen, Vector2 pos) : 
     curDataSet[3] = LoadTexture("asset/Image/emoji.png");
     curDataSet[4] = LoadTexture("asset/Image/slang.png");
     dataSetOptions = LoadTexture("asset/Image/dataSetOptions.png");
+
+    optDataSet[0] = LoadTexture("asset/Image/dataSet.png");
+    optDataSet[1] = LoadTexture("asset/Image/engEng1.png");
+    optDataSet[2] = LoadTexture("asset/Image/engVie1.png");
+    optDataSet[3] = LoadTexture("asset/Image/vieEng1.png");
+    optDataSet[4] = LoadTexture("asset/Image/emoji1.png");
+    optDataSet[5] = LoadTexture("asset/Image/slang1.png");
+
     curTypeSearch[0] = LoadTexture("asset/Image/keywordS.png");
     curTypeSearch[1] = LoadTexture("asset/Image/definitionS.png");
     lockUpic = LoadTexture("asset/Image/lockUpic.png");
@@ -50,21 +58,43 @@ SearchBar::~SearchBar()
     UnloadTexture(curDataSet[2]);
     UnloadTexture(curDataSet[3]);
     UnloadTexture(curDataSet[4]);
+
     UnloadTexture(dataSetOptions);
+
     UnloadTexture(curTypeSearch[0]);
     UnloadTexture(curTypeSearch[1]);
+
     UnloadTexture(lockUpic);
     UnloadTexture(historySic);
+
+    UnloadTexture(optDataSet[0]);
+    UnloadTexture(optDataSet[1]);
+    UnloadTexture(optDataSet[2]);
+    UnloadTexture(optDataSet[3]);
+    UnloadTexture(optDataSet[4]);
+    UnloadTexture(optDataSet[5]);
 }
 
 void SearchBar::display() const
 {
-    if (choseeData)
+    if (choseeData) {
         DrawTexture(dataSetOptions, dataSetBut.x, dataSetBut.y, WHITE);
-    else
-        DrawTexture(curDataSet[data], dataSetBut.x, dataSetBut.y, WHITE);
+        for (int j = 0; j < 6; ++j) {
+            if (CheckCollisionPointRec(GetMousePosition(), {dataSetBut.x, dataSetBut.y + dataSetBut.height * j, dataSetBut.width, dataSetBut.height})) {
+                DrawTexture(optDataSet[j], dataSetBut.x, dataSetBut.y + dataSetBut.height * j, LIGHTGRAY);
+            }
+        }
+    }
+    else {
+        if (CheckCollisionPointRec(GetMousePosition(), dataSetBut))
+            DrawTexture(curDataSet[data], dataSetBut.x, dataSetBut.y, LIGHTGRAY);
+        else DrawTexture(curDataSet[data], dataSetBut.x, dataSetBut.y, WHITE);
+    }
 
-    DrawTexture(curTypeSearch[typeSearch], typeSearchBut.x, typeSearchBut.y, WHITE);
+    if (CheckCollisionPointRec(GetMousePosition(), typeSearchBut))
+        DrawTexture(curTypeSearch[typeSearch], typeSearchBut.x, typeSearchBut.y, LIGHTGRAY);
+    else
+        DrawTexture(curTypeSearch[typeSearch], typeSearchBut.x, typeSearchBut.y, WHITE);
 
     DrawRectangleRec({pos.x, pos.y, widthBar, heightBar}, WHITE);
     if (typing)
