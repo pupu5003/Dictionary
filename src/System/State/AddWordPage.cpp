@@ -192,12 +192,12 @@ void AddWordPage::handleEvent()
                 if (isEdit == word.definition.size())
                 {
                     word.definition.push_back(inputDef.getText());
-                    word.type.push_back(inputType.getText());
+                    word.type.push_back("(" + inputType.getText() + ")");
                 }
                 else
                 {
                     word.definition[isEdit] = inputDef.getText();
-                    word.type[isEdit] = inputType.getText();
+                    word.type[isEdit] = "(" + inputType.getText() + ")";
                 }
                 resetGap();
                 resetUpDownDef();

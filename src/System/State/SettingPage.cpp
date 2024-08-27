@@ -1,8 +1,8 @@
 #include "SettingPage.hpp"
 using namespace std;
 
-SettingPage::SettingPage(int &currentScreen, Dictionary& dictionary) 
-    :currentScreen(currentScreen), dictionary(dictionary)
+SettingPage::SettingPage(int &currentScreen, function<void()> resetData)
+    :currentScreen(currentScreen), resetData(resetData)
 {
     
     settingTag = LoadTexture("asset/Image/SettingTag.png");
@@ -39,8 +39,7 @@ void SettingPage::handleEvent()
     }
     else if (resetButton.isPressed())
     {
-        cout << "Reset button is pressed" << endl;
-        // confirmDialog.show();
+        confirmDialog.show(resetData);
     }
     else if (addWordButton.isPressed())
     {

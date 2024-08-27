@@ -4,7 +4,6 @@
 #include <string>
 #include <fstream>
 #include <sstream>
-#include <algorithm>
 #include "KeywordTrie.hpp"
 #include "FontHelper.hpp"
 #include "OtherFunc.hpp"
@@ -14,15 +13,13 @@ using namespace std;
 
 
 enum dataSet
-{
-    engEng = 0,
-    engVie = 1,
-    vieEng = 2,
-    emoji = 3,
-    slang = 4,
-    null = -1
-};
-
+    {
+        engEng = 0,
+        engVie = 1,
+        vieEng = 2,
+        emoji = 3,
+        slang = 4
+    };
 const string dataSetName[5] = {"engEng", "engVie", "vieEng", "emoji", "slang"};
 struct Word
 {
@@ -46,19 +43,14 @@ private:
     DefHashTable defTable[5];
     vector<int> validId[5];
     vector<pair<dataSet, int>> favorite, history;
-
-    //If the data set has been changed, so rewrite
-    vector<bool> changed;
-
 public:
     Dictionary();
     ~Dictionary();
 
-    void loadData();
-    void loadDataSets();
-    void loadFavorite(const char* filePath);
-    void loadHistory(const char* filePath);
-    void loadOpenSlot(const char* filePath);
+    void loadRawData();
+    void loadData(const char *fileName[5], bool isOrigin = false);
+    void saveData();
+    void resetData();
 
     Word& getRandomWord();
     Word& getRandomWord(dataSet data);
@@ -71,16 +63,10 @@ public:
     void removeFavorite(dataSet data, int id);
     void removeAllFavorite();
     vector<pair<dataSet,int>>& getFavorite();
-    void addHistory(dataSet data, int id);      //Word is added to history in SearchResPage constructor.
+    void addHistory(dataSet data, int id);
     void removeHistory(dataSet data, int id);
     void removeAllHistory();
     vector<pair<dataSet,int>>& getHistory();
     vector<int> predictKeyword(dataSet data, vector<int> &codePoints);
     vector<int> predictDefinition(dataSet data, vector<int> &codePoints);
-
-    void saveData();
-    void saveFavorite(const char* filePath);
-    void saveHistory(const char* filePath);
-    void saveDataSet(int set);
-    void saveOpenSlot(const char* filePath);
 };

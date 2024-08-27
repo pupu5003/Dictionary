@@ -17,6 +17,9 @@ int SearchResPage::upDef = 0, SearchResPage::downDef = -1;
 SearchResPage::SearchResPage(int &currentScreen, Dictionary& dictionary) : currentScreen(currentScreen), dictionary(dictionary), searchBar(dictionary, currentScreen, {280,35}),
     inputDef({184, 268, 872, 420}), inputType({321, 220, 600, 37})
 {
+    searchWord = nullptr;
+    scroll = 0;
+    Gap.clear();
     inputDef.setFont(FontHelper::getInstance().getFont(Inter), 40);
     inputType.setFont(FontHelper::getInstance().getFont(Inter), 36);
     inputType.centerText(); inputType.setColor(RED); 

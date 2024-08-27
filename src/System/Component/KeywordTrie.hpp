@@ -29,4 +29,5 @@ public:
     int search(string& keyword);
     void remove(string& keyword);
     vector<int> predict(vector<int>& codePoints);
+    void clear();
 };

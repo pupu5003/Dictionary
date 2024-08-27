@@ -214,3 +214,15 @@ vector<int> DefHashTable::predict(vector<int> &codePoints)
     
     return res;
 }
+
+void DefHashTable::clear()
+{
+    for (int i = 0; i < Size; i++)
+    {
+        if (table[i] != nullptr)
+        {
+            delete table[i];
+            table[i] = nullptr;
+        }
+    }
+}

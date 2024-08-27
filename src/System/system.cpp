@@ -1,4 +1,5 @@
 #include "system.hpp"
+// #include "../Component/SearchBar.hpp"
 using namespace std;
 
 System::System(/* args */)
@@ -13,7 +14,9 @@ System::System(/* args */)
     pages.push_back(new HistoryPage(currentScreen, dictionary));
     pages.push_back(new FavoritePage(currentScreen, dictionary));
     pages.push_back(new PracticeQuestionPage(currentScreen, dictionary));
-    pages.push_back(new SettingPage(currentScreen, dictionary));
+    pages.push_back(new SettingPage(currentScreen, [this](){
+        reset();
+    }));
     pages.push_back(new AddWordPage(currentScreen, dictionary)); 
     cout << "System created" << endl;
 }
@@ -47,6 +50,21 @@ void System::run()
         pages[currentScreen]->display();
         EndDrawing();
     }
-
     CloseWindow();
+
+    dictionary.saveData();
+
+}
+
+
+void System::reset()
+{
+    dictionary.resetData();
+    pages[HOME] = new HomePage(currentScreen, dictionary);
+    pages[FAVORITE] = new FavoritePage(currentScreen, dictionary);
+    pages[HISTORY] = new HistoryPage(currentScreen, dictionary);
+    // pages[SETTING] = new SettingPage(currentScreen, dictionary);
+    pages[PRACTICE] = new PracticeQuestionPage(currentScreen, dictionary);
+    // pages[ADD_WORD] = new AddWordPage(currentScreen, dictionary);
+    pages[SEARCH_RES] = new SearchResPage(currentScreen, dictionary);
 }

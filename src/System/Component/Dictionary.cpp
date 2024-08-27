@@ -21,39 +21,23 @@ Word::~Word()
 
 Dictionary::Dictionary()
 {
-    // cout << sizeof(VNCodePoints) / sizeof(int);
-    // exit(0);
-    loadData();
+    // loadRawData();
+    const char *fileName[5] = {"data/Current/engEng.bin", "data/Current/engVie.bin", "data/Current/vieEng.bin", "data/Current/emoji.bin", "data/Current/slang.bin"};
+
+    loadData(fileName);
 }
 
 Dictionary::~Dictionary()
 {
-    saveData();
     for (int i = 0; i < 5; i++)
     {
         words[i].clear();
     }
 }
 
-void Dictionary::loadData() {
-    loadDataSets();
-    loadFavorite("data/Favorite/Favorite.txt");
-    loadHistory("data/History/History.txt");
-    loadOpenSlot("data/OpenSlot/OpenSlot.txt");
-}
-
-void Dictionary::saveData() {
-    saveFavorite("data/Favorite/Favorite.txt");
-    saveHistory("data/History/History.txt");
-    saveOpenSlot("data/OpenSlot/OpenSlot.txt");
-    for (int i = 0; i < 5; ++i) {
-        if (changed[i]) saveDataSet(i);
-    }
-}
-
-void Dictionary::loadDataSets()
+void Dictionary::loadRawData()
 {
-    const char *fileName[5] = {"data/DictionaryData/engEng.txt", "data/DictionaryData/engVie.txt", "data/DictionaryData/vieEng.txt", "data/DictionaryData/emoji.txt", "data/DictionaryData/slang.txt"};
+    const char *fileName[5] = {"data/RawData/engEng.txt", "data/RawData/engVie.txt", "data/RawData/vieEng.txt", "data/RawData/emoji.txt", "data/RawData/slang.txt"};
 
     for (int i = 0; i < 5; i++)
     {
@@ -92,12 +76,177 @@ void Dictionary::loadDataSets()
         }
         file.close();
         defTable[i].setCountSize(words[i].size());
-
-        
-        cout << "Load data set " << fileName[i] << " successfully.\n";
     }
 }
 
+void Dictionary::loadData(const char *fileName[5], bool isOrigin)
+{
+    // const char *fileName[5] = {"data/Current/engEng.bin", "data/Current/engVie.bin", "data/Current/vieEng.bin", "data/Current/emoji.bin", "data/Current/slang.bin"};
+    
+    for (int i = 0; i < 5; i++)
+    {
+        ifstream file(fileName[i], ios::binary);
+        if (!file.is_open())
+        {
+            cout << "Can't open file " << fileName[i] << endl;
+            return;
+        }
+        int size;
+        file.read((char *)&size, sizeof(int));
+        for (int j = 0; j < size; j++)
+        {
+            Word word;
+            int len;
+            file.read((char *)&len, sizeof(int));
+            char *buffer = new char[len + 1];
+            file.read(buffer, len);
+            buffer[len] = '\0';
+            word.word = buffer;
+            delete[] buffer;
+
+            if (len == 0) validId[i].push_back(j);
+            else 
+            {
+                word.data = (dataSet)i;
+                word.id = j;
+                wordTrie[i].insert(word.word, word.id);
+            }
+
+            int vecSize;
+            file.read((char *)&vecSize, sizeof(int));
+            for (int k = 0; k < vecSize; k++)
+            {
+                file.read((char *)&len, sizeof(int));
+                buffer = new char[len + 1];
+                file.read(buffer, len);
+                buffer[len] = '\0';
+                word.type.push_back(buffer);
+                delete[] buffer;
+            }
+
+            file.read((char *)&vecSize, sizeof(int));
+            for (int k = 0; k < vecSize; k++)
+            {
+                file.read((char *)&len, sizeof(int));
+                buffer = new char[len + 1];
+                file.read(buffer, len);
+                buffer[len] = '\0';
+                word.definition.push_back(buffer);
+                delete[] buffer;
+            }
+            words[i].push_back(word);
+            for (int k = 0; k < (int)word.definition.size(); k++)
+            {
+                defTable[i].insert(word.definition[k], word.id);
+            }
+        }
+        defTable[i].setCountSize(words[i].size());
+        file.close();
+    }
+
+    if (isOrigin) return;
+    
+    ifstream file("data/Current/favorite.bin", ios::binary);
+    int size = (int)favorite.size();
+    file.read((char *)&size, sizeof(int));
+    for (int i = 0; i < size; i++)
+    {
+        pair<dataSet, int> p;
+        file.read((char *)&p.first, sizeof(int));
+        file.read((char *)&p.second, sizeof(int));
+        favorite.push_back(p);
+    }
+    file.close();
+    file.open("data/Current/history.bin", ios::binary);
+    size = (int)history.size();
+    file.read((char *)&size, sizeof(int));
+    for (int i = 0; i < size; i++)
+    {
+        pair<dataSet, int> p;
+        file.read((char *)&p.first, sizeof(int));
+        file.read((char *)&p.second, sizeof(int));
+        history.push_back(p);
+    }
+    file.close();
+}
+
+void Dictionary::saveData()
+{
+    const char *fileName[5] = {"data/Current/engEng.bin", "data/Current/engVie.bin", "data/Current/vieEng.bin", "data/Current/emoji.bin", "data/Current/slang.bin"};
+
+    for (int i = 0; i < 5; i++)
+    {
+        ofstream file(fileName[i], ios::binary);
+        if (!file.is_open())
+        {
+            cout << "Can't open file " << fileName[i] << endl;
+            return;
+        }
+        int size = words[i].size();
+        file.write((char *)&size, sizeof(int));
+        for (const Word& word: words[i])
+        {            
+            int len = word.word.size();
+            file.write((char *)&len, sizeof(int));
+            file.write(word.word.c_str(), len);
+
+            int vecSize = word.type.size();
+            file.write((char *)&vecSize, sizeof(int));
+            for (const string& s: word.type)
+            {
+                len = s.size();
+                file.write((char *)&len, sizeof(int));
+                file.write(s.c_str(), len);
+            }
+
+            vecSize = word.definition.size();
+            file.write((char *)&vecSize, sizeof(int));
+            for (const string& s: word.definition)
+            {
+                len = s.size();
+                file.write((char *)&len, sizeof(int));
+                file.write(s.c_str(), len);
+            }
+        }
+        file.close();
+    }
+
+
+    ofstream file("data/Current/favorite.bin", ios::binary);
+    int size = (int)favorite.size();
+    file.write((char *)&size, sizeof(int));
+    for (const pair<dataSet, int>& p: favorite)
+    {
+        file.write((char *)&p.first, sizeof(int));
+        file.write((char *)&p.second, sizeof(int));
+    }
+    file.close();
+    file.open("data/Current/history.bin", ios::binary);
+    size = (int)history.size();
+    file.write((char *)&size, sizeof(int));
+    for (const pair<dataSet, int>& p: history)
+    {
+        file.write((char *)&p.first, sizeof(int));
+        file.write((char *)&p.second, sizeof(int));
+    }
+    file.close();
+}
+
+void Dictionary::resetData()
+{
+    removeAllFavorite();
+    removeAllHistory();
+    for (int i = 0; i < 5; i++)
+    {
+        words[i].clear();
+        validId[i].clear();
+        wordTrie[i].clear();
+        defTable[i].clear();
+    }
+    const char *fileName[5] = {"data/Origin/engEng.bin", "data/Origin/engVie.bin", "data/Origin/vieEng.bin", "data/Origin/emoji.bin", "data/Origin/slang.bin"};
+
+    loadData(fileName, true);
+}
 
 Word& Dictionary::getRandomWord()
 {
@@ -131,6 +280,7 @@ void Dictionary::addWord(Word word)
         word.id = words[data].size();
         words[data].push_back(word);
         wordTrie[data].insert(word.word, word.id);
+        defTable[data].setCountSize(words[data].size());
     }
     for (int i = 0; i < (int)word.definition.size(); i++)
     {
@@ -138,15 +288,12 @@ void Dictionary::addWord(Word word)
     }
     if (word.isFavorite) addFavorite(data, word.id);
 
-    //Set data set as changed
-    changed[(int)data] = true;
 }
 
 void Dictionary::removeWord(dataSet data, int id)
 {
     validId[data].push_back(id);
     wordTrie[data].remove(words[data][id].word);
-
     for (int i = 0; i < (int)words[data][id].definition.size(); i++)
     {
         defTable[data].remove(words[data][id].definition[i], id);
@@ -157,9 +304,6 @@ void Dictionary::removeWord(dataSet data, int id)
     words[data][id].definition.clear();
     if (words[data][id].isFavorite) removeFavorite(data, id);
     removeHistory(data, id);
-  
-    //Set data set as changed
-    changed[(int)data] = true;
 }
 
 void Dictionary::editDef(dataSet data, int id, int index, string ty, string def)
@@ -181,9 +325,6 @@ void Dictionary::editDef(dataSet data, int id, int index, string ty, string def)
             defTable[data].insert(def, id);
         }
     }
- 
-    //Set data set as changed
-    changed[(int)data] = true;
 }
 
 void Dictionary::removeDef(dataSet data, int id, int index)
@@ -191,9 +332,6 @@ void Dictionary::removeDef(dataSet data, int id, int index)
     defTable[data].remove(words[data][id].definition[index], id);
     words[data][id].type.erase(words[data][id].type.begin() + index);
     words[data][id].definition.erase(words[data][id].definition.begin() + index);
-  
-    //Set data set as changed
-    changed[(int)data] = true;
 }
 
 void Dictionary::addFavorite(dataSet data, int id){
@@ -248,106 +386,3 @@ vector<int> Dictionary::predictDefinition(dataSet data, vector<int> &codePoints)
 {
     return defTable[data].predict(codePoints);
 };
-
-void Dictionary::loadFavorite(const char* filePath) 
-{
-    fstream favFile(filePath, ios::in);
-    if (!favFile.is_open()) {
-        cout << "Error opening favorite file.\n";
-        return;
-    }
-    while (!favFile.eof()) {
-        int inputLanguage = -1; int wordID = -1;
-        favFile >> inputLanguage >> wordID;
-        dataSet language = (dataSet)inputLanguage;
-        if (wordID != -1) favorite.push_back({language, wordID});
-    }
-    cout << "Successfully loaded favorite.\n";
-}
-
-void Dictionary::loadHistory(const char* filePath) 
-{
-    fstream hisFile(filePath, ios::in);
-    if (!hisFile.is_open()) {
-        cout << "Error opening history file.\n";
-        return;
-    }
-    while (!hisFile.eof()) {
-        int inputLanguage = -1; int wordID = -1;
-        hisFile >> inputLanguage >> wordID;
-        dataSet language = (dataSet)inputLanguage;
-        if (wordID != -1) history.push_back({language, wordID});
-    }
-    cout << "Successfully loaded history.\n";
-}
-
-void Dictionary::saveFavorite(const char* filePath)
-{
-    fstream favFile(filePath, ios::out);
-    if (!favFile.is_open()) {
-        cout << "Error opening favorite file.\n";
-        return;
-    }
-    for (auto word : favorite) {
-        favFile << (int)word.first << " " << word.second << '\n';
-    }
-    cout << "Successfully saved favorite.\n";
-}
-
-void Dictionary::saveHistory(const char* filePath)
-{
-    fstream hisFile(filePath, ios::out);
-    if (!hisFile.is_open()) {
-        cout << "Error opening favorite file.\n";
-        return;
-    }
-    for (auto word : history) {
-        hisFile << (int)word.first << " " << word.second << '\n';
-    }
-    cout << "Successfully saved history.\n";
-}
-
-void Dictionary::saveDataSet(int i)
-{
-    const char *fileName[5] = {"data/DictionaryData/engEng.txt", "data/DictionaryData/engVie.txt", "data/DictionaryData/vieEng.txt", "data/DictionaryData/emoji.txt", "data/DictionaryData/slang.txt"};
-
-    fstream file(fileName[i], ios::out);
-    if (!file.is_open())
-    {
-        cout << "Can't open file " << fileName[i] << endl;
-        return;
-    }
-    for (auto word : words[i]) {
-        for (int j = 0; j < word.type.size(); ++j) {
-            file << word.word << '\\'
-            << word.type[j] << '\\'
-            << word.definition[j] << '\n';
-            }
-    }
-}
-
-void Dictionary::loadOpenSlot(const char* filePath) {
-    fstream openSlotFile(filePath, ios::in);
-    if (!openSlotFile.is_open()) {
-        cout << "Error opening open slot file.\n";
-        return;
-    }
-    while (!openSlotFile.eof()) {
-        int set, slot;
-        openSlotFile >> set >> slot;
-        validId[set].push_back(slot);
-    }
-    cout << "Successfully loaded open slot.\n";
-}
-
-void Dictionary::saveOpenSlot(const char* filePath) {
-    fstream openSlotFile(filePath, ios::out);
-    if (!openSlotFile.is_open()) {
-        cout << "Error opening open slot file.\n";
-        return;
-    }
-    for (int i = 0; i < 5; ++i)
-        for (auto slot : validId[i])
-            openSlotFile << i << " " << slot << '\n';
-    cout << "Successfully loaded open slot.\n";
-}

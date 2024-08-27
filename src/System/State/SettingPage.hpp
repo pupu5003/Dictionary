@@ -11,11 +11,10 @@ private:
     Button resetButton;
     Button addWordButton;
     DialogYesNo confirmDialog;
-
+    function<void()> resetData;
     int& currentScreen;
-    Dictionary &dictionary;
 public:
-    SettingPage(int &currentScreen, Dictionary& dictionary);
+    SettingPage(int &currentScreen, function<void()> resetData);
     ~SettingPage();
     void display() const override;
     void handleEvent() override;

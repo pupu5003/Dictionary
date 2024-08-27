@@ -19,8 +19,10 @@ SearchBar::SearchBar(Dictionary& dictionary, int& currentScreen, Vector2 pos) : 
 {
     typing = false;
     choseeData = false;
-    // typeSearch = Keyword;
-    // data = engEng;
+    typeSearch = Keyword;
+    data = engEng;
+    codePoints.clear();
+    predict.clear();
 
     curDataSet[0] = LoadTexture("asset/Image/engEng.png");
     curDataSet[1] = LoadTexture("asset/Image/engVie.png");

@@ -120,3 +120,9 @@ vector<int> KeywordTrie::predict(vector<int>& codePoints)
     }
     return result;
 }
+
+void KeywordTrie::clear() 
+{
+    delete root;
+    root = new KeywordNode();
+}

@@ -13,6 +13,7 @@
 #include "../asset/Color/color.hpp"
 #include "../src/System/Component/Dictionary.hpp"
 #include "../src/System/Component/SearchBar.hpp"
+// #include <funtiona>
 using namespace std;
 
 class System
@@ -29,5 +30,6 @@ public:
     // Word *searchWord;
     System(/* args */);
     ~System();
+    void reset();
     void run();
 };
