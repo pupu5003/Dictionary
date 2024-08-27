@@ -92,7 +92,7 @@ void Button::setScale(float scale)
 }
 
 void Button::setText(string text, fontType font, float fontSize, float spacing, bool wordWrap, Color color) {
-        this->text.setTextBox(font, text, this->rect, fontSize, spacing, wordWrap, color);
+        this->text.setTextBox(font, text, {rect.x + 10, rect.y + 10, rect.width - 10, rect.height - 10}, fontSize, spacing, wordWrap, color);
 }
 
 void Button::disable()

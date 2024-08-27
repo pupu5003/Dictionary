@@ -28,9 +28,9 @@ PracticeQuestionPage::PracticeQuestionPage(int &currentScreen, Dictionary& dicti
         answerBox[3].setButton("asset/Image/PracticeAnswerBox_Word.png", 723, 500);
     }
 
-    questionBox.setText(this->question.question, Arial, 30, 3, true, BLACK);
+    questionBox.setText(this->question.question, OpenSan, 35, 3, true, BLACK);
     for (int i = 0; i < 4; ++i) 
-        answerBox[i].setText(this->question.answer[i], Arial, 20, 3, true, BLACK);
+        answerBox[i].setText(this->question.answer[i], OpenSanBold, 30, 3, true, BLACK);
 }
 
 void PracticeQuestionPage::display() const

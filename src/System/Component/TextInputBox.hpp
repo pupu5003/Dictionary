@@ -2,7 +2,7 @@
 #include <iostream>
 #include <raylib.h>
 #include <string>
-#include "../src/System/State/TextHandle.hpp"
+#include "../src/System/Component/TextHandle.hpp"
 using namespace std;
 
 

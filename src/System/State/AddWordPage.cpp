@@ -302,21 +302,17 @@ void AddWordPage::resetUpDownDef()
     }
 }
 
-// void AddWordPage::clear()
-// {
-
-//     word = Word();
-//     curState = ADDWORD;
-//     inputDef.clear();
-//     inputType.clear();
-//     resetGap();
-//     resetUpDownDef();
-//     isEdit = -1;
-//     scroll = 0;
-// }
 
 
 AddWordPage::~AddWordPage()
 {
     UnloadTexture(AddWordTag);
+    UnloadTexture(keywordBox);
+    for (int i = 0; i < 6; i++)
+    {
+        UnloadTexture(curDataSet[i]);
+    }
+    UnloadTexture(dataSetOptions);
+    UnloadTexture(barrier);
+    
 }

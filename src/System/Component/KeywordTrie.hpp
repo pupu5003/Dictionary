@@ -2,10 +2,9 @@
 #include <iostream>
 #include <vector>
 #include <raylib.h>
-#include "../src/DataStructure/Trie.hpp"
 #include <stack>
 #include "FontHelper.hpp"
-#include "../src/System/State/TextHandle.hpp"
+#include "../src/System/Component/TextHandle.hpp"
 // #include "Dictionary.hpp"
 using namespace std;
 

@@ -9,6 +9,9 @@
 #include <../src/System/Component/DialogYesNo.hpp>
 #include <../src/System/Component/FontHelper.hpp>
 #include <../src/System/Component/TextInputBox.hpp>
+#include <../src/System/Component/Question.hpp>
+#include <../src/System/Component/SearchBar.hpp>
+
 
 #include <chrono>
 #include <algorithm>

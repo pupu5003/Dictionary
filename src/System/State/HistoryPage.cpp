@@ -63,10 +63,18 @@ void HistoryPage::display() const
 
     DrawLine(107, 192, 1136, 192, BLACK);
 
+    confirmDialog.display();
+
 }
 
 void HistoryPage::handleEvent()
 {
+    if (confirmDialog.isShown())
+    {
+        confirmDialog.handleEvent();
+        return;
+    }
+
     scroll += GetMouseWheelMove() * scrollSpeed;
     resetUpDownWord();
     
@@ -84,8 +92,10 @@ void HistoryPage::handleEvent()
     }
     else if (clearButton.isPressed())
     {
-        dictionary.removeAllHistory();
-        upWord = 0; downWord = -1;
+        confirmDialog.show([this](){
+            dictionary.removeAllHistory();
+            upWord = 0; downWord = -1;
+        });
     }
     else
     {

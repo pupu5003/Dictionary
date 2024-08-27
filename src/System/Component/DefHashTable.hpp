@@ -3,7 +3,7 @@
 #include <vector>
 #include <string>
 #include <sstream>
-#include "../src/System/State/TextHandle.hpp"
+#include "../src/System/Component/TextHandle.hpp"
 using namespace std;
 
 struct Slot

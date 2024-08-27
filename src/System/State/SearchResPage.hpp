@@ -2,10 +2,6 @@
 #include <iostream>
 #include <raylib.h>
 #include "UILibFunc.hpp"
-#include "../src/System/Component/page.hpp"
-#include "../src/System/Component/SearchBar.hpp"
-#include "../src/System/Component/TextInputBox.hpp"
-#include "../src/System/Component/DialogYesNo.hpp"
 
 using namespace std;
 

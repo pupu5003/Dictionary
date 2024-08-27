@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include "../src/System/State/TextHandle.hpp"
+#include "../src/System/Component/TextHandle.hpp"
 #include "../src/System/Component/FontHelper.hpp"
 using namespace std;
 struct TextBox
