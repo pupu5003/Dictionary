@@ -80,6 +80,8 @@ void TextInputBox::handleEvent()
 
     bool change = false;
     int key = GetCharPressed();
+    int keyRightHere = key;
+    int lengthNow = codePoints.size();
     while(key > 0)
     {
         if (key >= 32)
@@ -89,7 +91,18 @@ void TextInputBox::handleEvent()
             cursorPos++;
             change = true;
         }
+        keyRightHere = key;
         key = GetCharPressed();
+    }
+    int spareCodePoints = codePoints.size() - lengthNow;
+    if (spareCodePoints > 1 || keyRightHere > 125) {    //KeyRightHere to determine if the vowel is right before the codepoint (this falls to spareCodePoints = 1)
+        vector<int> tmp;
+        tmp.assign(codePoints.end() - spareCodePoints, codePoints.end());
+        for (int i = 0; i < 2*spareCodePoints; ++i)
+            codePoints.pop_back();
+        for (int i = 0; i < spareCodePoints; ++i)
+            codePoints.push_back(tmp[i]);
+        cursorPos -= spareCodePoints;
     }
 
     if (IsKeyPressed(KEY_BACKSPACE))
