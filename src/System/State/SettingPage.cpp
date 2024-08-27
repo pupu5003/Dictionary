@@ -2,7 +2,7 @@
 using namespace std;
 
 SettingPage::SettingPage(int &currentScreen, Dictionary& dictionary) 
-    :currentScreen(currentScreen), confirmDialog(dictionary), dictionary(dictionary)
+    :currentScreen(currentScreen), dictionary(dictionary)
 {
     
     settingTag = LoadTexture("asset/Image/SettingTag.png");
@@ -29,10 +29,10 @@ void SettingPage::display() const
 void SettingPage::handleEvent()
 {
     if (confirmDialog.isShown())
-    {
-        confirmDialog.handleEvent();
-        return; 
+    {   
+       confirmDialog.handleEvent();
     }
+    else
     if (backButton.isPressed())
     {
         currentScreen = HOME;
@@ -40,7 +40,7 @@ void SettingPage::handleEvent()
     else if (resetButton.isPressed())
     {
         cout << "Reset button is pressed" << endl;
-        confirmDialog.show();
+        // confirmDialog.show();
     }
     else if (addWordButton.isPressed())
     {

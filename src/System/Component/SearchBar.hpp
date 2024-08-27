@@ -28,7 +28,9 @@ private:
     static dataSet data;
     static vector<int> codePoints;
     static vector<int> predict;
-    bool typing, choseeData;
+    int cursorPos;
+    int frame;
+    bool typing, choseeData, cursorFlick;
     int &currentScreen;
     Dictionary& dictionary;
 public:

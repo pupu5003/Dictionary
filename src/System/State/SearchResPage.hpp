@@ -2,9 +2,6 @@
 #include <iostream>
 #include <raylib.h>
 #include "UILibFunc.hpp"
-#include "../src/System/Component/page.hpp"
-#include "../src/System/Component/SearchBar.hpp"
-
 
 using namespace std;
 
@@ -20,17 +17,27 @@ private:
     Button liked;
     Button edit;
     Button deleteButton;
-    int upDef, downDef;
+    Button addDefButton;
+    Button saveDefButton;
+    Button cancelDefButton;
+    Button deleteDefButton;
+    TextInputBox inputDef;
+    TextInputBox inputType;
+    int isEdit;
+    static int upDef, downDef;
     static vector<float> Gap;
     int& currentScreen;
-    Dictionary& dictionary;
     static Word* searchWord;
     static float scroll;
+    DialogYesNo confirmDialog;
     SearchBar searchBar;
+    Dictionary& dictionary;
 public:
     SearchResPage(int &currentScreen, Dictionary &dictionary);
     ~SearchResPage();
     static void setSearchWord(Word* word);
     void display() const override;
     void handleEvent() override;
+    static void resetGap();
+    void resetUpDownDef();
 };

@@ -184,10 +184,13 @@ vector<int> DefHashTable::predict(vector<int> &codePoints)
         }
     }
 
-    for (auto e : filter)
-    for (auto id : e->Ids)
+    for (int i = 0; i < (int)filter.size(); i++)
+    for (auto id : filter[i]->Ids)
     {
-        count[id]++;
+        if (count[id] < i + 1)
+        {
+            count[id]++;
+        }
     }
     if (filter.size() == 0)
     {

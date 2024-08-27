@@ -1,7 +1,5 @@
 #pragma once
 #include "UILibFunc.hpp"
-#include <../src/System/Component/Dictionary.hpp>
-#include <../src/System/Component/SearchBar.hpp>
 
 using namespace std;
 

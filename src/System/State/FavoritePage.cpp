@@ -62,11 +62,17 @@ void FavoritePage::display() const
     clearButton.display();
 
     DrawLine(107, 192, 1136, 192, BLACK);
+    confirmDialog.display();
 
 }
 
 void FavoritePage::handleEvent()
 {
+    if (confirmDialog.isShown())
+    {
+        confirmDialog.handleEvent();
+        return;
+    }
     scroll += GetMouseWheelMove() * scrollSpeed;
     resetUpDownWord();
     
@@ -84,8 +90,10 @@ void FavoritePage::handleEvent()
     }
     else if (clearButton.isPressed())
     {
-        dictionary.removeAllFavorite();
-        upWord = 0; downWord = -1;
+        confirmDialog.show([this](){
+            dictionary.removeAllFavorite();
+            upWord = 0; downWord = -1;
+        });
     }
     else
     {
