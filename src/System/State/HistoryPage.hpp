@@ -1,10 +1,6 @@
 #pragma once
 #include <iostream>
 #include <raylib.h>
-#include "../src/System/Component/page.hpp"
-#include <../src/System/Component/button.hpp>
-#include <../asset/Color/color.hpp>
-#include <../src/System/Component/Dictionary.hpp>
 #include "UILibFunc.hpp"
 
 class HistoryPage : public Page
@@ -17,6 +13,8 @@ private:
     Button backButton;
     Button settingButton; 
     Button clearButton;
+    Button detailButton;
+    DialogYesNo confirmDialog;
 
     float scroll;
 
@@ -28,6 +26,7 @@ private:
 public:
     HistoryPage(int &currentScreen, Dictionary &dictionary);
     ~HistoryPage();
+    void resetUpDownWord();
     void display() const override;
     void handleEvent() override;
 };

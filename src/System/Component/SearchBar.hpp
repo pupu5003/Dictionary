@@ -20,6 +20,7 @@ private:
     Texture2D dataSetOptions;
     Texture2D curTypeSearch[2];
     Texture2D lockUpic;
+    Texture2D historySic;
     Vector2 pos;
     Rectangle dataSetBut;
     Rectangle typeSearchBut;
@@ -27,7 +28,9 @@ private:
     static dataSet data;
     static vector<int> codePoints;
     static vector<int> predict;
-    bool typing, choseeData;
+    int cursorPos;
+    int frame;
+    bool typing, choseeData, cursorFlick;
     int &currentScreen;
     Dictionary& dictionary;
 public:

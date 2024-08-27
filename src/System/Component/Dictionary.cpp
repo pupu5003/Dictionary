@@ -116,9 +116,10 @@ Word& Dictionary::getWord(dataSet data, int id)
     return words[data][id];
 }
 
-void Dictionary::addWord(dataSet data, Word word)
+void Dictionary::addWord(Word word)
 {
-    if ((int)validId[data].size() > 0)
+    dataSet data = word.data;
+    if ((int)vaildId[data].size() > 0)
     {
         word.id= validId[data].back();
         validId[data].pop_back();
@@ -131,6 +132,11 @@ void Dictionary::addWord(dataSet data, Word word)
         words[data].push_back(word);
         wordTrie[data].insert(word.word, word.id);
     }
+    for (int i = 0; i < (int)word.definition.size(); i++)
+    {
+        defTable[data].insert(word.definition[i], word.id);
+    }
+    if (word.isFavorite) addFavorite(data, word.id);
 
     //Set data set as changed
     changed[(int)data] = true;
@@ -140,16 +146,52 @@ void Dictionary::removeWord(dataSet data, int id)
 {
     validId[data].push_back(id);
     wordTrie[data].remove(words[data][id].word);
-    words[data][id] = Word();
 
+    for (int i = 0; i < (int)words[data][id].definition.size(); i++)
+    {
+        defTable[data].remove(words[data][id].definition[i], id);
+    }
+    words[data][id].id = -1;
+    words[data][id].word = "";
+    words[data][id].type.clear();
+    words[data][id].definition.clear();
+    if (words[data][id].isFavorite) removeFavorite(data, id);
+    removeHistory(data, id);
+  
     //Set data set as changed
     changed[(int)data] = true;
 }
 
-void Dictionary::editWord(dataSet data, int id, int curDef, string& def)
+void Dictionary::editDef(dataSet data, int id, int index, string ty, string def)
 {
-    words[data][id].definition[curDef] = def;
-    
+    ty = "(" + ty + ")";
+    if (index == (int)words[data][id].definition.size())
+    {
+        words[data][id].type.push_back(ty);
+        words[data][id].definition.push_back(def);
+        defTable[data].insert(def, id);
+    }
+    else
+    {
+        words[data][id].type[index] = ty;
+        if (def != words[data][id].definition[index])
+        {
+            defTable[data].remove(words[data][id].definition[index], id);
+            words[data][id].definition[index] = def;
+            defTable[data].insert(def, id);
+        }
+    }
+ 
+    //Set data set as changed
+    changed[(int)data] = true;
+}
+
+void Dictionary::removeDef(dataSet data, int id, int index)
+{
+    defTable[data].remove(words[data][id].definition[index], id);
+    words[data][id].type.erase(words[data][id].type.begin() + index);
+    words[data][id].definition.erase(words[data][id].definition.begin() + index);
+  
     //Set data set as changed
     changed[(int)data] = true;
 }
@@ -162,6 +204,7 @@ void Dictionary::addFavorite(dataSet data, int id){
 void Dictionary::removeFavorite(dataSet data, int id){
     words[data][id].isFavorite = false;
     auto it = find(favorite.begin(), favorite.end(), make_pair(data, id));
+    if (it != favorite.end())
     favorite.erase(it);
 }
 
@@ -178,11 +221,13 @@ vector<pair<dataSet,int>>& Dictionary::getFavorite(){
 }
 
 void Dictionary::addHistory(dataSet data, int id){
+    removeHistory(data, id);
     history.push_back({data, id});
 }
 
 void Dictionary::removeHistory(dataSet data, int id){
     auto it = find(history.begin(), history.end(), make_pair(data, id));
+    if (it != history.end())
     history.erase(it);
 }
 

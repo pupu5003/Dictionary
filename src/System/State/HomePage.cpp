@@ -9,6 +9,7 @@
 HomePage::HomePage(int &currentScreen, Dictionary &dictionary): currentScreen(currentScreen), dictionary(dictionary), searchBar(dictionary, currentScreen, {280, 90})
 {
     randomWord = &dictionary.getRandomWord();
+    while(randomWord -> id == -1) randomWord =  &dictionary.getRandomWord();
 
     homeTag = LoadTexture("asset/Image/HomeTag.png");
 
@@ -18,9 +19,9 @@ HomePage::HomePage(int &currentScreen, Dictionary &dictionary): currentScreen(cu
     settingButton.setButton("asset/Image/settings_ic.png", 1159, 23);
 
     like.setButton("asset/Image/Heart_ic.png", 870, 326, 1.1);
-    liked.setButton("asset/Image/Hear1_ic.png", 870, 328, 1.1);
-    edit.setButton("asset/Image/Edit_ic.png", 935, 324, 1.1);
+    liked.setButton("asset/Image/Hear1_ic.png", 870, 326, 1.1);
     changeWord.setButton("asset/Image/Reload_ic.png", 990, 324, 1.1);
+    detailButton.setButton("asset/Image/DetailButton.png", 935, 324, 1.1);
 
     wordCard.setButton("asset/Image/WordCard.png", 181, 296);
 
@@ -44,12 +45,12 @@ void HomePage::display() const {
    
     DrawTextBoxed(FontHelper::getInstance().getFont(Inter) ,randomWord -> definition[0].c_str(), {232, 380, 800, 280}, 38, 0.5f, true, BLACK);
     
-    if (CheckCollisionPointRec(GetMousePosition(), { 232, 650, 93, 33 })) {
-        DrawTextEx(FontHelper::getInstance().getFont(OpenSanBold), "(More...)", { 232, 650 }, 33, 0.5f, BLACK);
-    } 
-    else {
-        DrawTextEx(FontHelper::getInstance().getFont(OpenSan), "(More...)", { 232, 650 }, 33, 0.5f, BLACK);
-    }
+    // if (CheckCollisionPointRec(GetMousePosition(), { 232, 650, 93, 33 })) {
+    //     DrawTextEx(FontHelper::getInstance().getFont(OpenSanBold), "(More...)", { 232, 650 }, 33, 0.5f, BLACK);
+    // } 
+    // else {
+    //     DrawTextEx(FontHelper::getInstance().getFont(OpenSan), "(More...)", { 232, 650 }, 33, 0.5f, BLACK);
+    // }
     DrawTextEx(FontHelper::getInstance().getFont(RussoOne), dataSetName[randomWord -> data].c_str(), {900, 650 }, 33, 0.5f, BLACK);
    
     if (randomWord -> isFavorite) {
@@ -57,7 +58,7 @@ void HomePage::display() const {
     } else {
         like.display();
     }
-    edit.display();
+    detailButton.display();
     changeWord.display();
 
     DrawLine(107, 281, 1134, 281, BLACK);
@@ -67,6 +68,8 @@ void HomePage::display() const {
 
 void HomePage::handleEvent() {
     // if (randomWord.isFavorite) exit(0);
+    while(randomWord -> id == -1) randomWord =  &dictionary.getRandomWord();
+
     if (searchBar.getActive()) 
     {
         searchBar.handleEvent();
@@ -82,21 +85,19 @@ void HomePage::handleEvent() {
         currentScreen = PRACTICE;
     } else if (settingButton.isPressed()) {
         currentScreen = SETTING;
-    } else if (like.isPressed()) {
-        // randomWord.isFavorite = !randomWord.isFavorite;
-        if (!randomWord -> isFavorite) {
-            dictionary.addFavorite(randomWord -> data, randomWord -> id);
-        } else {
-            dictionary.removeFavorite(randomWord -> data, randomWord -> id);
-        }
-    } else if (edit.isPressed()) {
-        cout << "Edit button is pressed" << endl;
+    } else if (!randomWord -> isFavorite && like.isPressed()) 
+    {
+        dictionary.addFavorite(randomWord -> data, randomWord -> id);
+    } else if (randomWord -> isFavorite && liked.isPressed()) 
+    {
+        dictionary.removeFavorite(randomWord -> data, randomWord -> id);
     } else if (changeWord.isPressed()) {
 
         randomWord = &dictionary.getRandomWord();
     }
-    else if (CheckCollisionPointRec(GetMousePosition(), { 232, 650, 93, 33 }) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+    else if (detailButton.isPressed()) {
         currentScreen = SEARCH_RES;
+        dictionary.addHistory(randomWord -> data, randomWord -> id);
         SearchResPage::setSearchWord(randomWord);
     }
 

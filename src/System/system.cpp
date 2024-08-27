@@ -13,9 +13,9 @@ System::System(/* args */)
     pages.push_back(new HistoryPage(currentScreen, dictionary));
     pages.push_back(new FavoritePage(currentScreen, dictionary));
     pages.push_back(new PracticeQuestionPage(currentScreen, dictionary));
-    pages.push_back(new SettingPage(currentScreen));
-    pages.push_back(new AddWordPage(currentScreen));
-    cout << "System created\n" << endl;
+    pages.push_back(new SettingPage(currentScreen, dictionary));
+    pages.push_back(new AddWordPage(currentScreen, dictionary)); 
+    cout << "System created" << endl;
 }
 
 System::~System()
@@ -35,7 +35,6 @@ void System::run()
     while (!WindowShouldClose()) 
     {
         //event handling
-        // searchBar.handleEvent();
         pages[currentScreen] -> handleEvent();
         if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
         {
@@ -46,10 +45,6 @@ void System::run()
         BeginDrawing();
         ClearBackground(BACKGROUND);
         pages[currentScreen]->display();
-        // if ((int)currentScreen == 1)
-        // {
-        //     searchBar.display();
-        // }
         EndDrawing();
     }
 

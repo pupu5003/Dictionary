@@ -8,6 +8,7 @@ const float heightBar = 54;
 const float gapTextX = 10.6f;
 const float gapTextY = 6;
 const int limSymbol = 35;
+const int limHIs = 6;
 
 Search SearchBar::typeSearch = Keyword;
 dataSet SearchBar::data = engEng;
@@ -30,9 +31,14 @@ SearchBar::SearchBar(Dictionary& dictionary, int& currentScreen, Vector2 pos) : 
     curTypeSearch[0] = LoadTexture("asset/Image/keywordS.png");
     curTypeSearch[1] = LoadTexture("asset/Image/definitionS.png");
     lockUpic = LoadTexture("asset/Image/lockUpic.png");
+    historySic = LoadTexture("asset/Image/historySic.png");
 
     dataSetBut = {pos.x - dataSetOptions.width, pos.y, (float)dataSetOptions.width, heightBar};
     typeSearchBut = {pos.x + widthBar, pos.y, (float)curTypeSearch[1].width, heightBar};
+    cursorPos = 0;
+    frame = 0;
+    cursorFlick = false;
+    resetPredict();
 }
 
 SearchBar::~SearchBar()
@@ -46,6 +52,7 @@ SearchBar::~SearchBar()
     UnloadTexture(curTypeSearch[0]);
     UnloadTexture(curTypeSearch[1]);
     UnloadTexture(lockUpic);
+    UnloadTexture(historySic);
 }
 
 void SearchBar::display() const
@@ -63,6 +70,7 @@ void SearchBar::display() const
     else
         DrawRectangleLinesEx({pos.x, pos.y, widthBar, heightBar}, 1.2f, BLACK); 
 
+    
     if ((int)codePoints.size() > 0)
     {
         int start = max(0, (int)codePoints.size() - limSymbol);
@@ -73,6 +81,14 @@ void SearchBar::display() const
             sz--;
         }
         DrawTextCodepoints(FontHelper::getInstance().getFont(Inter), (int*)(&codePoints[start]), sz, {pos.x + gapTextX, pos.y + gapTextY}, 37, 0.5f, BLACK);
+        if (cursorFlick)
+        {
+            float width = GetCodepointsWidth(FontHelper::getInstance().getFont(Inter), (int*)(&codePoints[start]), sz, 37, 0.5f);
+            DrawTextEx(FontHelper::getInstance().getFont(Inter), "|", {pos.x + gapTextX + width, pos.y + gapTextY}, 37, 0.5f, BLACK);
+        }
+    } else if (cursorFlick)
+    {
+        DrawTextEx(FontHelper::getInstance().getFont(Inter), "|", {pos.x + gapTextX, pos.y + gapTextY}, 37, 0.5f, BLACK);
     }
     //print predict
     if (typing)
@@ -87,8 +103,12 @@ void SearchBar::display() const
             Word& word = dictionary.getWord(data, predict[i]);
             if (CheckCollisionPointRec(GetMousePosition(), {pos.x, pos.y + heightBar * (i + 1) + 15, widthBar, heightBar}))
             DrawRectangleRec({pos.x, pos.y + heightBar * (i + 1) + 15, widthBar, heightBar}, LIGHTGRAY);
-
-            DrawTexture(lockUpic, pos.x + gapTextX - 8, pos.y + gapTextY + 15 + heightBar * (i + 1), WHITE);
+          
+            if ((int)codePoints.size() > 0)
+                DrawTexture(lockUpic, pos.x + gapTextX - 8, pos.y + gapTextY + 15 + heightBar * (i + 1), WHITE);
+            else
+                DrawTexture(historySic, pos.x + gapTextX - 6, pos.y + gapTextY + 17 + heightBar * (i + 1), WHITE);
+           
             DrawTextEx(FontHelper::getInstance().getFont(Inter), word.word.c_str(), {pos.x + gapTextX + 30, pos.y + gapTextY + 15 + heightBar * (i + 1)}, 37, 0.5f, BLACK);
         }
     }
@@ -97,6 +117,17 @@ void SearchBar::display() const
 
 void SearchBar::handleEvent()
 {
+   
+
+    if (CheckCollisionPointRec(GetMousePosition(), {pos.x, pos.y, widthBar, heightBar}))
+    {
+        SetMouseCursor(MOUSE_CURSOR_IBEAM);
+    }
+    else
+    {
+        SetMouseCursor(MOUSE_CURSOR_DEFAULT);
+    }
+
     if (choseeData)
     {
         for (int i = 0; i < 5; i++)
@@ -116,7 +147,8 @@ void SearchBar::handleEvent()
     {
         if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec(GetMousePosition(), {pos.x + gapTextX, pos.y + gapTextY + heightBar * (i + 1), widthBar, heightBar}))
         {
-            typing = false; choseeData = false;
+            typing = false; choseeData = false; cursorFlick = false;
+            frame = 0;
             SearchResPage::setSearchWord(&(dictionary.getWord(data, predict[i])));
             currentScreen = 0;
             dictionary.addHistory(data, predict[i]);
@@ -135,12 +167,21 @@ void SearchBar::handleEvent()
             resetPredict();
         }
         
-        choseeData = false; typing = false;
         if (CheckCollisionPointRec(GetMousePosition(), {pos.x, pos.y, widthBar, heightBar}))
+        {
             typing = true;
-
+            cursorPos = codePoints.size();
+        }
+        else
+        {
+            if (typing)
+            {
+                frame = 0; cursorFlick = false;
+            }
+            typing = false;
+        }
         if (CheckCollisionPointRec(GetMousePosition(), dataSetBut))
-            choseeData = true;
+            choseeData = !choseeData;
 
 
     }
@@ -157,7 +198,8 @@ void SearchBar::handleEvent()
                 codePoints.pop_back();
             }
             cout << key << endl;
-            codePoints.push_back(key);
+            codePoints.insert(codePoints.begin() + cursorPos, key);
+            cursorPos++;
             change = true;
         }
         key = GetCharPressed();
@@ -165,9 +207,10 @@ void SearchBar::handleEvent()
 
     if (IsKeyPressed(KEY_BACKSPACE))
     {
-        if (codePoints.size() > 0)
+        if (cursorPos > 0)
         {
-            codePoints.pop_back();
+            codePoints.erase(codePoints.begin() + cursorPos - 1);
+            cursorPos--;
             change = true;
         }
     }
@@ -180,13 +223,24 @@ void SearchBar::handleEvent()
     if (change)
     {
         resetPredict();
+    }  
+
+    if (frame % 50 == 0)
+    {
+        cursorFlick = true;
+        frame = 0;
+    } 
+    else if (frame % 25 == 0)
+    {
+        cursorFlick = false;
     }
+    frame++;
 }
 
 void SearchBar::resetPredict()
 {
     predict.clear();
-    if (codePoints.size() > 0)
+    if ((int)codePoints.size() > 0)
     {
         if (typeSearch == Keyword)
             predict = dictionary.predictKeyword(data, codePoints);
@@ -195,7 +249,13 @@ void SearchBar::resetPredict()
     }   
     else
     {
-        predict.clear();
+        vector<pair<dataSet, int>>& history = dictionary.getHistory();
+        for (int i = 0; i < (int)history.size(); i++)
+        if (history[i].first == data)
+        {
+            predict.push_back(history[i].second);
+            if (predict.size() == limHIs) break;
+        }
     }
 }
 

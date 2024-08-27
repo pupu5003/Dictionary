@@ -108,53 +108,32 @@ void DefHashTable::remove(string &def, int Id)
     for (auto e : hashList)
     if (e.first != 0)
     {
-        if (table[e.first] == nullptr)
+        Slot *temp = table[e.first], *pre = nullptr;
+        while(temp != nullptr)
         {
-            return;
-        }
-        else
-        {
-            Slot *temp = table[e.first];
             if (temp->value == e.second)
             {
-                for (int i = 0; i < (int)temp->Ids.size(); i++)
-                if (temp->Ids[i] == Id)
+                auto it = find(temp->Ids.begin(), temp->Ids.end(), Id);
+                if (it != temp->Ids.end())
                 {
-                    swap(temp->Ids[i], temp->Ids.back());
-                    temp->Ids.pop_back();
-                    break;
-                }
-                if (temp->Ids.size() == 0)
-                {
-                    table[e.first] = temp->next;
-                    temp->next = nullptr;
-                    delete temp;
-                }
-            }
-            else
-            {
-                while (temp->next != nullptr)
-                {
-                    if (temp->next->value == e.second)
+                    temp->Ids.erase(it);
+                    if (temp->Ids.size() == 0)
                     {
-                        for (int i = 0; i < (int)temp->next->Ids.size(); i++)
-                        if (temp->next->Ids[i] == Id)
+                        if (pre != nullptr)
                         {
-                            swap(temp->next->Ids[i], temp->next->Ids.back());
-                            temp->next->Ids.pop_back();
-                            break;
+                            pre->next = temp->next;
+                            delete temp;
                         }
-                        if (temp->next->Ids.size() == 0)
+                        else
                         {
-                            Slot *del = temp->next;
-                            temp->next = temp->next->next;
-                            del->next = nullptr;
-                            delete del;
+                            delete temp;
+                            table[e.first] = nullptr;
                         }
-                        break;
                     }
                 }
+                break;
             }
+            temp = temp->next;
         }
     }
 }
@@ -205,10 +184,13 @@ vector<int> DefHashTable::predict(vector<int> &codePoints)
         }
     }
 
-    for (auto e : filter)
-    for (auto id : e->Ids)
+    for (int i = 0; i < (int)filter.size(); i++)
+    for (auto id : filter[i]->Ids)
     {
-        count[id]++;
+        if (count[id] < i + 1)
+        {
+            count[id]++;
+        }
     }
     if (filter.size() == 0)
     {
