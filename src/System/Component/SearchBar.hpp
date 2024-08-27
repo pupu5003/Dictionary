@@ -1,6 +1,7 @@
 #pragma once
 #include "Dictionary.hpp"
 #include "raylib.h"
+#include "TextInputBox.hpp"
 #include <iostream>
 #include <vector>
 
@@ -24,6 +25,7 @@ private:
     Vector2 pos;
     Rectangle dataSetBut;
     Rectangle typeSearchBut;
+    
     static Search typeSearch;
     static dataSet data;
     static vector<int> codePoints;
@@ -33,6 +35,7 @@ private:
     bool typing, choseeData, cursorFlick;
     int &currentScreen;
     Dictionary& dictionary;
+
 public:
     SearchBar(Dictionary& dictionary, int &currentScreen, Vector2 pos);
     ~SearchBar();

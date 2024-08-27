@@ -24,6 +24,7 @@ private:
     bool isCenter;
     bool isOptional;
     bool isRequired;
+
 public:
     TextInputBox(Rectangle box);
     ~TextInputBox();
