@@ -4,6 +4,7 @@
 #include "../src/System/Component/page.hpp"
 #include <../src/System/Component/button.hpp>
 #include <../asset/Color/color.hpp>
+#include <functional>
 // #include "UILibFunc.hpp"
 class DialogYesNo
 {
