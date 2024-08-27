@@ -25,6 +25,7 @@ public:
     void display() const override;
     void handleEvent() override;
 
+    void setElementBox();
     void newQuestion();
 
     const PracticeQuestionPage& operator=(const PracticeQuestionPage& rhs);

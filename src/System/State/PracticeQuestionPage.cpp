@@ -11,26 +11,7 @@ PracticeQuestionPage::PracticeQuestionPage(int &currentScreen, Dictionary& dicti
     settingButton.setButton("asset/Image/settings_ic.png", 1159, 23);
     continueButton.setButton("asset/Image/continueButton.png", 929, 637);
 
-    if (question.type_askByWord) {
-        questionBox.setButton("asset/Image/PracticeQuestionBox_Word.png", 75, 140);
-        questionBox.disable();
-        answerBox[0].setButton("asset/Image/PracticeAnswerBox_Definition.png", 75, 276);
-        answerBox[1].setButton("asset/Image/PracticeAnswerBox_Definition.png", 75, 456);
-        answerBox[2].setButton("asset/Image/PracticeAnswerBox_Definition.png", 695, 276);
-        answerBox[3].setButton("asset/Image/PracticeAnswerBox_Definition.png", 695, 456);
-    }
-    else {
-        questionBox.setButton("asset/Image/PracticeQuestionBox_Definition.png", 75, 140);
-        questionBox.disable();
-        answerBox[0].setButton("asset/Image/PracticeAnswerBox_Word.png", 118, 375);
-        answerBox[1].setButton("asset/Image/PracticeAnswerBox_Word.png", 118, 500);
-        answerBox[2].setButton("asset/Image/PracticeAnswerBox_Word.png", 723, 375);
-        answerBox[3].setButton("asset/Image/PracticeAnswerBox_Word.png", 723, 500);
-    }
-
-    questionBox.setText(this->question.question, OpenSan, 35, 3, true, BLACK);
-    for (int i = 0; i < 4; ++i) 
-        answerBox[i].setText(this->question.answer[i], OpenSanBold, 30, 3, true, BLACK);
+    setElementBox();
 }
 
 void PracticeQuestionPage::display() const
@@ -58,9 +39,6 @@ void PracticeQuestionPage::handleEvent()
     {
         chosenAnswer = -1;
         newQuestion();
-        questionBox.setText(this->question.question, Arial, 30, 3, true, BLACK);
-        for (int i = 0; i < 4; ++i) 
-            answerBox[i].setText(this->question.answer[i], Arial, 20, 3, true, BLACK);
     }
     else if (chosenAnswer != -1) {}      //If answer has been chosen, do nothing  
     else {
@@ -102,6 +80,11 @@ const PracticeQuestionPage& PracticeQuestionPage::operator=(const PracticeQuesti
 
 void PracticeQuestionPage::newQuestion() {
     question = generateQuestion(dictionary, data);
+    setElementBox();
+    for (int i = 0; i < 4; ++i) answerBox[i].enable();
+}
+
+void PracticeQuestionPage::setElementBox() {
     if (question.type_askByWord) {
         questionBox.setButton("asset/Image/PracticeQuestionBox_Word.png", 75, 140);
         questionBox.disable();
@@ -109,6 +92,9 @@ void PracticeQuestionPage::newQuestion() {
         answerBox[1].setButton("asset/Image/PracticeAnswerBox_Definition.png", 75, 456);
         answerBox[2].setButton("asset/Image/PracticeAnswerBox_Definition.png", 695, 276);
         answerBox[3].setButton("asset/Image/PracticeAnswerBox_Definition.png", 695, 456);
+        questionBox.setText(this->question.question, OpenSanBold, 35, 3, true, BLACK);
+        for (int i = 0; i < 4; ++i) 
+            answerBox[i].setText(this->question.answer[i], OpenSan, 30, 3, true, BLACK);
     }
     else {
         questionBox.setButton("asset/Image/PracticeQuestionBox_Definition.png", 75, 140);
@@ -117,6 +103,8 @@ void PracticeQuestionPage::newQuestion() {
         answerBox[1].setButton("asset/Image/PracticeAnswerBox_Word.png", 118, 500);
         answerBox[2].setButton("asset/Image/PracticeAnswerBox_Word.png", 723, 375);
         answerBox[3].setButton("asset/Image/PracticeAnswerBox_Word.png", 723, 500);
+        questionBox.setText(this->question.question, OpenSan, 30, 3, true, BLACK);
+        for (int i = 0; i < 4; ++i) 
+            answerBox[i].setText(this->question.answer[i], OpenSanBold, 35, 3, true, BLACK);
     }
-    for (int i = 0; i < 4; ++i) answerBox[i].enable();
 }

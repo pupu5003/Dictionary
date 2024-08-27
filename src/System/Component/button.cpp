@@ -23,8 +23,8 @@ Button::Button(const char* path, float x, float y, float scale) {
 void Button::setButton(const char *path, float x, float y, float scale)
 {
     loadTexture(path);
-    setRect(x, y, texture.width, texture.height);
     this->scale = scale;
+    setRect(x, y, texture.width, texture.height);
 }
 
 // void Button::setButton(const char *path, float x, float y, float scale, string text, fontType font, float fontSize, float spacing, bool wordWrap, Color color)

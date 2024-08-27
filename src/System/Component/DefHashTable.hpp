@@ -4,7 +4,7 @@
 #include <string>
 #include <sstream>
 #include <algorithm>
-#include "../src/System/State/TextHandle.hpp"
+#include "../src/System/Component/TextHandle.hpp"
 using namespace std;
 
 struct Slot

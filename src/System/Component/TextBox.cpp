@@ -29,6 +29,8 @@ void TextBox::display() const
 }
 
 void TextBox::zoomIn(float ratio) {
+    box.x = box.x + box.width/2 - box.width * ratio / 2;
+    box.y = box.y + box.height/2 - box.height * ratio / 2;
     box.width *= ratio;
     box.height *= ratio;
     fontSize *= ratio;

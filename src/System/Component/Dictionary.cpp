@@ -119,7 +119,7 @@ Word& Dictionary::getWord(dataSet data, int id)
 void Dictionary::addWord(Word word)
 {
     dataSet data = word.data;
-    if ((int)vaildId[data].size() > 0)
+    if ((int)validId[data].size() > 0)
     {
         word.id= validId[data].back();
         validId[data].pop_back();
