@@ -52,9 +52,10 @@ public:
     Word& getRandomWord();
     Word& getRandomWord(dataSet data);
     Word& getWord(dataSet data, int id);
-    void addWord(dataSet data, Word word);
+    void addWord(Word word);
     void removeWord(dataSet data, int id);
-    void editWord(dataSet data, int id, int index, string ty, string def);
+    void editDef(dataSet data, int id, int index, string ty, string def);
+    void removeDef(dataSet data, int id, int index);
     void addFavorite(dataSet data, int id);
     void removeFavorite(dataSet data, int id);
     void removeAllFavorite();

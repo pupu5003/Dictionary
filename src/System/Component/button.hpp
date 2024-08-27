@@ -4,8 +4,9 @@
 #include "FontHelper.hpp"
 #include "TextBox.hpp"
 
-struct Button
+class Button
 {
+private:
     Texture2D texture;
     Rectangle rect;
     Rectangle mRect;
@@ -14,6 +15,8 @@ struct Button
     TextBox text = {Arial, "", rect, 0, 0, 0, WHITE};
     bool zoom;
     bool autoZoom;
+
+public:
     Button();
     Button(const char* path, float x, float y, float scale = 1.2);
     ~Button();

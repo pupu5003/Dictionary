@@ -5,6 +5,7 @@
 #include "../src/System/Component/page.hpp"
 #include "../src/System/Component/SearchBar.hpp"
 #include "../src/System/Component/TextInputBox.hpp"
+#include "../src/System/Component/DialogYesNo.hpp"
 
 using namespace std;
 
@@ -23,16 +24,18 @@ private:
     Button addDefButton;
     Button saveDefButton;
     Button cancelDefButton;
+    Button deleteDefButton;
     TextInputBox inputDef;
     TextInputBox inputType;
     int isEdit;
     static int upDef, downDef;
     static vector<float> Gap;
     int& currentScreen;
-    Dictionary& dictionary;
     static Word* searchWord;
     static float scroll;
+    DialogYesNo confirmDialog;
     SearchBar searchBar;
+    Dictionary& dictionary;
 public:
     SearchResPage(int &currentScreen, Dictionary &dictionary);
     ~SearchResPage();

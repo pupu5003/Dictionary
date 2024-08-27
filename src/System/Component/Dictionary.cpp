@@ -95,8 +95,9 @@ Word& Dictionary::getWord(dataSet data, int id)
     return words[data][id];
 }
 
-void Dictionary::addWord(dataSet data, Word word)
+void Dictionary::addWord(Word word)
 {
+    dataSet data = word.data;
     if ((int)vaildId[data].size() > 0)
     {
         word.id= vaildId[data].back();
@@ -110,6 +111,11 @@ void Dictionary::addWord(dataSet data, Word word)
         words[data].push_back(word);
         wordTrie[data].insert(word.word, word.id);
     }
+    for (int i = 0; i < (int)word.definition.size(); i++)
+    {
+        defTable[data].insert(word.definition[i], word.id);
+    }
+    if (word.isFavorite) addFavorite(data, word.id);
 
 }
 
@@ -129,9 +135,9 @@ void Dictionary::removeWord(dataSet data, int id)
     removeHistory(data, id);
 }
 
-void Dictionary::editWord(dataSet data, int id, int index, string ty, string def)
+void Dictionary::editDef(dataSet data, int id, int index, string ty, string def)
 {
-    if (ty == "") ty = "()";
+    ty = "(" + ty + ")";
     if (index == (int)words[data][id].definition.size())
     {
         words[data][id].type.push_back(ty);
@@ -148,6 +154,13 @@ void Dictionary::editWord(dataSet data, int id, int index, string ty, string def
             defTable[data].insert(def, id);
         }
     }
+}
+
+void Dictionary::removeDef(dataSet data, int id, int index)
+{
+    defTable[data].remove(words[data][id].definition[index], id);
+    words[data][id].type.erase(words[data][id].type.begin() + index);
+    words[data][id].definition.erase(words[data][id].definition.begin() + index);
 }
 
 void Dictionary::addFavorite(dataSet data, int id){

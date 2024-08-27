@@ -30,7 +30,7 @@ private:
     static vector<int> predict;
     int cursorPos;
     int frame;
-    bool typing, choseeData;
+    bool typing, choseeData, cursorFlick;
     int &currentScreen;
     Dictionary& dictionary;
 public:

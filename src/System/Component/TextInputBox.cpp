@@ -159,7 +159,7 @@ string TextInputBox::getText()
     text = "";
     for (int i = 0; i < codePoints.size(); i++)
     {
-        text += (char)codePoints[i];
+        text += static_cast<char>(codePoints[i]);
     }
     return text;
 }

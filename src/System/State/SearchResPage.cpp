@@ -40,9 +40,11 @@ SearchResPage::SearchResPage(int &currentScreen, Dictionary& dictionary) : curre
 
     deleteButton.setButton("asset/Image/Delete_ic.png", 1046, 134, 1.1);
 
-    edit.setButton("asset/Image/Edit_ic.png", 1053, 215, 1.1);
+    edit.setButton("asset/Image/Edit_ic.png", 1053, 220, 1.1);
     edit.enable();
 
+    deleteDefButton.setButton("asset/Image/DeleteDef.png", 1142, 190, 1.1);
+    deleteDefButton.enable();
 
     scroll = 0;
 
@@ -68,7 +70,9 @@ void SearchResPage::display() const
                 DrawTextEx(FontHelper::getInstance().getFont(Inter), searchWord -> type[i].c_str(), { 622 - dis/2, 220 + space}, 36, 0.5f, RED);
             }
 
-            edit.display(0, space);
+            edit.display(0, space); 
+            if (searchWord -> definition.size() > 1)
+            deleteDefButton.display(0,  space  + height/2);
             DrawTextBoxed(FontHelper::getInstance().getFont(Inter), searchWord -> definition[i].c_str(), { 184, 268 + space, 872, heightDef}, 40, 0.5f, true, BLACK);
         }
     } else {
@@ -113,13 +117,20 @@ void SearchResPage::display() const
     DrawLine(107, 192, 1136, 192, BLACK);
 
     searchBar.display();
+
+    confirmDialog.display();
 }
 
 void SearchResPage::handleEvent()
 {
+    if (confirmDialog.isShown())
+    {
+        confirmDialog.handleEvent();
+        return;
+    }
+
     if (isEdit != -1)
     {
-
         inputDef.handleEvent();
         inputType.handleEvent();
 
@@ -127,10 +138,10 @@ void SearchResPage::handleEvent()
         {
             if (inputDef.isValid())
             {
-                //
-                dictionary.editWord(searchWord -> data, searchWord -> id, isEdit, inputType.getText(), inputDef.getText());
+                dictionary.editDef(searchWord -> data, searchWord -> id, isEdit, inputType.getText(), inputDef.getText());
                 resetGap();
                 resetUpDownDef();
+                searchBar.resetPredict();
                 isEdit = -1; inputDef.reset(); inputType.reset();
             }
         }
@@ -173,11 +184,12 @@ void SearchResPage::handleEvent()
         dictionary.removeFavorite(searchWord -> data, searchWord -> id);
     } else if (deleteButton.isPressed())
     {
-        cout << "Delete button is pressed" << endl;
-        dictionary.removeWord(searchWord -> data, searchWord -> id);
-        searchBar.resetPredict();
-        upDef = 0; downDef = -1;
-        currentScreen = HOME;
+        confirmDialog.show([this](){
+            dictionary.removeWord(searchWord -> data, searchWord -> id);
+            searchBar.resetPredict();
+            resetGap(); resetUpDownDef();
+            currentScreen = HOME;
+        });
     }
     else
     {
@@ -190,6 +202,16 @@ void SearchResPage::handleEvent()
             if (edit.isPressed(0, space))
             {
                 isEdit = i;
+                break;
+            }
+            if (searchWord -> definition.size() == 1) continue;
+            if (deleteDefButton.isPressed(0, space + height/2))
+            {
+                confirmDialog.show([this, i](){
+                dictionary.removeDef(searchWord -> data, searchWord -> id, i);
+                resetGap();
+                resetUpDownDef();
+                searchBar.resetPredict();});
                 break;
             }
         }
@@ -222,6 +244,11 @@ void SearchResPage::resetGap()
 
 void SearchResPage::resetUpDownDef()
 {
+    if (searchWord -> definition.size() == 0)
+    {
+        upDef = 0; downDef = -1;
+        return;
+    }
     upDef = lower_bound(Gap.begin(), Gap.end(), visibleUP - scroll - 210) - Gap.begin() - 1;
     downDef = upper_bound(Gap.begin(), Gap.end(), visibleDOWN - scroll - 210) - Gap.begin() - 1;
     if (downDef < 0) downDef = 0; if (upDef < 0) upDef = 0;
