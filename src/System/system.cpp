@@ -14,12 +14,13 @@ System::System(/* args */)
     pages.push_back(new FavoritePage(currentScreen, dictionary));
     pages.push_back(new PracticeQuestionPage(currentScreen, dictionary));
     pages.push_back(new SettingPage(currentScreen));
-    pages.push_back(new AddWordPage(currentScreen)); 
-    cout << "System is created" << endl;
+    pages.push_back(new AddWordPage(currentScreen));
+    cout << "System created\n" << endl;
 }
 
 System::~System()
 {
+    cout << "System destructor called\n";
     for (auto page : pages)
     {
         delete page;
@@ -33,7 +34,6 @@ void System::run()
    
     while (!WindowShouldClose()) 
     {
-
         //event handling
         // searchBar.handleEvent();
         pages[currentScreen] -> handleEvent();

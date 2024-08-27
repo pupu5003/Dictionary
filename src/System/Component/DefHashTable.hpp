@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <sstream>
+#include <algorithm>
 #include "../src/System/State/TextHandle.hpp"
 using namespace std;
 
