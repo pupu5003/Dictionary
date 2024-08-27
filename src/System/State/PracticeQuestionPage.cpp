@@ -11,6 +11,23 @@ PracticeQuestionPage::PracticeQuestionPage(int &currentScreen, Dictionary& dicti
     settingButton.setButton("asset/Image/settings_ic.png", 1159, 23);
     continueButton.setButton("asset/Image/continueButton.png", 929, 637);
 
+    curDataSet[0] = LoadTexture("asset/Image/engEng2.png");
+    curDataSet[1] = LoadTexture("asset/Image/engVie2.png");
+    curDataSet[2] = LoadTexture("asset/Image/vieEng2.png");
+    curDataSet[3] = LoadTexture("asset/Image/emoji2.png");
+    curDataSet[4] = LoadTexture("asset/Image/slang2.png");
+    
+    optionBut[0] = LoadTexture("asset/Image/engEng1.png");
+    optionBut[1] = LoadTexture("asset/Image/engVie1.png");
+    optionBut[2] = LoadTexture("asset/Image/vieEng1.png");
+    optionBut[3] = LoadTexture("asset/Image/emoji1.png");
+    optionBut[4] = LoadTexture("asset/Image/slang1.png");
+    optionBut[5] = LoadTexture("asset/Image/dataSet1.png");
+
+    dataSetOptions = LoadTexture("asset/Image/dataSetOptions2.png");
+    dataSetBut = {75, 650, 163, 54};
+    choseeData = false;
+
     setElementBox();
 }
 
@@ -23,6 +40,21 @@ void PracticeQuestionPage::display() const
     questionBox.display();
     for (int i = 0; i < 4; ++i)
         answerBox[i].display();
+
+    if (choseeData) {
+        DrawTexture(dataSetOptions, dataSetBut.x, dataSetBut.y - (dataSetOptions.height - dataSetBut.height), WHITE);
+        for (int j = 0; j < 6; ++j) {
+            if (CheckCollisionPointRec(GetMousePosition(), {dataSetBut.x, dataSetBut.y - dataSetOptions.height + dataSetBut.height * (j + 1), dataSetBut.width, dataSetBut.height})) {
+                DrawTexture(optionBut[j], dataSetBut.x, dataSetBut.y - dataSetOptions.height + dataSetBut.height * (j + 1), LIGHTGRAY);
+            }
+        }
+    }
+    else {
+        if (CheckCollisionPointRec(GetMousePosition(), dataSetBut))
+            DrawTexture(curDataSet[data], dataSetBut.x, dataSetBut.y, LIGHTGRAY);
+        else DrawTexture(curDataSet[data], dataSetBut.x, dataSetBut.y, WHITE);
+    }
+
 }
 
 void PracticeQuestionPage::handleEvent()
@@ -40,6 +72,23 @@ void PracticeQuestionPage::handleEvent()
         chosenAnswer = -1;
         newQuestion();
     }
+    else if (choseeData)
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec(GetMousePosition(), {dataSetBut.x, dataSetBut.y - dataSetOptions.height + dataSetBut.height * (i + 1), dataSetBut.width, dataSetBut.height}))
+            {
+                data = (dataSet)i;
+                choseeData = false;
+                newQuestion();
+                return;
+            }
+        }
+        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec(GetMousePosition(), dataSetBut))
+            choseeData = false;
+    }
+    else if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec(GetMousePosition(), dataSetBut))
+        choseeData = true;
     else if (chosenAnswer != -1) {}      //If answer has been chosen, do nothing  
     else {
         for (int i = 0; i < 4; ++i) {
@@ -66,6 +115,12 @@ void PracticeQuestionPage::handleEvent()
 PracticeQuestionPage::~PracticeQuestionPage()
 {
     UnloadTexture(practiceTag);
+    UnloadTexture(curDataSet[0]);
+    UnloadTexture(curDataSet[1]);
+    UnloadTexture(curDataSet[2]);
+    UnloadTexture(curDataSet[3]);
+    UnloadTexture(curDataSet[4]);
+    UnloadTexture(dataSetOptions);
 }
 
 const PracticeQuestionPage& PracticeQuestionPage::operator=(const PracticeQuestionPage& rhs) {

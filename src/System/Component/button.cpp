@@ -74,6 +74,15 @@ bool Button::isPressed(float x, float y)
     return false;
 }
 
+bool Button::isPressedElseWhere(float x, float y)
+{
+    if (!CheckCollisionPointRec(GetMousePosition(), {rect.x + x, rect.y + y, rect.width, rect.height}) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+    {
+        return true;
+    }
+    return false;
+}
+
 void Button::loadTexture(const char *path)
 {
     texture = LoadTexture(path);

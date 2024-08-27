@@ -13,7 +13,13 @@ private:
     Button questionBox;
     Button answerBox[4];
 
-    dataSet data = engVie;
+    Rectangle dataSetBut;
+    Texture2D curDataSet[5];   
+    Texture2D optionBut[6];
+    Texture2D dataSetOptions;
+    bool choseeData;
+
+    dataSet data = engEng;
     PracticeQuestion question;
     int chosenAnswer = -1;
 
