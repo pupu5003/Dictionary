@@ -194,6 +194,9 @@ void SearchBar::handleEvent()
     {
         if (key >= 32 && key <= 999999)
         {
+            if (key > 125) {
+                codePoints.pop_back();
+            }
             cout << key << endl;
             codePoints.insert(codePoints.begin() + cursorPos, key);
             cursorPos++;

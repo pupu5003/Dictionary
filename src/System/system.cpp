@@ -15,11 +15,12 @@ System::System(/* args */)
     pages.push_back(new PracticeQuestionPage(currentScreen, dictionary));
     pages.push_back(new SettingPage(currentScreen, dictionary));
     pages.push_back(new AddWordPage(currentScreen, dictionary)); 
-    cout << "System is created" << endl;
+    cout << "System created" << endl;
 }
 
 System::~System()
 {
+    cout << "System destructor called\n";
     for (auto page : pages)
     {
         delete page;
@@ -33,7 +34,6 @@ void System::run()
    
     while (!WindowShouldClose()) 
     {
-
         //event handling
         pages[currentScreen] -> handleEvent();
         if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))

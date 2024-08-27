@@ -6,7 +6,6 @@
 using namespace std;
 
 int main () {
-
     cout << "Hello World" << endl;
     System *app = new System();
     app -> run();

@@ -48,7 +48,11 @@ SearchResPage::SearchResPage(int &currentScreen, Dictionary& dictionary) : curre
 
     scroll = 0;
 
+    upDef = 0; downDef = -1;
     isEdit = -1;
+
+    //Save word to history
+    if (searchWord) dictionary.addHistory(searchWord->data, searchWord->id);
 }
 
 void SearchResPage::display() const
