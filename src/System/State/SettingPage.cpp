@@ -39,7 +39,7 @@ void SettingPage::handleEvent()
     }
     else if (resetButton.isPressed())
     {
-        confirmDialog.show(resetData);
+        
     }
     else if (addWordButton.isPressed())
     {
