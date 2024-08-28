@@ -153,3 +153,9 @@ FavoritePage::~FavoritePage()
     UnloadTexture(barrier);
     UnloadTexture(Box);
 }
+
+void FavoritePage::reset()
+{
+    upWord = 0; downWord = -1;
+    scroll = 0;
+}

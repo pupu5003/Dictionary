@@ -26,5 +26,6 @@ public:
     ~HomePage();
     void display() const override;
     void handleEvent() override;
+    void reset() override;
 };
 

@@ -29,4 +29,5 @@ public:
     void resetUpDownWord();
     void display() const override;
     void handleEvent() override;
+    void reset() override;
 };

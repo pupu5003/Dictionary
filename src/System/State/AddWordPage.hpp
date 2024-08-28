@@ -52,6 +52,7 @@ public:
     ~AddWordPage();
     void display() const override;
     void handleEvent() override;
+    void reset() override;
     void resetGap();
     void resetUpDownDef();
     // void clear();

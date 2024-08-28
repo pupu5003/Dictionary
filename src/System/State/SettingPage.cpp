@@ -51,3 +51,8 @@ SettingPage::~SettingPage()
 {
     UnloadTexture(settingTag);
 }
+
+void SettingPage::reset()
+{
+    // reset
+}

@@ -9,7 +9,6 @@
 HomePage::HomePage(int &currentScreen, Dictionary &dictionary): currentScreen(currentScreen), dictionary(dictionary), searchBar(dictionary, currentScreen, {280, 90})
 {
     randomWord = &dictionary.getRandomWord();
-    while(randomWord -> id == -1) randomWord =  &dictionary.getRandomWord();
 
     homeTag = LoadTexture("asset/Image/HomeTag.png");
 
@@ -107,3 +106,7 @@ HomePage::~HomePage() {
     UnloadTexture(homeTag);
 }
 
+void HomePage::reset() {
+    randomWord = &dictionary.getRandomWord();
+    searchBar.resetPredict();
+}

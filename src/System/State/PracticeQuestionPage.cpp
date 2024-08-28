@@ -171,3 +171,8 @@ void PracticeQuestionPage::setElementBox() {
             answerBox[i].setText(this->question.answer[i], OpenSanBold, 35, 3, true, BLACK);
     }
 }
+
+void PracticeQuestionPage::reset() {
+    chosenAnswer = -1;
+    newQuestion();
+}

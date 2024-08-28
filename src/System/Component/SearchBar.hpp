@@ -44,5 +44,6 @@ public:
     void resetPredict();
     void display() const;
     void handleEvent();
+    void reset();
     // static void resetCodePoints();
 };

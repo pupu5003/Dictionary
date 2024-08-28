@@ -18,4 +18,5 @@ public:
     ~SettingPage();
     void display() const override;
     void handleEvent() override;
+    void reset() override;
 };

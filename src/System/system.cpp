@@ -60,11 +60,8 @@ void System::run()
 void System::reset()
 {
     dictionary.resetData();
-    pages[HOME] = new HomePage(currentScreen, dictionary);
-    pages[FAVORITE] = new FavoritePage(currentScreen, dictionary);
-    pages[HISTORY] = new HistoryPage(currentScreen, dictionary);
-    // pages[SETTING] = new SettingPage(currentScreen, dictionary);
-    pages[PRACTICE] = new PracticeQuestionPage(currentScreen, dictionary);
-    // pages[ADD_WORD] = new AddWordPage(currentScreen, dictionary);
-    pages[SEARCH_RES] = new SearchResPage(currentScreen, dictionary);
+    for (auto page : pages)
+    {
+        page->reset();
+    }
 }

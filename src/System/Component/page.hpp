@@ -20,5 +20,6 @@ private:
 public:
     virtual void display() const = 0;
     virtual void handleEvent() = 0;
+    virtual void reset() = 0;
     virtual ~Page() = default;
 };

@@ -30,6 +30,7 @@ public:
     ~PracticeQuestionPage();
     void display() const override;
     void handleEvent() override;
+    void reset() override;
 
     void setElementBox();
     void newQuestion();

@@ -316,3 +316,13 @@ AddWordPage::~AddWordPage()
     UnloadTexture(barrier);
     
 }
+
+void AddWordPage::reset()
+{
+    word = Word();
+    state = ADDWORD;
+    scroll = 0;
+    inputDef.reset(); inputType.reset(); inputWord.reset();
+    resetGap();
+    resetUpDownDef();
+}

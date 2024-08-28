@@ -153,3 +153,9 @@ HistoryPage::~HistoryPage()
     UnloadTexture(barrier);
     UnloadTexture(Box);
 }
+
+void HistoryPage::reset()
+{
+    scroll = 0;
+    upWord = 0; downWord = -1;
+}

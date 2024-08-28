@@ -154,7 +154,7 @@ void Dictionary::loadData(const char *fileName[5], bool isOrigin)
         pair<dataSet, int> p;
         file.read((char *)&p.first, sizeof(int));
         file.read((char *)&p.second, sizeof(int));
-        favorite.push_back(p);
+        addFavorite(p.first, p.second);
     }
     file.close();
     file.open("data/Current/history.bin", ios::binary);
@@ -165,7 +165,7 @@ void Dictionary::loadData(const char *fileName[5], bool isOrigin)
         pair<dataSet, int> p;
         file.read((char *)&p.first, sizeof(int));
         file.read((char *)&p.second, sizeof(int));
-        history.push_back(p);
+        addHistory(p.first, p.second);
     }
     file.close();
 }
@@ -251,6 +251,11 @@ void Dictionary::resetData()
 Word& Dictionary::getRandomWord()
 {
     int data = random((int)0, (int)4);
+    int id = random(0, (int)words[data].size() - 1);
+    while(words[data][id].id == -1)
+    {
+        id = random(0, (int)words[data].size() - 1);
+    }
     return words[data][random(0, words[data].size() - 1)];
 }
 

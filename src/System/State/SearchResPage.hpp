@@ -38,6 +38,7 @@ public:
     static void setSearchWord(Word* word);
     void display() const override;
     void handleEvent() override;
+    void reset() override;
     static void resetGap();
     void resetUpDownDef();
 };

@@ -305,3 +305,14 @@ bool SearchBar::getActive() const
 {
     return (typing||choseeData);
 }
+
+void SearchBar::reset()
+{
+    typing = false;
+    choseeData = false;
+    codePoints.clear();
+    predict.clear();
+    cursorPos = 0;
+    frame = 0;
+    cursorFlick = false;
+}

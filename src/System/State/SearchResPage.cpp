@@ -275,3 +275,15 @@ SearchResPage::~SearchResPage()
 {
     UnloadTexture(searchResTag);
 }
+
+void SearchResPage::reset()
+{
+    scroll = 0;
+    upDef = 0; downDef = -1;
+    searchWord = nullptr;
+    Gap.clear();
+    searchBar.reset();
+    isEdit = -1;
+    inputDef.reset(); inputType.reset();
+    // confirmDialog.reset();
+}
