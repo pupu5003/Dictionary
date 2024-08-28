@@ -30,9 +30,9 @@ void TextInputBox::display() const
         if (!typing && codePoints.size() == 0)
         {   
             if (isOptional)
-                margin = (box.width - MeasureTextEx(font, "(Optional)", fontSize, spacing).x) / 2;
+                margin = (box.width - MeasureTextEx(font, "Parts of Speech (Optional)", fontSize, spacing).x) / 2;
             else if (isRequired)
-                margin = (box.width - MeasureTextEx(font, "(Required)", fontSize, spacing).x) / 2;           
+                margin = (box.width - MeasureTextEx(font, "Keyword/Definition (Required)", fontSize, spacing).x) / 2;           
         }
         else
         {   
@@ -44,11 +44,11 @@ void TextInputBox::display() const
 
     if (!typing && isOptional && codePoints.size() == 0)
     {
-        DrawTextBoxed(font, "(Optional)", {box.x + margin, box.y, box.width, box.height}, fontSize, spacing, wordWrap, LIGHTGRAY);
+        DrawTextBoxed(font, "Parts of Speech (Optional)", {box.x + margin, box.y, box.width, box.height}, fontSize, spacing, wordWrap, LIGHTGRAY);
     } 
     else if (!typing && isRequired && codePoints.size() == 0)
     {
-        DrawTextBoxed(font, "(Required)",  {box.x + margin, box.y, box.width, box.height}, fontSize, spacing, wordWrap, LIGHTGRAY);
+        DrawTextBoxed(font, "Keyword/Definition (Required)",  {box.x + margin, box.y, box.width, box.height}, fontSize, spacing, wordWrap, LIGHTGRAY);
     } 
     else
     {
