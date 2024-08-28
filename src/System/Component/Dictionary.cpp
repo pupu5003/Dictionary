@@ -234,7 +234,18 @@ void Dictionary::saveData()
 
 void Dictionary::resetData()
 {
+    removeAllFavorite();
+    removeAllHistory();
+    for (int i = 0; i < 5; i++)
+    {
+        words[i].clear();
+        validId[i].clear();
+        wordTrie[i].clear();
+        defTable[i].clear();
+    }
+    const char *fileName[5] = {"data/Origin/engEng.bin", "data/Origin/engVie.bin", "data/Origin/vieEng.bin", "data/Origin/emoji.bin", "data/Origin/slang.bin"};
 
+    loadData(fileName, true);
 }
 
 Word& Dictionary::getRandomWord()
