@@ -80,6 +80,7 @@ void PracticeQuestionPage::handleEvent()
             {
                 data = (dataSet)i;
                 choseeData = false;
+                chosenAnswer = -1; 
                 newQuestion();
                 return;
             }
@@ -142,10 +143,14 @@ const PracticeQuestionPage& PracticeQuestionPage::operator=(const PracticeQuesti
 }
 
 void PracticeQuestionPage::newQuestion() {
+    for (int i = 0; i < 4; ++i) {
+        answerBox[i].loadTexture("");  
+        answerBox[i].enable();          
+    }
     question = generateQuestion(dictionary, data);
     setElementBox();
-    for (int i = 0; i < 4; ++i) answerBox[i].enable();
 }
+
 
 void PracticeQuestionPage::setElementBox() {
     if (question.type_askByWord) {
