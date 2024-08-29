@@ -225,8 +225,6 @@ void SearchResPage::handleEvent()
 
 void SearchResPage::setSearchWord(Word* word)
 {   
-    //Save word to history
-    if (searchWord) dictionary.addHistory(searchWord->data, searchWord->id);
     scroll = 0;
     upDef = 0; downDef = -1;
     searchWord = word;

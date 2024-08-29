@@ -190,8 +190,8 @@ void SearchBar::handleEvent()
             frame = 0;
             PredictionDetailPage::setSearchType(STRAIGHT_TO_SEARCH_RES);
             PredictionDetailPage::setSearchWord(predict[i]);
+            dictionary.addHistory(data, predict[i]);
             currentScreen = PREDICTION_DETAIL;
-            // dictionary.addHistory(data, predict[i]);
             return;
         }
     }
@@ -268,13 +268,11 @@ void SearchBar::handleEvent()
     {
         typing = false;
         choseeData = false;
-        cout << "---------ENTER\n";
         if (typeSearch == Keyword && predict.size() > 0 && codePoints.size() == dictionary.getWord(data, predict[0]).word.size()) {
-            cout << "------keyword\n";
             PredictionDetailPage::setSearchType(STRAIGHT_TO_SEARCH_RES);
             PredictionDetailPage::setSearchWord(predict[0]);
+            dictionary.addHistory(data, predict[0]);
             currentScreen = PREDICTION_DETAIL;
-            cout << "------keyword\n";
             return;
         }
         else {

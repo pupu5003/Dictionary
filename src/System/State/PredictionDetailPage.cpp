@@ -120,6 +120,7 @@ void PredictionDetailPage::handleEvent()
             {
                 int index = predict.size() - i - 1;
                 SearchResPage::setSearchWord(&(dictionary.getWord(data, predict[i])));
+                dictionary.addHistory(data, predict[i]);
                 upWord = 0; downWord = -1;
                 currentScreen = SEARCH_RES;
                 break;
