@@ -7,7 +7,7 @@ SettingPage::SettingPage(int &currentScreen, function<void()> resetData)
     
     settingTag = LoadTexture("asset/Image/SettingTag.png");
 
-    backButton.setButton("asset/Image/back_ic.png", 45, 31);
+    homeButton.setButton("asset/Image/home_ic.png", 45, 31);
 
     resetButton.setButton("asset/Image/ResetButton.png", 397, 260);
 
@@ -19,7 +19,7 @@ void SettingPage::display() const
 {
     DrawTexture(settingTag, 0, 0, WHITE);
 
-    backButton.display();
+    homeButton.display();
     resetButton.display();
     addWordButton.display(); 
     confirmDialog.display();   
@@ -32,7 +32,7 @@ void SettingPage::handleEvent()
        confirmDialog.handleEvent();
     }
     else
-    if (backButton.isPressed())
+    if (homeButton.isPressed())
     {
         currentScreen = HOME;
     }

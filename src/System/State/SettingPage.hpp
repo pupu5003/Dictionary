@@ -7,7 +7,7 @@ class SettingPage : public Page
 {
 private:
     Texture2D settingTag;
-    Button backButton;  
+    Button homeButton;  
     Button resetButton;
     Button addWordButton;
     DialogYesNo confirmDialog;
