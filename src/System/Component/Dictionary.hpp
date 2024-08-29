@@ -51,6 +51,7 @@ public:
     void loadData(const char *fileName[5], bool isOrigin = false);
     void saveData();
     void resetData();
+    void DrawReset(string content);
 
     Word& getRandomWord();
     Word& getRandomWord(dataSet data);
