@@ -26,6 +26,18 @@ HistoryPage::HistoryPage(int &currentScreen, Dictionary &dictionary) : currentSc
 
     barrier = LoadTexture("asset/Image/SearchResTag.png");
 
+    curDataSet[0] = LoadTexture("asset/Image/engEng1.png");
+    curDataSet[1] = LoadTexture("asset/Image/engVie1.png");
+    curDataSet[2] = LoadTexture("asset/Image/vieEng1.png");
+    curDataSet[3] = LoadTexture("asset/Image/emoji1.png");
+    curDataSet[4] = LoadTexture("asset/Image/slang1.png");
+    curDataSet[5] = LoadTexture("asset/Image/dataset.png");
+    dataSetOptions = LoadTexture("asset/Image/dataSetOptions1.png");
+    dataSetBut = {160, 128, 204, 59};
+
+    choseData = false;
+    data = -1;
+
     scroll = 0;
     
     upWord = 0; downWord = -1;
@@ -34,13 +46,14 @@ HistoryPage::HistoryPage(int &currentScreen, Dictionary &dictionary) : currentSc
 void HistoryPage::display() const
 {
 
-    for (int i = upWord; i <= downWord; i++)
+    for (int j = upWord, i = upWord; i <= downWord && j < history.size(); i++, j++)
     {   
+        int index = history.size() - j - 1;
+        if (data != -1 && history[index].first != data) {i--; continue;}
         DrawTexture(Box, 120, 217 + i * gap + scroll, WHITE);
         xButton.display(0, i * gap + scroll);
         detailButton.display(0, i * gap + scroll);
 
-        int index = history.size() - i - 1;
         const Word &word = dictionary.getWord(history[index].first, history[index].second);
        
         DrawTextEx(FontHelper::getInstance().getFont(RussoOne), dataSetName[word.data].c_str(), { 142, 226 + i * gap + scroll}, 25, 0.5f, BLACK);
@@ -57,6 +70,9 @@ void HistoryPage::display() const
     settingButton.display();
 
     backButton.display();
+
+    if (choseData) DrawTexture(dataSetOptions, dataSetBut.x, dataSetBut.y, WHITE);
+    else DrawTexture(curDataSet[(data == -1 ? 5 : data)], dataSetBut.x, dataSetBut.y, WHITE);
 
 
     clearButton.display();
@@ -75,6 +91,25 @@ void HistoryPage::handleEvent()
         return;
     }
 
+    if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+    {
+        if (choseData)
+        {
+            for (int i = 0; i < 6; i++)
+            {
+                if (CheckCollisionPointRec(GetMousePosition(), {dataSetBut.x, dataSetBut.y + dataSetBut.height * i,  dataSetBut.width,  dataSetBut.height}))
+                {
+                    data = i - 1;
+                    choseData = false;
+                    break;
+                }
+            }
+        }
+        else if (CheckCollisionPointRec(GetMousePosition(), dataSetBut)) choseData = true;
+    }
+
+    if (choseData) return;
+
     scroll += GetMouseWheelMove() * scrollSpeed;
     resetUpDownWord();
     
@@ -83,6 +118,7 @@ void HistoryPage::handleEvent()
         scroll = 0;
         upWord = 0; 
         downWord = -1;
+        data = -1;
         currentScreen = HOME;
     }
     else if (settingButton.isPressed())
@@ -90,30 +126,32 @@ void HistoryPage::handleEvent()
         upWord = 0; 
         downWord = -1;
         scroll = 0;
+        data = -1;
         currentScreen = SETTING;
     }
     else if (clearButton.isPressed())
     {
         confirmDialog.show([this](){
             dictionary.removeAllHistory();
-            upWord = 0; downWord = -1;
+            scroll = 0; upWord = 0; downWord = -1; data = -1;
         });
     }
     else
     {
-        for (int i = upWord; i <= downWord; i++)
-        {
+         for (int j = upWord, i = upWord; i <= downWord && j < history.size(); i++, j++)
+        {   
+            int index = history.size() - j - 1;
+            if (data != -1 && history[index].first != data) {i--; continue;}
+
             if (xButton.isPressed(0, i * gap + scroll))
             {
-                int index = history.size() - i - 1;
                 dictionary.removeHistory(history[index].first, history[index].second);
                 resetUpDownWord();
                 break;
             } else if (detailButton.isPressed(0, i * gap + scroll))
             {
-                int index = history.size() - i - 1;
                 SearchResPage::setSearchWord(&(dictionary.getWord(history[index].first, history[index].second)));
-                upWord = 0; downWord = -1;
+                upWord = 0; downWord = -1; data = -1; scroll = 0;
                 currentScreen = SEARCH_RES;
                 break;
             }
