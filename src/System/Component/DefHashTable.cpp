@@ -1,7 +1,7 @@
 #include "DefHashTable.hpp"
 using namespace std;
 
-const int limitPredict = 10;
+const int limitPredict = 20;
 
 
 Slot::Slot()

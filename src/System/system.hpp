@@ -10,6 +10,7 @@
 #include "../src/System/State/PracticeQuestionPage.hpp"
 #include "../src/System/State/AddWordPage.hpp"
 #include "../src/System/State/SearchResPage.hpp"
+#include "../src/System/State/PredictionDetailPage.hpp"
 #include "../asset/Color/color.hpp"
 #include "../src/System/Component/Dictionary.hpp"
 #include "../src/System/Component/SearchBar.hpp"

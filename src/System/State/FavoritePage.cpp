@@ -3,7 +3,7 @@
 using namespace std;
 
 #define visibleItems 7
-#define scrollSpeed 4
+#define scrollSpeed 16
 #define gap 115
 #define scrollUp 20
 #define scrollDown -25

@@ -1,7 +1,10 @@
 #include "SearchBar.hpp"
-#include "../src/System/State/SearchResPage.hpp"
+#include "../src/System/State/PredictionDetailPage.hpp"
+#include <algorithm>
 
 using namespace std;
+
+#define STRAIGHT_TO_SEARCH_RES 2
 
 const float widthBar = 685;
 const float heightBar = 54;
@@ -9,6 +12,7 @@ const float gapTextX = 10.6f;
 const float gapTextY = 6;
 const int limSymbol = 35;
 const int limHIs = 6;
+const int limitPredictPrint = 10;
 
 Search SearchBar::typeSearch = Keyword;
 dataSet SearchBar::data = engEng;
@@ -77,6 +81,8 @@ SearchBar::~SearchBar()
 
 void SearchBar::display() const
 {
+    int printNumber = std::min((int)limitPredictPrint, (int)predict.size());
+
     if (choseeData) {
         DrawTexture(dataSetOptions, dataSetBut.x, dataSetBut.y, WHITE);
         for (int j = 0; j < 6; ++j) {
@@ -113,24 +119,25 @@ void SearchBar::display() const
             sz--;
         }
         DrawTextCodepoints(FontHelper::getInstance().getFont(Inter), (int*)(&codePoints[start]), sz, {pos.x + gapTextX, pos.y + gapTextY}, 37, 0.5f, BLACK);
-        if (cursorFlick)
+        if (cursorFlick && typing)
         {
             float width = GetCodepointsWidth(FontHelper::getInstance().getFont(Inter), (int*)(&codePoints[start]), sz, 37, 0.5f);
             DrawTextEx(FontHelper::getInstance().getFont(Inter), "|", {pos.x + gapTextX + width, pos.y + gapTextY}, 37, 0.5f, BLACK);
         }
-    } else if (cursorFlick)
+    } else if (cursorFlick && typing)
     {
         DrawTextEx(FontHelper::getInstance().getFont(Inter), "|", {pos.x + gapTextX, pos.y + gapTextY}, 37, 0.5f, BLACK);
     }
     //print predict
+    
     if (typing)
     {
-        if (predict.size() > 0)
+        if (printNumber > 0)
         {
-            float roundness = 0.15*300/(30 + heightBar * predict.size());
-            DrawRectangleRounded({pos.x, pos.y + heightBar, widthBar, 30 + heightBar * predict.size()}, roundness, 0, WHITE);
+            float roundness = 0.15*300/(30 + heightBar * printNumber);
+            DrawRectangleRounded({pos.x, pos.y + heightBar, widthBar, 30 + heightBar * printNumber}, roundness, 0, WHITE);
         }
-        for (int i = 0; i < predict.size(); i++)
+        for (int i = 0; i < printNumber; i++)
         {
             Word& word = dictionary.getWord(data, predict[i]);
             if (CheckCollisionPointRec(GetMousePosition(), {pos.x, pos.y + heightBar * (i + 1) + 15, widthBar, heightBar}))
@@ -149,7 +156,7 @@ void SearchBar::display() const
 
 void SearchBar::handleEvent()
 {
-   
+    int printNumber = std::min((int)limitPredictPrint, (int)predict.size());
 
     if (CheckCollisionPointRec(GetMousePosition(), {pos.x, pos.y, widthBar, heightBar}))
     {
@@ -175,15 +182,16 @@ void SearchBar::handleEvent()
     }
 
     if (typing)
-    for (float i = 0; i < predict.size(); i++)
+    for (float i = 0; i < printNumber; i++)
     {
         if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec(GetMousePosition(), {pos.x + gapTextX, pos.y + gapTextY + heightBar * (i + 1), widthBar, heightBar}))
         {
             typing = false; choseeData = false; cursorFlick = false;
             frame = 0;
-            SearchResPage::setSearchWord(&(dictionary.getWord(data, predict[i])));
-            currentScreen = 0;
-            dictionary.addHistory(data, predict[i]);
+            PredictionDetailPage::setSearchType(STRAIGHT_TO_SEARCH_RES);
+            PredictionDetailPage::setSearchWord(predict[i]);
+            currentScreen = PREDICTION_DETAIL;
+            // dictionary.addHistory(data, predict[i]);
             return;
         }
     }
@@ -260,6 +268,29 @@ void SearchBar::handleEvent()
     {
         typing = false;
         choseeData = false;
+        cout << "---------ENTER\n";
+        if (typeSearch == Keyword && predict.size() > 0 && codePoints.size() == dictionary.getWord(data, predict[0]).word.size()) {
+            cout << "------keyword\n";
+            PredictionDetailPage::setSearchType(STRAIGHT_TO_SEARCH_RES);
+            PredictionDetailPage::setSearchWord(predict[0]);
+            currentScreen = PREDICTION_DETAIL;
+            cout << "------keyword\n";
+            return;
+        }
+        else {
+            if (typeSearch == Keyword) 
+                PredictionDetailPage::setSearchType(0);
+            else 
+                PredictionDetailPage::setSearchType(1);
+            std::string input;
+            for (auto i : codePoints)
+                input += static_cast<char>(i);
+            PredictionDetailPage::setSearchInput(input);
+            PredictionDetailPage::setPredictionList(predict);
+            PredictionDetailPage::setDataSet(data);
+            currentScreen = PREDICTION_DETAIL;
+            return;
+        }
     }
 
     if (change)

@@ -3,14 +3,14 @@
 #include<iostream>
 enum PageType
 {
-    HOME = 1,
-    FAVORITE = 3,
-    HISTORY = 2,
-    SETTING = 5,
-    PRACTICE = 4,
-    PRACTICE_QUESTION = 4,
-    ADD_WORD = 6,
-    SEARCH_RES = 0
+    PREDICTION_DETAIL = 0,
+    SEARCH_RES = 1,
+    HOME = 2,
+    FAVORITE = 4,
+    HISTORY = 3,
+    SETTING = 6,
+    PRACTICE = 5,
+    ADD_WORD = 7,
 };
 
 class Page

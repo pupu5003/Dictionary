@@ -9,6 +9,7 @@ System::System(/* args */)
     currentScreen = HOME;
 
     // load components
+    pages.push_back(new PredictionDetailPage(currentScreen, dictionary));
     pages.push_back(new SearchResPage(currentScreen, dictionary));
     pages.push_back(new HomePage(currentScreen, dictionary));
     pages.push_back(new HistoryPage(currentScreen, dictionary));

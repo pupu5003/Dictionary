@@ -46,4 +46,5 @@ public:
     void handleEvent();
     void reset();
     // static void resetCodePoints();
+    SearchBar& operator=(const SearchBar& rhs);
 };

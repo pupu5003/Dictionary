@@ -3,7 +3,7 @@ using namespace std;
 
 #define scrollUp 70
 #define scrollDown 244
-#define scrollSpeed 4
+#define scrollSpeed 16
 #define visibleUP 100
 #define visibleDOWN 800
 #define gap 40
@@ -14,8 +14,7 @@ float SearchResPage::scroll = 0;
 vector<float> SearchResPage::Gap;
 int SearchResPage::upDef = 0, SearchResPage::downDef = -1;
 
-SearchResPage::SearchResPage(int &currentScreen, Dictionary& dictionary) : currentScreen(currentScreen), dictionary(dictionary), searchBar(dictionary, currentScreen, {280,35}),
-    inputDef({184, 268, 872, 420}), inputType({321, 220, 600, 37})
+SearchResPage::SearchResPage(int &currentScreen, Dictionary& dictionary) : currentScreen(currentScreen), dictionary(dictionary), searchBar(dictionary, currentScreen, {280, 35}), inputDef({184, 268, 872, 420}), inputType({321, 220, 600, 37})
 {
     searchWord = nullptr;
     scroll = 0;
@@ -53,9 +52,6 @@ SearchResPage::SearchResPage(int &currentScreen, Dictionary& dictionary) : curre
 
     upDef = 0; downDef = -1;
     isEdit = -1;
-
-    //Save word to history
-    if (searchWord) dictionary.addHistory(searchWord->data, searchWord->id);
 }
 
 void SearchResPage::display() const
@@ -228,7 +224,9 @@ void SearchResPage::handleEvent()
 }
 
 void SearchResPage::setSearchWord(Word* word)
-{
+{   
+    //Save word to history
+    if (searchWord) dictionary.addHistory(searchWord->data, searchWord->id);
     scroll = 0;
     upDef = 0; downDef = -1;
     searchWord = word;
@@ -287,3 +285,7 @@ void SearchResPage::reset()
     inputDef.reset(); inputType.reset();
     // confirmDialog.reset();
 }
+
+// void SearchResPage::setSearchBar(SearchBar searchBar) {
+//     this->searchBar = searchBar;
+// }
