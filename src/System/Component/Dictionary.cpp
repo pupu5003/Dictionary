@@ -242,13 +242,6 @@ void Dictionary::saveData()
     file.close();
 }
 
-Vector2 GetCenterPos(Font font, string text, float fontSize, float spacing, float x, float y, float width, float height) {
-	Vector2 centerPos;
-	centerPos.x = x + (width - MeasureTextEx(font, text.c_str(), fontSize, spacing).x) / 2;
-	centerPos.y = y + (height - MeasureTextEx(font, text.c_str(), fontSize, spacing).y) / 2;
-	return centerPos;
-}
-
 void Dictionary::DrawReset(string content) {
     float windowWidth = 1243;
     float windowHeight = 725;
@@ -275,7 +268,7 @@ void Dictionary::resetData()
         validId[i].clear();
         wordTrie[i].clear();
         defTable[i].clear();
-        percent += 15;
+        percent += 17;
         ostringstream percentStream;
         percentStream << percent;
         string percentString = percentStream.str();
@@ -285,6 +278,7 @@ void Dictionary::resetData()
     const char *fileName[5] = {"data/Origin/engEng.bin", "data/Origin/engVie.bin", "data/Origin/vieEng.bin", "data/Origin/emoji.bin", "data/Origin/slang.bin"};
 
     loadData(fileName, true);
+    DrawReset("100% ");
 }
 
 Word& Dictionary::getRandomWord()
