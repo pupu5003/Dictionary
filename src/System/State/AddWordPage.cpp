@@ -179,6 +179,8 @@ void AddWordPage::handleEvent()
         else if (backButton.isPressed())
         {
             word = Word();
+            data = 5;
+            choseeData = false;
             currentScreen = SETTING;
         }
     }

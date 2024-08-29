@@ -51,6 +51,7 @@ makefile
 *.pdb
 *.idb
 *.ipdb
+*.bin
 
 # Ignore Mac specific files
 .DS_Store
