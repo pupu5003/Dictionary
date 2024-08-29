@@ -23,7 +23,6 @@ void SettingPage::display() const
     resetButton.display();
     addWordButton.display(); 
     confirmDialog.display();   
-
 }
 
 void SettingPage::handleEvent()

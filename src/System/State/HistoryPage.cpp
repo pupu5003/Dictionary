@@ -81,12 +81,14 @@ void HistoryPage::handleEvent()
     if (backButton.isPressed())
     {
         scroll = 0;
-        upWord = 0; downWord = -1;
+        upWord = 0; 
+        downWord = -1;
         currentScreen = HOME;
     }
     else if (settingButton.isPressed())
     {
-        upWord = 0; downWord = -1;
+        upWord = 0; 
+        downWord = -1;
         scroll = 0;
         currentScreen = SETTING;
     }
@@ -125,7 +127,8 @@ void HistoryPage::resetUpDownWord()
 {
     if ((int)history.size() == 0)
     {
-        upWord = 0; downWord = -1;
+        upWord = 0; 
+        downWord = -1;
     }
     else
     {
@@ -157,5 +160,6 @@ HistoryPage::~HistoryPage()
 void HistoryPage::reset()
 {
     scroll = 0;
-    upWord = 0; downWord = -1;
+    upWord = 0; 
+    downWord = -1;
 }
