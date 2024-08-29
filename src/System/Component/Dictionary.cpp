@@ -159,6 +159,8 @@ void Dictionary::loadData(const char *fileName[5], bool isOrigin)
     //     addFavorite(p.first, p.second);
     // }
     file.close();
+    for (int i = 0; i < size; ++i)
+        words[favorite[i].first][favorite[i].second].isFavorite = true;
 
     
     file.open("data/Current/history.bin", ios::binary);
