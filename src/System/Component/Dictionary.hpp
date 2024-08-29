@@ -43,6 +43,7 @@ private:
     DefHashTable defTable[5];
     vector<int> validId[5];
     vector<pair<dataSet, int>> favorite, history;
+    bool isChanged[5];
 public:
     Dictionary();
     ~Dictionary();
@@ -51,6 +52,7 @@ public:
     void loadData(const char *fileName[5], bool isOrigin = false);
     void saveData();
     void resetData();
+    void setChangedDataSet(dataSet data);
     void DrawReset(string content);
 
     Word& getRandomWord();
