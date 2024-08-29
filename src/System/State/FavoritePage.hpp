@@ -15,6 +15,11 @@ private:
     Button clearButton;
     Button detailButton;
     DialogYesNo confirmDialog;
+    Texture2D curDataSet[6];
+    Texture2D dataSetOptions;
+    Rectangle dataSetBut;
+    int data;
+    bool choseData;
 
     float scroll;
 

@@ -43,13 +43,7 @@ void HomePage::display() const {
     DrawTextBoxed(FontHelper::getInstance().getFont(Inter), randomWord -> type[0].c_str(), { 234 + dis, 328, 636 -dis, 35}, 34, 0.5f, false, BLACK);
    
     DrawTextBoxed(FontHelper::getInstance().getFont(Inter) ,randomWord -> definition[0].c_str(), {232, 380, 800, 280}, 38, 0.5f, true, BLACK);
-    
-    // if (CheckCollisionPointRec(GetMousePosition(), { 232, 650, 93, 33 })) {
-    //     DrawTextEx(FontHelper::getInstance().getFont(OpenSanBold), "(More...)", { 232, 650 }, 33, 0.5f, BLACK);
-    // } 
-    // else {
-    //     DrawTextEx(FontHelper::getInstance().getFont(OpenSan), "(More...)", { 232, 650 }, 33, 0.5f, BLACK);
-    // }
+ 
     DrawTextEx(FontHelper::getInstance().getFont(RussoOne), dataSetName[randomWord -> data].c_str(), {900, 650 }, 33, 0.5f, BLACK);
    
     if (randomWord -> isFavorite) {
