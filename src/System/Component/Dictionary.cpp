@@ -249,20 +249,43 @@ void Dictionary::saveData()
     file.close();
 }
 
+void Dictionary::DrawReset(string content) {
+    float windowWidth = 1243;
+    float windowHeight = 725;
+    Texture reset_icon = LoadTexture("../External/source/Image/reset-icon.png");
+	SetMouseCursor(MOUSE_CURSOR_DEFAULT);
+	DrawRectangle(268, 151, 700, 420, WHITE);
+	DrawRectangle(268, 151, 700, 50, RAYWHITE);
+	DrawRectangleLines(268, 151, 700, 420, Fade(BLACK, 0.7));
+	DrawTextureEx(reset_icon, { (float)275, (float)160 }, 0, 0.07, WHITE);
+	DrawTextEx(FontHelper::getInstance().getFont(RussoOne), (content + "LOADING...").c_str(), GetCenterPos(FontHelper::getInstance().getFont(RussoOne), content + "LOADING..", 40, 0.5, 268, 151, 700, 420), 40, 0.5, BLACK);
+	DrawTextEx(FontHelper::getInstance().getFont(RussoOne), "Reset", GetCenterPos(FontHelper::getInstance().getFont(RussoOne), "Reset", 30, 0.5, 268, 151, 700, 50), 30, 0.5, BLACK);
+	EndDrawing();
+}
+
+
 void Dictionary::resetData()
 {
     removeAllFavorite();
     removeAllHistory();
+    int percent = 0;
     for (int i = 0; i < 5; i++)
     {
         words[i].clear();
         validId[i].clear();
         wordTrie[i].clear();
         defTable[i].clear();
+        percent += 17;
+        ostringstream percentStream;
+        percentStream << percent;
+        string percentString = percentStream.str();
+        string message = percentString + "% ";
+        DrawReset(message.c_str());
     }
     const char *fileName[5] = {"data/Origin/engEng.bin", "data/Origin/engVie.bin", "data/Origin/vieEng.bin", "data/Origin/emoji.bin", "data/Origin/slang.bin"};
 
     loadData(fileName, true);
+    DrawReset("100% ");
 }
 
 Word& Dictionary::getRandomWord()

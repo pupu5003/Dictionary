@@ -53,6 +53,7 @@ public:
     void saveData();
     void resetData();
     void setChangedDataSet(dataSet data);
+    void DrawReset(string content);
 
     Word& getRandomWord();
     Word& getRandomWord(dataSet data);
