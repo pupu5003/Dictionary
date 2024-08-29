@@ -32,7 +32,7 @@ FavoritePage::FavoritePage(int &currentScreen, Dictionary &dictionary) : current
     curDataSet[4] = LoadTexture("asset/Image/slang1.png");
     curDataSet[5] = LoadTexture("asset/Image/dataset.png");
     dataSetOptions = LoadTexture("asset/Image/dataSetOptions1.png");
-    dataSetBut = {151, 135, 204, 59};
+    dataSetBut = {160, 128, 204, 59};
 
     choseData = false;
     data = -1;
@@ -70,8 +70,8 @@ void FavoritePage::display() const
 
     backButton.display();
 
-    if (choseData) DrawTexture(dataSetOptions, 151, 135, WHITE);
-    else DrawTexture(curDataSet[(data == -1 ? 5 : data)], 151, 135, WHITE);
+    if (choseData) DrawTexture(dataSetOptions, dataSetBut.x, dataSetBut.y, WHITE);
+    else DrawTexture(curDataSet[(data == -1 ? 5 : data)], dataSetBut.x, dataSetBut.y, WHITE);
 
 
     clearButton.display();
@@ -103,11 +103,7 @@ void FavoritePage::handleEvent()
                 }
             }
         }
-        if (CheckCollisionPointRec(GetMousePosition(), dataSetBut))
-        {
-            choseData = !choseData;
-        }
-        else choseData = false;
+        else if (CheckCollisionPointRec(GetMousePosition(), dataSetBut)) choseData = true;
     }
 
     if (choseData) return;
@@ -118,20 +114,20 @@ void FavoritePage::handleEvent()
     if (backButton.isPressed())
     {
         upWord = 0; downWord = -1;
-        scroll = 0;
+        scroll = 0; data = -1;
         currentScreen = HOME;
     }
     else if (settingButton.isPressed())
     {
         upWord = 0; downWord = -1;
-        scroll = 0;
+        scroll = 0; data = -1;
         currentScreen = SETTING;
     }
     else if (clearButton.isPressed())
     {
         confirmDialog.show([this](){
             dictionary.removeAllFavorite();
-            upWord = 0; downWord = -1;
+            scroll = 0; upWord = 0; downWord = -1; data = -1;
         });
     }
     else
@@ -150,7 +146,7 @@ void FavoritePage::handleEvent()
             else if (detailButton.isPressed(0, i * gap + scroll))
             {
                 SearchResPage::setSearchWord(&(dictionary.getWord(favorite[index].first, favorite[index].second)));
-                upWord = 0; downWord = -1;
+                upWord = 0; downWord = -1; data = -1; scroll = 0;
                 currentScreen = SEARCH_RES;
                 break;
             }
