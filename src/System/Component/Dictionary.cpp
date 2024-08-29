@@ -23,7 +23,8 @@ Dictionary::Dictionary()
 {
     // loadRawData();
     const char *fileName[5] = {"data/Current/engEng.bin", "data/Current/engVie.bin", "data/Current/vieEng.bin", "data/Current/emoji.bin", "data/Current/slang.bin"};
-
+    for (int i = 0; i < 5; ++i)
+        isChanged[i] = false;
     loadData(fileName);
 }
 
@@ -142,6 +143,7 @@ void Dictionary::loadData(const char *fileName[5], bool isOrigin)
         }
         defTable[i].setCountSize(words[i].size());
         file.close();
+        cout << "Successfully loaded file " << fileName[i] << '\n';
     }
 
     if (isOrigin) return;
@@ -184,6 +186,10 @@ void Dictionary::saveData()
 
     for (int i = 0; i < 5; i++)
     {
+        if (isChanged[i] == false) {
+            cout << "No changes for file" << fileName[i] << '\n';
+            continue;
+        }
         ofstream file(fileName[i], ios::binary);
         if (!file.is_open())
         {
@@ -217,6 +223,7 @@ void Dictionary::saveData()
             }
         }
         file.close();
+        cout << "Successfully saved file " << fileName[i] << '\n';
     }
 
 
@@ -283,6 +290,7 @@ Word& Dictionary::getWord(dataSet data, int id)
 void Dictionary::addWord(Word word)
 {
     dataSet data = word.data;
+    setChangedDataSet(data);
     if ((int)validId[data].size() > 0)
     {
         word.id= validId[data].back();
@@ -307,6 +315,7 @@ void Dictionary::addWord(Word word)
 
 void Dictionary::removeWord(dataSet data, int id)
 {
+    setChangedDataSet(data);
     validId[data].push_back(id);
     wordTrie[data].remove(words[data][id].word);
     for (int i = 0; i < (int)words[data][id].definition.size(); i++)
@@ -323,6 +332,7 @@ void Dictionary::removeWord(dataSet data, int id)
 
 void Dictionary::editDef(dataSet data, int id, int index, string ty, string def)
 {
+    setChangedDataSet(data);
     ty = "(" + ty + ")";
     if (index == (int)words[data][id].definition.size())
     {
@@ -344,6 +354,7 @@ void Dictionary::editDef(dataSet data, int id, int index, string ty, string def)
 
 void Dictionary::removeDef(dataSet data, int id, int index)
 {
+    setChangedDataSet(data);
     defTable[data].remove(words[data][id].definition[index], id);
     words[data][id].type.erase(words[data][id].type.begin() + index);
     words[data][id].definition.erase(words[data][id].definition.begin() + index);
@@ -401,3 +412,7 @@ vector<int> Dictionary::predictDefinition(dataSet data, vector<int> &codePoints)
 {
     return defTable[data].predict(codePoints);
 };
+
+void Dictionary::setChangedDataSet(dataSet data) {
+    isChanged[(int)data] = true;
+}
