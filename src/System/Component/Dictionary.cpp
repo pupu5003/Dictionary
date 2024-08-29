@@ -149,24 +149,30 @@ void Dictionary::loadData(const char *fileName[5], bool isOrigin)
     ifstream file("data/Current/favorite.bin", ios::binary);
     int size = (int)favorite.size();
     file.read((char *)&size, sizeof(int));
-    for (int i = 0; i < size; i++)
-    {
-        pair<dataSet, int> p;
-        file.read((char *)&p.first, sizeof(int));
-        file.read((char *)&p.second, sizeof(int));
-        addFavorite(p.first, p.second);
-    }
+    favorite.resize(size);
+    file.read((char*)(favorite.data()), size*2*sizeof(int));
+    // for (int i = 0; i < size; i++)
+    // {
+    //     pair<dataSet, int> p;
+    //     file.read((char *)&p.first, sizeof(int));
+    //     file.read((char *)&p.second, sizeof(int));
+    //     addFavorite(p.first, p.second);
+    // }
     file.close();
+
+    
     file.open("data/Current/history.bin", ios::binary);
     size = (int)history.size();
     file.read((char *)&size, sizeof(int));
-    for (int i = 0; i < size; i++)
-    {
-        pair<dataSet, int> p;
-        file.read((char *)&p.first, sizeof(int));
-        file.read((char *)&p.second, sizeof(int));
-        addHistory(p.first, p.second);
-    }
+    history.resize(size);
+    file.read((char*)(history.data()), size*2*sizeof(int));
+    // for (int i = 0; i < size; i++)
+    // {
+    //     pair<dataSet, int> p;
+    //     file.read((char *)&p.first, sizeof(int));
+    //     file.read((char *)&p.second, sizeof(int));
+    //     addHistory(p.first, p.second);
+    // }
     file.close();
 }
 
@@ -215,20 +221,22 @@ void Dictionary::saveData()
     ofstream file("data/Current/favorite.bin", ios::binary);
     int size = (int)favorite.size();
     file.write((char *)&size, sizeof(int));
-    for (const pair<dataSet, int>& p: favorite)
-    {
-        file.write((char *)&p.first, sizeof(int));
-        file.write((char *)&p.second, sizeof(int));
-    }
+    file.write((char*)(favorite.data()), size*2*sizeof(int));
+    // for (const pair<dataSet, int>& p: favorite)
+    // {
+    //     file.write((char *)&p.first, sizeof(int));
+    //     file.write((char *)&p.second, sizeof(int));
+    // }
     file.close();
     file.open("data/Current/history.bin", ios::binary);
     size = (int)history.size();
     file.write((char *)&size, sizeof(int));
-    for (const pair<dataSet, int>& p: history)
-    {
-        file.write((char *)&p.first, sizeof(int));
-        file.write((char *)&p.second, sizeof(int));
-    }
+    file.write((char*)(history.data()), size*2*sizeof(int));
+    // for (const pair<dataSet, int>& p: history)
+    // {
+    //     file.write((char *)&p.first, sizeof(int));
+    //     file.write((char *)&p.second, sizeof(int));
+    // }
     file.close();
 }
 
