@@ -31,8 +31,9 @@ HistoryPage::HistoryPage(int &currentScreen, Dictionary &dictionary) : currentSc
     curDataSet[2] = LoadTexture("asset/Image/vieEng1.png");
     curDataSet[3] = LoadTexture("asset/Image/emoji1.png");
     curDataSet[4] = LoadTexture("asset/Image/slang1.png");
-    curDataSet[5] = LoadTexture("asset/Image/dataset.png");
-    dataSetOptions = LoadTexture("asset/Image/dataSetOptions1.png");
+    curDataSet[5] = LoadTexture("asset/Image/all1.png");
+    curDataSet[6] = LoadTexture("asset/Image/dataset.png");
+    dataSetOptions = LoadTexture("asset/Image/dataSetOptions3.png");
     dataSetBut = {160, 128, 204, 59};
 
     choseData = false;
@@ -48,8 +49,10 @@ void HistoryPage::display() const
 
     for (int j = upWord, i = upWord; i <= downWord && j < history.size(); i++, j++)
     {   
-        int index = history.size() - j - 1;
-        if (data != -1 && history[index].first != data) {i--; continue;}
+        int index = 0;
+        if (data == 5) index = history.size() - i - 1;
+        else index = history.size() - j - 1;
+        if (data != -1 && data != 5 && history[index].first != data) {i--; continue;}
         DrawTexture(Box, 120, 217 + i * gap + scroll, WHITE);
         xButton.display(0, i * gap + scroll);
         detailButton.display(0, i * gap + scroll);
@@ -62,8 +65,6 @@ void HistoryPage::display() const
         DrawTextEx(FontHelper::getInstance().getFont(InterBold), word.word.c_str(), { 620 - width/2, 235 + i * gap + scroll}, 40, 0.5f, BLACK);
     }
     
-    
-    
     DrawTexture(barrier, 0, 0, WHITE);
     DrawTexture(historyTag, 0, 0, WHITE);
 
@@ -72,8 +73,7 @@ void HistoryPage::display() const
     backButton.display();
 
     if (choseData) DrawTexture(dataSetOptions, dataSetBut.x, dataSetBut.y, WHITE);
-    else DrawTexture(curDataSet[(data == -1 ? 5 : data)], dataSetBut.x, dataSetBut.y, WHITE);
-
+    else DrawTexture(curDataSet[(data == -1 ? 6 : data)], dataSetBut.x, dataSetBut.y, WHITE);
 
     clearButton.display();
 
@@ -95,7 +95,7 @@ void HistoryPage::handleEvent()
     {
         if (choseData)
         {
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 7; i++)
             {
                 if (CheckCollisionPointRec(GetMousePosition(), {dataSetBut.x, dataSetBut.y + dataSetBut.height * i,  dataSetBut.width,  dataSetBut.height}))
                 {
@@ -140,8 +140,10 @@ void HistoryPage::handleEvent()
     {
          for (int j = upWord, i = upWord; i <= downWord && j < history.size(); i++, j++)
         {   
-            int index = history.size() - j - 1;
-            if (data != -1 && history[index].first != data) {i--; continue;}
+            int index = 0;
+            if (data == 5) index = history.size() - i - 1;
+            else index = history.size() - j - 1;
+            if (data != -1 && data != 5 && history[index].first != data) {i--; continue;}
 
             if (xButton.isPressed(0, i * gap + scroll))
             {

@@ -101,7 +101,6 @@ void FavoritePage::handleEvent()
                 if (CheckCollisionPointRec(GetMousePosition(), {dataSetBut.x, dataSetBut.y + dataSetBut.height * i,  dataSetBut.width,  dataSetBut.height}))
                 {
                     data = i - 1;
-                    cout << data;
                     choseData = false;
                     break;
                 }
