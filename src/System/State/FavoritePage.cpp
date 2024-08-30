@@ -30,8 +30,9 @@ FavoritePage::FavoritePage(int &currentScreen, Dictionary &dictionary) : current
     curDataSet[2] = LoadTexture("asset/Image/vieEng1.png");
     curDataSet[3] = LoadTexture("asset/Image/emoji1.png");
     curDataSet[4] = LoadTexture("asset/Image/slang1.png");
-    curDataSet[5] = LoadTexture("asset/Image/dataset.png");
-    dataSetOptions = LoadTexture("asset/Image/dataSetOptions1.png");
+    curDataSet[5] = LoadTexture("asset/Image/all1.png");
+    curDataSet[6] = LoadTexture("asset/Image/dataset.png");
+    dataSetOptions = LoadTexture("asset/Image/dataSetOptions3.png");
     dataSetBut = {160, 128, 204, 59};
 
     choseData = false;
@@ -46,13 +47,15 @@ void FavoritePage::display() const
 {
     for (int j = upWord, i = upWord; i <= downWord && j < favorite.size(); i++, j++)
     {   
-        int index = favorite.size() - j - 1;
-        if (data != -1 && favorite[index].first != data) {i--; continue;}
+        int index = 0;
+        if (data == 5) index = favorite.size() - i - 1;
+        else index = favorite.size() - j - 1;
+        if (data != -1 && data != 5 && favorite[index].first != data) {i--; continue;}
+
         DrawTexture(Box, 120, 217 + i * gap + scroll, WHITE);
         xButton.display(0, i * gap + scroll);
         detailButton.display(0, i * gap + scroll);
 
-        
         const Word &word = dictionary.getWord(favorite[index].first, favorite[index].second);
         
         DrawTextEx(FontHelper::getInstance().getFont(RussoOne), dataSetName[word.data].c_str(), { 142, 226 + i * gap + scroll}, 25, 0.5f, BLACK);
@@ -71,7 +74,7 @@ void FavoritePage::display() const
     backButton.display();
 
     if (choseData) DrawTexture(dataSetOptions, dataSetBut.x, dataSetBut.y, WHITE);
-    else DrawTexture(curDataSet[(data == -1 ? 5 : data)], dataSetBut.x, dataSetBut.y, WHITE);
+    else DrawTexture(curDataSet[(data == -1 ? 6 : data)], dataSetBut.x, dataSetBut.y, WHITE);
 
 
     clearButton.display();
@@ -93,11 +96,12 @@ void FavoritePage::handleEvent()
     {
         if (choseData)
         {
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 7; i++)
             {
                 if (CheckCollisionPointRec(GetMousePosition(), {dataSetBut.x, dataSetBut.y + dataSetBut.height * i,  dataSetBut.width,  dataSetBut.height}))
                 {
                     data = i - 1;
+                    cout << data;
                     choseData = false;
                     break;
                 }
@@ -134,8 +138,10 @@ void FavoritePage::handleEvent()
     {
         for (int j = upWord, i = upWord; i <= downWord && j < favorite.size(); i++, j++)
         {   
-            int index = favorite.size() - j - 1;
-            if (data != -1 && favorite[index].first != data) {i--; continue;}
+            int index = 0;
+            if (data == 5) index = favorite.size() - i - 1;
+            else index = favorite.size() - j - 1;
+            if (data != -1 && data != 5 && favorite[index].first != data) {i--; continue;}
             
             if (xButton.isPressed(0, i * gap + scroll))
             {
@@ -152,10 +158,8 @@ void FavoritePage::handleEvent()
             }
         }
     }
-
-   
-
 }
+
 
 void FavoritePage::resetUpDownWord()
 {
