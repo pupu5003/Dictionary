@@ -188,10 +188,12 @@ void SearchBar::handleEvent()
         {
             typing = false; choseeData = false; cursorFlick = false;
             frame = 0;
-            PredictionDetailPage::setSearchType(STRAIGHT_TO_SEARCH_RES);
-            PredictionDetailPage::setSearchWord(predict[i]);
+            // PredictionDetailPage::setSearchType(STRAIGHT_TO_SEARCH_RES);
+            // PredictionDetailPage::setSearchWord(predict[i]);
+            // SearchBar::setSearchType(STRAIGHT_TO_SEARCH_RES);
+            SearchResPage::setSearchWord(&dictionary.getWord(data, predict[i]));
             dictionary.addHistory(data, predict[i]);
-            currentScreen = PREDICTION_DETAIL;
+            currentScreen = SEARCH_RES;
             return;
         }
     }
