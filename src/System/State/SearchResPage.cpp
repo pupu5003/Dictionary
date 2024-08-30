@@ -1,4 +1,6 @@
 #include "SearchResPage.hpp"
+// #include "../src/System/Component/TextHandle.hpp"
+
 using namespace std;
 
 #define scrollUp 70
@@ -205,6 +207,8 @@ void SearchResPage::handleEvent()
             if (edit.isPressed(0, space))
             {
                 isEdit = i;
+                inputType.setCodePoints(searchWord -> definition[i]);
+                inputDef.setCodePoints(searchWord -> definition[i]);
                 break;
             }
             if (searchWord -> definition.size() == 1) continue;

@@ -251,6 +251,8 @@ void AddWordPage::handleEvent()
                 if (edit.isPressed(0, space))
                 {
                     isEdit = i;
+                    inputType.setCodePoints(word.definition[i]);
+                    inputDef.setCodePoints(word.definition[i]);
                     state = ADDDEF;
                     break;
                 }

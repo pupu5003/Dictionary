@@ -218,3 +218,13 @@ void TextInputBox::reset()
     frame = 0;
     typing = false;
 }
+
+void TextInputBox::setCodePoints(string &st)
+{
+    for (int i = 0; i < st.size(); i++)
+    {
+        int cd = utf8ToCodepoint(st, i);
+        codePoints.push_back(cd);
+    }
+    text = st;
+}

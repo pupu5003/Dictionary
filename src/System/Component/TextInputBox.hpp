@@ -38,5 +38,6 @@ public:
     void setRequired();
     bool isValid();
     void reset();
+    void setCodePoints(string &st);
     // void setText(string text);
 };
